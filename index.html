@@ -1,10 +1,825 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Mi Sitio Increíble</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Lab MAC | Catálogo Integral</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: #F8FBF5;
+            color: #1A2C2E;
+            line-height: 1.45;
+        }
+
+        :root {
+            --primary: #A3C329;
+            --primary-dark: #8AAA1F;
+            --secondary: #00BAB2;
+            --secondary-dark: #009e97;
+            --gray-light: #F0F4EC;
+            --card-bg: #FFFFFF;
+            --text-dark: #1F2F32;
+            --shadow-sm: 0 8px 20px rgba(0,0,0,0.04);
+            --shadow-md: 0 12px 28px rgba(0,0,0,0.08);
+        }
+
+        /* Header */
+        .hero {
+            background: linear-gradient(135deg, #1A3A2F 0%, #0F5E54 100%);
+            color: white;
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            border-bottom: 5px solid var(--primary);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero h1 {
+            font-size: 2.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            font-weight: 800;
+        }
+        .hero h1 i {
+            color: var(--primary);
+            font-size: 2.4rem;
+        }
+        .hero-sub {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-top: 12px;
+        }
+        .badge-info {
+            background: rgba(163, 195, 41, 0.25);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 20px;
+            border-radius: 60px;
+            font-size: 0.75rem;
+            margin-top: 18px;
+            backdrop-filter: blur(4px);
+        }
+
+        /* Tabs */
+        .nav-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            background: white;
+            padding: 1rem 1rem 0;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02);
+            position: sticky;
+            top: 0;
+            z-index: 30;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(8px);
+        }
+        .tab-btn {
+            background: transparent;
+            border: none;
+            padding: 10px 28px;
+            font-weight: 600;
+            font-size: 1rem;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: #2b5a55;
+            font-family: inherit;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .tab-btn:hover {
+            background: #E9F3E2;
+            color: var(--primary-dark);
+        }
+        .tab-btn.active {
+            background: var(--primary);
+            color: #1E2A1C;
+            box-shadow: 0 6px 12px rgba(163, 195, 41, 0.3);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+
+        /* Search */
+        .search-wrapper {
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: center;
+        }
+        .search-input {
+            width: 100%;
+            max-width: 550px;
+            padding: 14px 24px;
+            border-radius: 70px;
+            border: 1px solid #CFDDC4;
+            background: white;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.2s;
+            font-family: inherit;
+            box-shadow: var(--shadow-sm);
+        }
+        .search-input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(163, 195, 41, 0.2);
+        }
+
+        /* Individual studies grid */
+        .studies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 14px;
+        }
+        .study-card {
+            background: var(--card-bg);
+            border-radius: 28px;
+            padding: 14px 20px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid #E4EFDA;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-weight: 500;
+            color: #1E3A38;
+            cursor: pointer;
+        }
+        .study-card i {
+            color: var(--secondary);
+            font-size: 1.2rem;
+            width: 28px;
+            text-align: center;
+        }
+        .study-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--primary);
+            box-shadow: var(--shadow-md);
+            background: #FEFEF9;
+        }
+        .highlight {
+            background: rgba(163, 195, 41, 0.35);
+            font-weight: 700;
+            border-radius: 12px;
+            padding: 2px 6px;
+            color: #1e4a2e;
+        }
+        .no-result {
+            text-align: center;
+            background: white;
+            padding: 3rem;
+            border-radius: 48px;
+            color: #577a6e;
+            font-weight: 500;
+            border: 1px dashed var(--secondary);
+        }
+
+        /* Packages */
+        .packages-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 1.8rem;
+        }
+        .packages-header i {
+            font-size: 2rem;
+            color: var(--primary);
+        }
+        .packages-header h2 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #1f443f;
+        }
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.8rem;
+        }
+        .package-card {
+            background: white;
+            border-radius: 32px;
+            box-shadow: var(--shadow-sm);
+            transition: 0.2s;
+            border: 1px solid #EAF0E4;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .package-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary);
+        }
+        .package-header {
+            background: linear-gradient(98deg, #F9FEF2 0%, #FFFFFF 100%);
+            padding: 1.2rem 1.5rem;
+            border-bottom: 3px solid var(--primary);
+        }
+        .package-name {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #1c4e47;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .package-name i {
+            color: var(--secondary);
+            font-size: 1.4rem;
+        }
+        .package-badge {
+            font-size: 0.7rem;
+            background: var(--gray-light);
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 50px;
+            margin-top: 8px;
+            font-weight: 500;
+        }
+        .package-studies-list {
+            padding: 1rem 1.5rem 1.2rem;
+            background: #FDFFFA;
+            flex: 1;
+            max-height: 320px;
+            overflow-y: auto;
+        }
+        .package-studies-list ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+        .package-studies-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #EDF3E5;
+            font-size: 0.85rem;
+            display: flex;
+            gap: 10px;
+            align-items: baseline;
+            cursor: pointer;
+            transition: background 0.1s;
+            border-radius: 12px;
+            padding-left: 6px;
+        }
+        .package-studies-list li:hover {
+            background: #F0F9EA;
+        }
+        .package-studies-list li i {
+            color: var(--secondary);
+            font-size: 0.7rem;
+            min-width: 18px;
+        }
+        .package-footer-note {
+            padding: 0.7rem 1.5rem 1.2rem;
+            font-size: 0.7rem;
+            color: #6b8c80;
+            border-top: 1px solid #EAF0E2;
+            background: white;
+        }
+
+        /* Popup modal */
+        .test-popup {
+            position: fixed;
+            z-index: 1001;
+            background: white;
+            border-radius: 28px;
+            box-shadow: 0 25px 40px -12px rgba(0,0,0,0.25);
+            max-width: 420px;
+            width: 90%;
+            border-top: 6px solid var(--primary);
+            overflow: hidden;
+            transition: opacity 0.15s;
+        }
+        .popup-header {
+            background: #FCFEF8;
+            padding: 1rem 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #EFF3E8;
+        }
+        .popup-header h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1A5A52;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .popup-header h3 i {
+            color: var(--secondary);
+        }
+        .close-popup {
+            background: none;
+            border: none;
+            font-size: 1.3rem;
+            cursor: pointer;
+            color: #8aa88a;
+            transition: 0.1s;
+        }
+        .close-popup:hover {
+            color: var(--primary-dark);
+        }
+        .popup-body {
+            padding: 1rem 1.2rem 1.2rem;
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+        .popup-section {
+            margin-bottom: 1rem;
+        }
+        .popup-section strong {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: var(--secondary-dark);
+            font-size: 0.85rem;
+            letter-spacing: -0.2px;
+        }
+        .popup-section p, .popup-section ul {
+            font-size: 0.85rem;
+            line-height: 1.45;
+            color: #2d4b44;
+        }
+        .popup-section ul {
+            padding-left: 1.2rem;
+            margin-top: 4px;
+        }
+        .popup-section li {
+            margin-bottom: 5px;
+        }
+        .popup-footer {
+            background: #F9FCF4;
+            padding: 0.7rem 1.2rem;
+            font-size: 0.7rem;
+            color: #5d887b;
+            text-align: center;
+            border-top: 1px solid #E9F0E2;
+        }
+        .overlay-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.2);
+            z-index: 1000;
+            display: none;
+        }
+        .badge-id {
+            background: #E9F3E2;
+            color: #1e5a4a;
+            padding: 4px 10px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 4px;
+        }
+
+        /* Instructions tab */
+        .instructions-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .instru-card {
+            background: white;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            border-left: 6px solid var(--primary);
+        }
+        .instru-title {
+            background: #F9FCF4;
+            padding: 1rem 1.5rem;
+            font-weight: 700;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #1A5A52;
+            border-bottom: 1px solid #E4EFDA;
+        }
+        .instru-body {
+            padding: 1.2rem 1.8rem;
+        }
+        .instru-body ul {
+            padding-left: 1.2rem;
+        }
+        .warning-box {
+            background: #FEF7E8;
+            border-radius: 28px;
+            padding: 1.2rem 1.8rem;
+            margin-top: 2rem;
+            border-left: 5px solid var(--primary);
+        }
+        footer {
+            background: #112B27;
+            color: #C1DFD8;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            font-size: 0.85rem;
+        }
+        .stats-info {
+            background: #EFF7E6;
+            border-radius: 60px;
+            padding: 6px 16px;
+            font-size: 0.75rem;
+            display: inline-block;
+            margin-top: 1rem;
+            font-weight: 500;
+        }
+        @media (max-width: 680px) {
+            .container { padding: 1rem; }
+            .studies-grid { grid-template-columns: 1fr; }
+            .packages-grid { grid-template-columns: 1fr; }
+            .tab-btn { padding: 6px 16px; font-size: 0.85rem; }
+        }
+    </style>
 </head>
 <body>
-    <h1>¡Hola Mundo! Bienvenido a mi página de GitHub.</h1>
-    <p>Este es mi primer sitio con GitHub Pages.</p>
+
+<div class="hero">
+    <h1><i class="fas fa-flask"></i> Laboratorio Clínico MAC</h1>
+    <div class="hero-sub">Catálogo oficial · Estudios con código ID, indicaciones y tipo de muestra</div>
+    <div class="badge-info"><i class="fas fa-microscope"></i> Haz clic en cualquier prueba para ver su ficha completa</div>
+</div>
+
+<div class="nav-tabs">
+    <button class="tab-btn active" data-tab="individual"><i class="fas fa-vial"></i> Estudios Individuales</button>
+    <button class="tab-btn" data-tab="packages"><i class="fas fa-boxes"></i> Paquetes y Perfiles</button>
+    <button class="tab-btn" data-tab="prep"><i class="fas fa-clipboard-list"></i> Indicaciones Generales</button>
+</div>
+
+<div class="container">
+    <div class="search-wrapper">
+        <input type="text" id="globalSearch" class="search-input" placeholder="🔎 Buscar estudio o paquete... (ej. Glucosa, Perfil Hepático, TSH)" autocomplete="off">
+    </div>
+
+    <div id="individualTab" class="tab-content active">
+        <div id="individualStudiesContainer"></div>
+        <div id="statsIndividual" class="stats-info"></div>
+    </div>
+
+    <div id="packagesTab" class="tab-content">
+        <div id="packagesGridContainer" class="packages-grid"></div>
+        <div id="statsPackages" class="stats-info"></div>
+    </div>
+
+    <div id="prepTab" class="tab-content">
+        <div class="instructions-grid" id="instructionsDynamic"></div>
+        <div class="warning-box">
+            <i class="fas fa-exclamation-triangle"></i> <strong>Nota crítica:</strong> El incumplimiento de las condiciones de preparación (ayuno, horario, recolección) puede alterar los resultados.
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p><i class="fas fa-syringe"></i> Laboratorio Clínico MAC · Precisión diagnóstica</p>
+    <p style="margin-top: 6px;">📋 Información basada en cartera técnica oficial · Consulte condiciones especiales con su médico</p>
+</footer>
+
+<div class="overlay-popup" id="popupOverlay"></div>
+<div id="testPopup" class="test-popup" style="display: none;">
+    <div class="popup-header">
+        <h3><i class="fas fa-flask"></i> <span id="popupTestName"></span></h3>
+        <button class="close-popup" id="closePopupBtn"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="popup-body">
+        <div class="popup-section">
+            <strong><i class="fas fa-id-card"></i> Código ID (Catálogo)</strong>
+            <p><span id="popupCatalogId" class="badge-id"></span></p>
+        </div>
+        <div class="popup-section">
+            <strong><i class="fas fa-list-alt"></i> Indicaciones para el paciente</strong>
+            <ul id="popupInstructions"></ul>
+        </div>
+        <div class="popup-section">
+            <strong><i class="fas fa-tint"></i> Tipo de muestra</strong>
+            <p id="popupSampleType"></p>
+        </div>
+    </div>
+    <div class="popup-footer">
+        <i class="fas fa-syringe"></i> Consulte siempre con su médico antes de suspender medicamentos.
+    </div>
+</div>
+
+<script>
+    // --------------------------------------------------------------
+    // DATOS DEL JSON INTEGRADO (mapeo de paquetes + estudios detallados)
+    // --------------------------------------------------------------
+    const packagesMap = {
+        "Check Up Qs 6 Elementos": ["Biometría Hemática Completa", "Química Sanguínea 6 Elementos", "Examen General De Orina"],
+        "Check Up Qs 15 Elementos": ["Biometría Hemática Completa", "Química Sanguínea 15 Elementos", "Examen General De Orina"],
+        "Check Up Qs 35 Elementos": ["Biometría Hemática Completa", "Química Sanguínea 35 Elementos", "Examen General De Orina"],
+        "Proeoperatorios": ["Biometría Hemática Completa", "Química Sanguínea 3 Elementos", "Grupo Sanguíneo Y RH", "Tiempo De Protrombina TP", "Tiempo De Tromboplastina Parcial Activada TPTa", "INR"],
+        "Perfil De Lípidos": ["Colesterol HDL", "Colesterol LDL", "Colesterol VLDL", "Colesterol Total", "Triglicéridos", "Índice Aterogénico", "Relación LDL/HDL"],
+        "Perfil Hepático": ["Albúmina", "Alanina Aminotransferasa ALT", "Aspartato Aminotransferasa AST", "Bilirrubina Directa", "Bilirrubina Indirecta", "Bilirrubina Total", "Deshidrogenasa Láctica LDH", "Fosfatasa Alcalina ALP", "Gamma-Glutamil Transpeptidasa GGT", "Globulina", "Proteínas Totales", "Relación Albúmina/Globulina"],
+        "Electrolitos Séricos De 3": ["Sodio", "Potasio", "Cloro"],
+        "Electrolitos Séricos De 6": ["Sodio", "Potasio", "Cloro", "Magnesio", "Calcio", "Fósforo"],
+        "Enzimas Pancreáticas": ["Amilasa", "Lipasa"],
+        "Perfil De Hierro": ["Hierro", "Capacidad Latente De Fijación De Hierro UIBC", "Ferritina", "Porcentaje De Saturación De Transferrina", "Capacidad Total De Fijación De Hierro TIBC"],
+        "Perfil Tiroideo": ["T3 Triyodotironina Libre", "T3 Total", "T4 Libre", "T4 Total", "Hormona Estimulante De La Tiroides TSH", "Índice De Fijación De Tiroxina IFT", "Índice De Tiroxina Libre FT4I"],
+        "Perfil Ginecológico": ["FSH", "LH", "Estradiol", "Progesterona", "Prolactina", "Testosterona Total"],
+        "Perfil De Andrógenos": ["17-Alfa Hidroxiprogesterona", "Androstenediona", "Dehidroepiandrosterona Sulfato DHEAS", "Dehidroepiandrosterona DHEA", "Testosterona Libre Y Total"],
+        "Perfil Control De Diabetes": ["Glucosa", "Hemoglobina Glicosilada", "Examen General De Orina"],
+        "Curva De Tolerancia De Glucosa 2 H": ["Glucosa Basal", "Glucosa 1h", "Glucosa 2 h"],
+        "Curva De Tolerancia De Glucosa 3 H": ["Glucosa Basal", "Glucosa 1h", "Glucosa 2 h", "Glucosa 3 h"],
+        "Perfil Reumático": ["Proteína C Reactiva PCR Cuantitativa", "Ácido Úrico", "Factor Reumatoide FR", "Velocidad De Sedimentación Globular VSG", "Biometría Hemática Completa", "Antiestreptolisinas ASO"],
+        "Anticuerpos Anti Tiroideos": ["Anticuerpo Anti Peroxidasa Tiroidea TPO", "Anticuerpos Anti Tiroglobulina TG"]
+    };
+
+    // Base de datos de estudios detallados (extraída de las áreas del JSON)
+    const studiesDB = {
+        // Química Clínica
+        "Glucosa": { codigo: "2610210038", indicaciones: "Ayuno de 8 a 12 horas. Evitar alcohol 24 horas antes.", muestra: "Sangre" },
+        "Urea": { codigo: "2610210058", indicaciones: "Ayuno de 8 horas. Mantener hidratación normal.", muestra: "Sangre" },
+        "Creatinina": { codigo: "2610220021", indicaciones: "Ayuno de 8 horas. Evitar ejercicio intenso 24 horas antes.", muestra: "Sangre" },
+        "BUN": { codigo: "2610210050", indicaciones: "Ayuno de 8 horas. Buena hidratación.", muestra: "Sangre" },
+        "Ácido Úrico": { codigo: "2610200008", indicaciones: "Ayuno de 8 horas. Evitar carnes rojas, mariscos y alcohol 24 horas antes.", muestra: "Sangre" },
+        "Colesterol Total": { codigo: "2610210059", indicaciones: "Ayuno de 9 a 12 horas. Evitar grasas y alcohol el día previo.", muestra: "Sangre" },
+        "Colesterol HDL": { codigo: "2610210060", indicaciones: "Ayuno de 9 a 12 horas. No suspender medicamentos salvo indicación médica.", muestra: "Sangre" },
+        "Colesterol LDL": { codigo: "2610210061", indicaciones: "Ayuno de 9 a 12 horas.", muestra: "Sangre" },
+        "Colesterol VLDL": { codigo: "N/A", indicaciones: "Ayuno de 9 a 12 horas.", muestra: "Sangre" },
+        "Triglicéridos": { codigo: "2610210057", indicaciones: "Ayuno estricto de 12 horas. No consumir alcohol 48 horas antes.", muestra: "Sangre" },
+        "Sodio": { codigo: "2610210055", indicaciones: "No requiere ayuno. Evitar soluciones intravenosas previo a la toma.", muestra: "Sangre" },
+        "Potasio": { codigo: "2610210051", indicaciones: "No requiere ayuno. Evitar ejercicio intenso antes.", muestra: "Sangre" },
+        "Cloro": { codigo: "2610210010", indicaciones: "No requiere ayuno.", muestra: "Sangre" },
+        "Magnesio": { codigo: "2610210063", indicaciones: "Ayuno recomendado de 8 horas. Evitar suplementos de magnesio 72 horas antes.", muestra: "Sangre" },
+        "Calcio": { codigo: "2610210008", indicaciones: "Ayuno de 8 horas. Evitar suplementos de calcio previo.", muestra: "Sangre" },
+        "Fósforo": { codigo: "2610210036", indicaciones: "Ayuno de 8 horas.", muestra: "Sangre" },
+        "Albúmina": { codigo: "2610210002", indicaciones: "Ayuno de 8 horas.", muestra: "Sangre" },
+        "Globulina": { codigo: "2610130013", indicaciones: "Ayuno de 8 horas.", muestra: "Sangre" },
+        "Proteínas Totales": { codigo: "2610210054", indicaciones: "Ayuno de 8 horas.", muestra: "Sangre" },
+        "Alanina Aminotransferasa ALT": { codigo: "2610210001", indicaciones: "Ayuno de 8 horas. Evitar alcohol 24h antes.", muestra: "Sangre" },
+        "Aspartato Aminotransferasa AST": { codigo: "2610210003", indicaciones: "Ayuno de 8 horas. Evitar alcohol 24h antes.", muestra: "Sangre" },
+        "Bilirrubina Total": { codigo: "2610210042", indicaciones: "Ayuno de 8 horas. Evitar alcohol 24h antes.", muestra: "Sangre" },
+        "Bilirrubina Directa": { codigo: "2610210043", indicaciones: "Ayuno de 8 horas.", muestra: "Sangre" },
+        "Bilirrubina Indirecta": { codigo: "N/A", indicaciones: "Ayuno de 8 horas.", muestra: "Sangre" },
+        "Fosfatasa Alcalina ALP": { codigo: "2610210044", indicaciones: "Ayuno de 8 horas.", muestra: "Sangre" },
+        "Gamma-Glutamil Transpeptidasa GGT": { codigo: "2610210045", indicaciones: "Ayuno de 8 horas. Evitar alcohol 24h antes.", muestra: "Sangre" },
+        "Deshidrogenasa Láctica LDH": { codigo: "2610210046", indicaciones: "No requiere ayuno.", muestra: "Sangre" },
+        "Amilasa": { codigo: "2610210047", indicaciones: "Ayuno de 8 horas. Evitar alcohol.", muestra: "Sangre" },
+        "Lipasa": { codigo: "2610210048", indicaciones: "Ayuno de 8 horas.", muestra: "Sangre" },
+        "Hierro": { codigo: "2610210067", indicaciones: "Ayuno de 8 horas. Evitar suplementos de hierro 48h antes.", muestra: "Sangre" },
+        "Ferritina": { codigo: "2610210068", indicaciones: "Ayuno de 8 horas.", muestra: "Sangre" },
+        "Capacidad Latente De Fijación De Hierro UIBC": { codigo: "N/A", indicaciones: "Ayuno de 8 horas.", muestra: "Sangre" },
+        "Capacidad Total De Fijación De Hierro TIBC": { codigo: "N/A", indicaciones: "Ayuno de 8 horas.", muestra: "Sangre" },
+        "Porcentaje De Saturación De Transferrina": { codigo: "N/A", indicaciones: "Ayuno de 8 horas.", muestra: "Sangre" },
+        "Hemoglobina Glicosilada": { codigo: "2610210056", indicaciones: "No requiere ayuno.", muestra: "Sangre" },
+        "Glucosa Basal": { codigo: "2610210038", indicaciones: "Ayuno de 8 a 12 horas.", muestra: "Sangre" },
+        "Glucosa 1h": { codigo: "2610210038", indicaciones: "Se toma 1 hora después de carga de glucosa.", muestra: "Sangre" },
+        "Glucosa 2 h": { codigo: "2610210038", indicaciones: "Se toma 2 horas después de carga.", muestra: "Sangre" },
+        "Glucosa 3 h": { codigo: "2610210038", indicaciones: "Se toma 3 horas después de carga.", muestra: "Sangre" },
+        // Hematología
+        "Biometría Hemática Completa": { codigo: "2610130002", indicaciones: "No requiere ayuno. Acudir bien hidratado.", muestra: "Sangre" },
+        "Grupo Sanguíneo Y RH": { codigo: "2610130011", indicaciones: "No requiere ayuno.", muestra: "Sangre" },
+        "Velocidad De Sedimentación Globular VSG": { codigo: "2610130018", indicaciones: "No requiere ayuno. Evitar ejercicio intenso 24h antes.", muestra: "Sangre" },
+        // Hormonas
+        "Hormona Estimulante De La Tiroides TSH": { codigo: "2610140018", indicaciones: "No requiere ayuno. Tomar antes de medicamento tiroideo.", muestra: "Sangre" },
+        "T3 Total": { codigo: "2610140037", indicaciones: "No requiere ayuno.", muestra: "Sangre" },
+        "T3 Triyodotironina Libre": { codigo: "2610140035", indicaciones: "No requiere ayuno. Tomar antes de medicación tiroidea.", muestra: "Sangre" },
+        "T4 Total": { codigo: "2610140039", indicaciones: "No requiere ayuno.", muestra: "Sangre" },
+        "T4 Libre": { codigo: "2610140038", indicaciones: "No requiere ayuno. Tomar antes de medicamento.", muestra: "Sangre" },
+        "Índice De Fijación De Tiroxina IFT": { codigo: "N/A", indicaciones: "No requiere ayuno.", muestra: "Sangre" },
+        "Índice De Tiroxina Libre FT4I": { codigo: "N/A", indicaciones: "No requiere ayuno.", muestra: "Sangre" },
+        "FSH": { codigo: "2610140019", indicaciones: "No requiere ayuno. Indicar día del ciclo.", muestra: "Sangre" },
+        "LH": { codigo: "2610140020", indicaciones: "No requiere ayuno.", muestra: "Sangre" },
+        "Estradiol": { codigo: "2610140010", indicaciones: "No requiere ayuno.", muestra: "Sangre" },
+        "Progesterona": { codigo: "2610200194", indicaciones: "No requiere ayuno.", muestra: "Sangre" },
+        "Prolactina": { codigo: "2610140031", indicaciones: "Ayuno de 8 horas. Evitar ejercicio y estrés.", muestra: "Sangre" },
+        "Testosterona Total": { codigo: "2610140041", indicaciones: "Ayuno de 8 horas. Muestra matutina.", muestra: "Sangre" },
+        "Testosterona Libre": { codigo: "2610140040", indicaciones: "Ayuno de 8 horas. Muestra matutina.", muestra: "Sangre" },
+        "Testosterona Libre Y Total": { codigo: "N/A", indicaciones: "Ayuno de 8 horas.", muestra: "Sangre" },
+        "17-Alfa Hidroxiprogesterona": { codigo: "2610200001", indicaciones: "Ayuno de 8 horas.", muestra: "Sangre" },
+        "Androstenediona": { codigo: "2610200023", indicaciones: "Ayuno de 8 horas.", muestra: "Sangre" },
+        "Dehidroepiandrosterona Sulfato DHEAS": { codigo: "2610200100", indicaciones: "Ayuno de 8 horas.", muestra: "Sangre" },
+        "Dehidroepiandrosterona DHEA": { codigo: "2610200099", indicaciones: "Ayuno de 8 horas.", muestra: "Sangre" },
+        "Insulina": { codigo: "2610150141", indicaciones: "Ayuno estricto de 8 a 12 horas.", muestra: "Sangre" },
+        "Cortisol": { codigo: "2610210014", indicaciones: "Ayuno de 8 horas. Muestra matutina.", muestra: "Sangre" },
+        // Inmunología
+        "Proteína C Reactiva PCR Cuantitativa": { codigo: "2610150145", indicaciones: "No requiere ayuno.", muestra: "Sangre" },
+        "Factor Reumatoide FR": { codigo: "2610150139", indicaciones: "No requiere ayuno.", muestra: "Sangre" },
+        "Antiestreptolisinas ASO": { codigo: "2610150123", indicaciones: "No requiere ayuno.", muestra: "Sangre" },
+        "Anticuerpo Anti Peroxidasa Tiroidea TPO": { codigo: "2610200266", indicaciones: "No requiere ayuno.", muestra: "Sangre" },
+        "Anticuerpos Anti Tiroglobulina TG": { codigo: "2610150103", indicaciones: "No requiere ayuno.", muestra: "Sangre" },
+        // Coagulación
+        "Tiempo De Protrombina TP": { codigo: "2610110025", indicaciones: "No requiere ayuno. Informar anticoagulantes.", muestra: "Sangre" },
+        "Tiempo De Tromboplastina Parcial Activada TPTa": { codigo: "2610110024", indicaciones: "No requiere ayuno.", muestra: "Sangre" },
+        "INR": { codigo: "2610110026", indicaciones: "No requiere ayuno.", muestra: "Sangre" },
+        // Microbiología/Orina/Heces
+        "Examen General De Orina": { codigo: "2610190001", indicaciones: "Primera orina de la mañana, chorro medio.", muestra: "Orina" },
+        "Urocultivo": { codigo: "2610100061", indicaciones: "Recolectar primera orina de la mañana con aseo genital.", muestra: "Orina" },
+        // Otros
+        "Química Sanguínea 6 Elementos": { codigo: "PAQ", indicaciones: "Consulte perfil completo.", muestra: "Sangre" },
+        "Química Sanguínea 15 Elementos": { codigo: "PAQ", indicaciones: "Consulte perfil completo.", muestra: "Sangre" },
+        "Química Sanguínea 35 Elementos": { codigo: "PAQ", indicaciones: "Consulte perfil completo.", muestra: "Sangre" },
+        "Química Sanguínea 3 Elementos": { codigo: "PAQ", indicaciones: "Consulte perfil completo.", muestra: "Sangre" },
+        "Índice Aterogénico": { codigo: "N/A", indicaciones: "Cálculo derivado de perfil lipídico.", muestra: "Sangre" },
+        "Relación LDL/HDL": { codigo: "N/A", indicaciones: "Cálculo derivado.", muestra: "Sangre" },
+        "Relación Albúmina/Globulina": { codigo: "N/A", indicaciones: "Cálculo.", muestra: "Sangre" }
+    };
+
+    // Normalizar nombres para búsqueda
+    function normalizeName(name) {
+        return name.trim().toLowerCase().replace(/[^\w\s]/g, '');
+    }
+
+    function getStudyDetails(name) {
+        let key = Object.keys(studiesDB).find(k => normalizeName(k) === normalizeName(name));
+        if (key) return { ...studiesDB[key], nombre: key };
+        return { codigo: "No disponible", indicaciones: "Solicitar información al laboratorio.", muestra: "Variable", nombre: name };
+    }
+
+    // Popup management
+    const popup = document.getElementById("testPopup");
+    const overlay = document.getElementById("popupOverlay");
+    function showPopup(testName, x, y) {
+        const details = getStudyDetails(testName);
+        document.getElementById("popupTestName").innerText = testName;
+        document.getElementById("popupCatalogId").innerHTML = details.codigo || "No registrado";
+        const instList = details.indicaciones.split('\n').filter(l => l.trim());
+        const ul = document.getElementById("popupInstructions");
+        ul.innerHTML = instList.map(item => `<li><i class="fas fa-circle" style="font-size:0.4rem; color:var(--secondary); margin-right:8px;"></i> ${item}</li>`).join('');
+        document.getElementById("popupSampleType").innerHTML = details.muestra || "Sangre / Orina / Otro";
+        popup.style.display = "block";
+        overlay.style.display = "block";
+        let left = x + 15, top = y - 10;
+        const popupRect = popup.getBoundingClientRect();
+        if (left + 420 > window.innerWidth) left = x - 420;
+        if (left < 10) left = 10;
+        if (top + popupRect.height > window.innerHeight) top = y - popupRect.height - 20;
+        popup.style.left = left + "px";
+        popup.style.top = top + "px";
+    }
+    function hidePopup() { popup.style.display = "none"; overlay.style.display = "none"; }
+    document.getElementById("closePopupBtn").addEventListener("click", hidePopup);
+    overlay.addEventListener("click", hidePopup);
+
+    function attachClickToStudies() {
+        document.querySelectorAll('.study-card, .package-studies-list li').forEach(el => {
+            el.removeEventListener('click', clickHandler);
+            el.addEventListener('click', clickHandler);
+        });
+    }
+    function clickHandler(e) {
+        e.stopPropagation();
+        const raw = e.currentTarget.innerText.trim();
+        const testName = raw.split('\n')[0].trim();
+        showPopup(testName, e.clientX, e.clientY);
+    }
+
+    // Render individual studies (todos los nombres únicos de studiesDB)
+    function renderIndividual(searchTerm = "") {
+        const container = document.getElementById("individualStudiesContainer");
+        let allStudies = Object.keys(studiesDB);
+        const term = searchTerm.trim().toLowerCase();
+        let filtered = term ? allStudies.filter(s => s.toLowerCase().includes(term)) : [...allStudies];
+        filtered.sort();
+        if (filtered.length === 0) {
+            container.innerHTML = `<div class="no-result"><i class="fas fa-search-minus"></i> No se encontraron estudios con "${escapeHtml(term)}".</div>`;
+            document.getElementById("statsIndividual").innerHTML = "";
+            return;
+        }
+        let html = `<div class="studies-grid">`;
+        filtered.forEach(study => {
+            let display = study;
+            if (term) {
+                const regex = new RegExp(`(${term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, "gi");
+                display = study.replace(regex, `<span class="highlight">$1</span>`);
+            }
+            html += `<div class="study-card"><i class="fas fa-vial"></i> ${display}</div>`;
+        });
+        html += `</div>`;
+        container.innerHTML = html;
+        document.getElementById("statsIndividual").innerHTML = `📊 ${filtered.length} estudios individuales disponibles.`;
+        attachClickToStudies();
+    }
+
+    function renderPackages(searchTerm = "") {
+        const container = document.getElementById("packagesGridContainer");
+        const term = searchTerm.trim().toLowerCase();
+        let pkgArray = Object.entries(packagesMap).map(([name, tests]) => ({ name, tests }));
+        if (term) {
+            pkgArray = pkgArray.filter(pkg => pkg.name.toLowerCase().includes(term) || pkg.tests.some(t => t.toLowerCase().includes(term)));
+        }
+        if (pkgArray.length === 0) {
+            container.innerHTML = `<div class="no-result"><i class="fas fa-search-minus"></i> No se encontraron paquetes con "${escapeHtml(term)}".</div>`;
+            document.getElementById("statsPackages").innerHTML = "";
+            return;
+        }
+        let html = "";
+        pkgArray.forEach(pkg => {
+            html += `
+                <div class="package-card">
+                    <div class="package-header">
+                        <div class="package-name"><i class="fas fa-cube"></i> ${pkg.name}</div>
+                        <div class="package-badge"><i class="fas fa-list-ul"></i> ${pkg.tests.length} pruebas</div>
+                    </div>
+                    <div class="package-studies-list">
+                        <ul>
+                            ${pkg.tests.map(t => `<li><i class="fas fa-check-circle"></i> ${t}</li>`).join('')}
+                        </ul>
+                    </div>
+                    <div class="package-footer-note">
+                        <i class="fas fa-clock"></i> Requiere preparación según cada prueba individual.
+                    </div>
+                </div>
+            `;
+        });
+        container.innerHTML = html;
+        document.getElementById("statsPackages").innerHTML = `📦 ${pkgArray.length} paquetes disponibles.`;
+        attachClickToStudies();
+    }
+
+    function renderInstructions() {
+        const container = document.getElementById("instructionsDynamic");
+        const instrucciones = [
+            { title: "🔬 QUÍMICA SANGUÍNEA & LÍPIDOS", items: ["Ayuno 8-12h.", "No alcohol 24h antes.", "Muestra matutina preferente."] },
+            { title: "🩸 HORMONAS", items: ["Ayuno 8h (cuando aplica).", "Muestra entre 7-9 am.", "Evitar estrés físico."] },
+            { title: "🧪 EXÁMEN DE ORINA", items: ["Primera orina de la mañana.", "Aseo genital, chorro medio.", "Entregar en <1 hora."] },
+            { title: "🦠 HECES & PARASITOLÓGICOS", items: ["Muestra fresca, tamaño nuez.", "No mezclar con orina.", "Evitar laxantes 72h antes."] },
+            { title: "🩸 COAGULACIÓN", items: ["No requiere ayuno.", "Informar uso de anticoagulantes."] }
+        ];
+        let html = "";
+        instrucciones.forEach(inst => {
+            html += `<div class="instru-card"><div class="instru-title"><i class="fas fa-notes-medical"></i> ${inst.title}</div><div class="instru-body"><ul>${inst.items.map(it => `<li><i class="fas fa-circle" style="font-size:0.5rem; color:var(--secondary);"></i> ${it}</li>`).join('')}</ul></div></div>`;
+        });
+        html += `<div class="instru-card"><div class="instru-title"><i class="fas fa-shield-alt"></i> Normas generales</div><div class="instru-body"><ul><li>Presentar identificación oficial.</li><li>Informar medicamentos, embarazo o enfermedades.</li><li>Ropa cómoda para la toma de muestra.</li></ul></div></div>`;
+        container.innerHTML = html;
+    }
+
+    function escapeHtml(str) { return str.replace(/[&<>]/g, m => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;' }[m])); }
+
+    // Tabs
+    const tabs = document.querySelectorAll(".tab-btn");
+    const individualDiv = document.getElementById("individualTab");
+    const packagesDiv = document.getElementById("packagesTab");
+    const prepDiv = document.getElementById("prepTab");
+    let currentTab = "individual";
+    let globalSearch = "";
+
+    function switchTab(tabId) {
+        individualDiv.classList.remove("active");
+        packagesDiv.classList.remove("active");
+        prepDiv.classList.remove("active");
+        if (tabId === "individual") individualDiv.classList.add("active");
+        else if (tabId === "packages") packagesDiv.classList.add("active");
+        else prepDiv.classList.add("active");
+        tabs.forEach(btn => {
+            if (btn.getAttribute("data-tab") === tabId) btn.classList.add("active");
+            else btn.classList.remove("active");
+        });
+        currentTab = tabId;
+        if (tabId === "individual") renderIndividual(globalSearch);
+        else if (tabId === "packages") renderPackages(globalSearch);
+        else renderInstructions();
+    }
+
+    tabs.forEach(btn => btn.addEventListener("click", () => switchTab(btn.getAttribute("data-tab"))));
+    const searchInput = document.getElementById("globalSearch");
+    searchInput.addEventListener("input", (e) => {
+        globalSearch = e.target.value;
+        if (currentTab === "individual") renderIndividual(globalSearch);
+        else if (currentTab === "packages") renderPackages(globalSearch);
+    });
+
+    renderIndividual("");
+    renderPackages("");
+    renderInstructions();
+    switchTab("individual");
+</script>
 </body>
 </html>
