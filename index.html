@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Lab MAC | Catálogo Integral</title>
+    <title>Lab MAC | Catálogo Oficial</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -29,12 +29,10 @@
             --secondary-dark: #009e97;
             --gray-light: #F0F4EC;
             --card-bg: #FFFFFF;
-            --text-dark: #1F2F32;
             --shadow-sm: 0 8px 20px rgba(0,0,0,0.04);
             --shadow-md: 0 12px 28px rgba(0,0,0,0.08);
         }
 
-        /* Header */
         .hero {
             background: linear-gradient(135deg, #1A3A2F 0%, #0F5E54 100%);
             color: white;
@@ -74,7 +72,6 @@
             backdrop-filter: blur(4px);
         }
 
-        /* Tabs */
         .nav-tabs {
             display: flex;
             flex-wrap: wrap;
@@ -82,11 +79,11 @@
             gap: 12px;
             background: white;
             padding: 1rem 1rem 0;
-            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02);
+            box-shadow: 0 6px 14px rgba(0,0,0,0.02);
             position: sticky;
             top: 0;
             z-index: 30;
-            background: rgba(255, 255, 255, 0.96);
+            background: rgba(255,255,255,0.96);
             backdrop-filter: blur(8px);
         }
         .tab-btn {
@@ -111,7 +108,7 @@
         .tab-btn.active {
             background: var(--primary);
             color: #1E2A1C;
-            box-shadow: 0 6px 12px rgba(163, 195, 41, 0.3);
+            box-shadow: 0 6px 12px rgba(163,195,41,0.3);
         }
 
         .container {
@@ -131,7 +128,6 @@
             to { opacity: 1; transform: translateY(0);}
         }
 
-        /* Search */
         .search-wrapper {
             margin-bottom: 2rem;
             display: flex;
@@ -152,14 +148,72 @@
         }
         .search-input:focus {
             border-color: var(--primary);
-            box-shadow: 0 0 0 4px rgba(163, 195, 41, 0.2);
+            box-shadow: 0 0 0 4px rgba(163,195,41,0.2);
         }
 
-        /* Individual studies grid */
+        /* Category filter bar */
+        .category-filter {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #E0EBD6;
+        }
+        .category-chip {
+            background: var(--gray-light);
+            padding: 8px 18px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: #1e5a4a;
+            border: 1px solid #D4E2CA;
+        }
+        .category-chip:hover {
+            background: #E9F3E2;
+            border-color: var(--primary);
+            transform: translateY(-1px);
+        }
+        .category-chip.active {
+            background: var(--primary);
+            color: #1E2A1C;
+            border-color: var(--primary-dark);
+            box-shadow: 0 2px 6px rgba(163,195,41,0.3);
+        }
+        .category-chip.todos {
+            background: white;
+            border-color: var(--secondary);
+            color: var(--secondary-dark);
+        }
+        .category-chip.todos:hover {
+            background: #E0F7F5;
+        }
+        .category-chip.todos.active {
+            background: var(--secondary);
+            color: white;
+            border-color: var(--secondary-dark);
+        }
+
+        /* Categorías en individual */
+        .category-section {
+            margin-bottom: 2rem;
+        }
+        .category-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1c4e47;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--primary);
+            display: inline-block;
+        }
         .studies-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 14px;
+            margin-bottom: 1.5rem;
         }
         .study-card {
             background: var(--card-bg);
@@ -172,7 +226,6 @@
             align-items: center;
             gap: 14px;
             font-weight: 500;
-            color: #1E3A38;
             cursor: pointer;
         }
         .study-card i {
@@ -188,7 +241,7 @@
             background: #FEFEF9;
         }
         .highlight {
-            background: rgba(163, 195, 41, 0.35);
+            background: rgba(163,195,41,0.35);
             font-weight: 700;
             border-radius: 12px;
             padding: 2px 6px;
@@ -205,21 +258,6 @@
         }
 
         /* Packages */
-        .packages-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 1.8rem;
-        }
-        .packages-header i {
-            font-size: 2rem;
-            color: var(--primary);
-        }
-        .packages-header h2 {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: #1f443f;
-        }
         .packages-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -306,7 +344,7 @@
             background: white;
         }
 
-        /* Popup modal */
+        /* Popup */
         .test-popup {
             position: fixed;
             z-index: 1001;
@@ -317,7 +355,6 @@
             width: 90%;
             border-top: 6px solid var(--primary);
             overflow: hidden;
-            transition: opacity 0.15s;
         }
         .popup-header {
             background: #FCFEF8;
@@ -345,7 +382,6 @@
             font-size: 1.3rem;
             cursor: pointer;
             color: #8aa88a;
-            transition: 0.1s;
         }
         .close-popup:hover {
             color: var(--primary-dark);
@@ -364,12 +400,6 @@
             margin-bottom: 6px;
             color: var(--secondary-dark);
             font-size: 0.85rem;
-            letter-spacing: -0.2px;
-        }
-        .popup-section p, .popup-section ul {
-            font-size: 0.85rem;
-            line-height: 1.45;
-            color: #2d4b44;
         }
         .popup-section ul {
             padding-left: 1.2rem;
@@ -377,14 +407,16 @@
         }
         .popup-section li {
             margin-bottom: 5px;
+            font-size: 0.85rem;
         }
-        .popup-footer {
-            background: #F9FCF4;
-            padding: 0.7rem 1.2rem;
+        .badge-id {
+            background: #E9F3E2;
+            color: #1e5a4a;
+            padding: 4px 10px;
+            border-radius: 30px;
             font-size: 0.7rem;
-            color: #5d887b;
-            text-align: center;
-            border-top: 1px solid #E9F0E2;
+            font-weight: 600;
+            display: inline-block;
         }
         .overlay-popup {
             position: fixed;
@@ -396,18 +428,7 @@
             z-index: 1000;
             display: none;
         }
-        .badge-id {
-            background: #E9F3E2;
-            color: #1e5a4a;
-            padding: 4px 10px;
-            border-radius: 30px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            display: inline-block;
-            margin-top: 4px;
-        }
 
-        /* Instructions tab */
         .instructions-grid {
             display: flex;
             flex-direction: column;
@@ -430,6 +451,10 @@
             gap: 12px;
             color: #1A5A52;
             border-bottom: 1px solid #E4EFDA;
+        }
+        .instru-title i {
+            color: var(--secondary);
+            font-size: 1.3rem;
         }
         .instru-body {
             padding: 1.2rem 1.8rem;
@@ -466,15 +491,16 @@
             .studies-grid { grid-template-columns: 1fr; }
             .packages-grid { grid-template-columns: 1fr; }
             .tab-btn { padding: 6px 16px; font-size: 0.85rem; }
+            .category-filter { gap: 8px; }
+            .category-chip { padding: 6px 14px; font-size: 0.75rem; }
         }
     </style>
 </head>
 <body>
-
 <div class="hero">
     <h1><i class="fas fa-flask"></i> Laboratorio Clínico MAC</h1>
-    <div class="hero-sub">Catálogo oficial · Estudios con código ID, indicaciones y tipo de muestra</div>
-    <div class="badge-info"><i class="fas fa-microscope"></i> Haz clic en cualquier prueba para ver su ficha completa</div>
+    <div class="hero-sub">Catálogo oficial · Estudios con ID, indicaciones y tipo de muestra</div>
+    <div class="badge-info"><i class="fas fa-microscope"></i> Haz clic en cualquier prueba para ver su ficha detallada</div>
 </div>
 
 <div class="nav-tabs">
@@ -487,200 +513,248 @@
     <div class="search-wrapper">
         <input type="text" id="globalSearch" class="search-input" placeholder="🔎 Buscar estudio o paquete... (ej. Glucosa, Perfil Hepático, TSH)" autocomplete="off">
     </div>
-
     <div id="individualTab" class="tab-content active">
+        <div id="categoryFilter" class="category-filter"></div>
         <div id="individualStudiesContainer"></div>
         <div id="statsIndividual" class="stats-info"></div>
     </div>
-
-    <div id="packagesTab" class="tab-content">
-        <div id="packagesGridContainer" class="packages-grid"></div>
-        <div id="statsPackages" class="stats-info"></div>
-    </div>
-
-    <div id="prepTab" class="tab-content">
-        <div class="instructions-grid" id="instructionsDynamic"></div>
-        <div class="warning-box">
-            <i class="fas fa-exclamation-triangle"></i> <strong>Nota crítica:</strong> El incumplimiento de las condiciones de preparación (ayuno, horario, recolección) puede alterar los resultados.
-        </div>
-    </div>
+    <div id="packagesTab" class="tab-content"><div id="packagesGridContainer" class="packages-grid"></div><div id="statsPackages" class="stats-info"></div></div>
+    <div id="prepTab" class="tab-content"><div class="instructions-grid" id="instructionsDynamic"></div><div class="warning-box"><i class="fas fa-exclamation-triangle"></i> <strong>Nota crítica:</strong> El incumplimiento de las condiciones de preparación puede alterar los resultados.</div></div>
 </div>
-
-<footer>
-    <p><i class="fas fa-syringe"></i> Laboratorio Clínico MAC · Precisión diagnóstica</p>
-    <p style="margin-top: 6px;">📋 Información basada en cartera técnica oficial · Consulte condiciones especiales con su médico</p>
-</footer>
+<footer><p><i class="fas fa-syringe"></i> Laboratorio Clínico MAC · Precisión diagnóstica</p><p>📋 Información basada en cartera técnica oficial · Consulte condiciones especiales con su médico</p></footer>
 
 <div class="overlay-popup" id="popupOverlay"></div>
 <div id="testPopup" class="test-popup" style="display: none;">
-    <div class="popup-header">
-        <h3><i class="fas fa-flask"></i> <span id="popupTestName"></span></h3>
-        <button class="close-popup" id="closePopupBtn"><i class="fas fa-times"></i></button>
-    </div>
+    <div class="popup-header"><h3><i class="fas fa-flask"></i> <span id="popupTestName"></span></h3><button class="close-popup" id="closePopupBtn"><i class="fas fa-times"></i></button></div>
     <div class="popup-body">
-        <div class="popup-section">
-            <strong><i class="fas fa-id-card"></i> Código ID (Catálogo)</strong>
-            <p><span id="popupCatalogId" class="badge-id"></span></p>
-        </div>
-        <div class="popup-section">
-            <strong><i class="fas fa-list-alt"></i> Indicaciones para el paciente</strong>
-            <ul id="popupInstructions"></ul>
-        </div>
-        <div class="popup-section">
-            <strong><i class="fas fa-tint"></i> Tipo de muestra</strong>
-            <p id="popupSampleType"></p>
-        </div>
+        <div class="popup-section"><strong><i class="fas fa-id-card"></i> Código ID</strong><p><span id="popupCatalogId" class="badge-id"></span></p></div>
+        <div class="popup-section"><strong><i class="fas fa-list-alt"></i> Indicaciones para el paciente</strong><ul id="popupInstructions"></ul></div>
+        <div class="popup-section"><strong><i class="fas fa-tint"></i> Tipo de muestra</strong><p id="popupSampleType"></p></div>
     </div>
-    <div class="popup-footer">
-        <i class="fas fa-syringe"></i> Consulte siempre con su médico antes de suspender medicamentos.
-    </div>
+    <div class="popup-footer"><i class="fas fa-syringe"></i> Consulte siempre con su médico antes de suspender medicamentos.</div>
 </div>
 
 <script>
-    // --------------------------------------------------------------
-    // DATOS DEL JSON INTEGRADO (mapeo de paquetes + estudios detallados)
-    // --------------------------------------------------------------
-    const packagesMap = {
-        "Check Up Qs 6 Elementos": ["Biometría Hemática Completa", "Química Sanguínea 6 Elementos", "Examen General De Orina"],
-        "Check Up Qs 15 Elementos": ["Biometría Hemática Completa", "Química Sanguínea 15 Elementos", "Examen General De Orina"],
-        "Check Up Qs 35 Elementos": ["Biometría Hemática Completa", "Química Sanguínea 35 Elementos", "Examen General De Orina"],
-        "Proeoperatorios": ["Biometría Hemática Completa", "Química Sanguínea 3 Elementos", "Grupo Sanguíneo Y RH", "Tiempo De Protrombina TP", "Tiempo De Tromboplastina Parcial Activada TPTa", "INR"],
-        "Perfil De Lípidos": ["Colesterol HDL", "Colesterol LDL", "Colesterol VLDL", "Colesterol Total", "Triglicéridos", "Índice Aterogénico", "Relación LDL/HDL"],
-        "Perfil Hepático": ["Albúmina", "Alanina Aminotransferasa ALT", "Aspartato Aminotransferasa AST", "Bilirrubina Directa", "Bilirrubina Indirecta", "Bilirrubina Total", "Deshidrogenasa Láctica LDH", "Fosfatasa Alcalina ALP", "Gamma-Glutamil Transpeptidasa GGT", "Globulina", "Proteínas Totales", "Relación Albúmina/Globulina"],
-        "Electrolitos Séricos De 3": ["Sodio", "Potasio", "Cloro"],
-        "Electrolitos Séricos De 6": ["Sodio", "Potasio", "Cloro", "Magnesio", "Calcio", "Fósforo"],
-        "Enzimas Pancreáticas": ["Amilasa", "Lipasa"],
-        "Perfil De Hierro": ["Hierro", "Capacidad Latente De Fijación De Hierro UIBC", "Ferritina", "Porcentaje De Saturación De Transferrina", "Capacidad Total De Fijación De Hierro TIBC"],
-        "Perfil Tiroideo": ["T3 Triyodotironina Libre", "T3 Total", "T4 Libre", "T4 Total", "Hormona Estimulante De La Tiroides TSH", "Índice De Fijación De Tiroxina IFT", "Índice De Tiroxina Libre FT4I"],
-        "Perfil Ginecológico": ["FSH", "LH", "Estradiol", "Progesterona", "Prolactina", "Testosterona Total"],
-        "Perfil De Andrógenos": ["17-Alfa Hidroxiprogesterona", "Androstenediona", "Dehidroepiandrosterona Sulfato DHEAS", "Dehidroepiandrosterona DHEA", "Testosterona Libre Y Total"],
-        "Perfil Control De Diabetes": ["Glucosa", "Hemoglobina Glicosilada", "Examen General De Orina"],
-        "Curva De Tolerancia De Glucosa 2 H": ["Glucosa Basal", "Glucosa 1h", "Glucosa 2 h"],
-        "Curva De Tolerancia De Glucosa 3 H": ["Glucosa Basal", "Glucosa 1h", "Glucosa 2 h", "Glucosa 3 h"],
-        "Perfil Reumático": ["Proteína C Reactiva PCR Cuantitativa", "Ácido Úrico", "Factor Reumatoide FR", "Velocidad De Sedimentación Globular VSG", "Biometría Hemática Completa", "Antiestreptolisinas ASO"],
-        "Anticuerpos Anti Tiroideos": ["Anticuerpo Anti Peroxidasa Tiroidea TPO", "Anticuerpos Anti Tiroglobulina TG"]
-    };
+    // ==================== DATOS DEL JSON (INCLUIDOS DIRECTAMENTE) ====================
+    const individualTests = [
+        { "id": "2610130002", "name": "Biometría Hemática Completa", "sample": "Sangre Total", "category": "Hematología" },
+        { "id": "2610130011", "name": "Grupo Sanguíneo Y RH", "sample": "Sangre Total", "category": "Hematología" },
+        { "id": "2610130018", "name": "Velocidad De Sedimentación Globular VSG", "sample": "Sangre Total", "category": "Hematología" },
+        { "id": "2610130017", "name": "Conteo De Reticulocitos", "sample": "Sangre Total", "category": "Hematología" },
+        { "id": "2610210038", "name": "Glucosa", "sample": "Suero", "category": "Química Clínica" },
+        { "id": "2610210020", "name": "Glucosa Basal", "sample": "Suero", "category": "Química Clínica" },
+        { "id": "2610210039", "name": "Glucosa Postprandial", "sample": "Suero", "category": "Química Clínica" },
+        { "id": "2610210058", "name": "Urea", "sample": "Suero", "category": "Química Clínica" },
+        { "id": "2610220021", "name": "Creatinina", "sample": "Suero", "category": "Química Clínica" },
+        { "id": "2610210050", "name": "BUN", "sample": "Suero", "category": "Química Clínica" },
+        { "id": "2610200008", "name": "Ácido Úrico", "sample": "Suero", "category": "Química Clínica" },
+        { "id": "2610210059", "name": "Colesterol Total", "sample": "Suero", "category": "Química Clínica" },
+        { "id": "2610210060", "name": "Colesterol HDL", "sample": "Suero", "category": "Química Clínica" },
+        { "id": "2610210061", "name": "Colesterol LDL", "sample": "Suero", "category": "Química Clínica" },
+        { "id": "2610210057", "name": "Triglicéridos", "sample": "Suero", "category": "Química Clínica" },
+        { "id": "2610210008", "name": "Calcio", "sample": "Suero", "category": "Química Clínica" },
+        { "id": "2610210055", "name": "Sodio", "sample": "Suero", "category": "Química Clínica" },
+        { "id": "2610210051", "name": "Potasio", "sample": "Suero", "category": "Química Clínica" },
+        { "id": "2610210010", "name": "Cloro", "sample": "Suero", "category": "Química Clínica" },
+        { "id": "2610210063", "name": "Magnesio", "sample": "Suero", "category": "Química Clínica" },
+        { "id": "2610210036", "name": "Fósforo", "sample": "Suero", "category": "Química Clínica" },
+        { "id": "2610210002", "name": "Albúmina", "sample": "Suero", "category": "Química Clínica" },
+        { "id": "2610130013", "name": "Globulina", "sample": "Suero", "category": "Química Clínica" },
+        { "id": "2610210054", "name": "Proteínas Totales", "sample": "Suero", "category": "Química Clínica" },
+        { "id": "2610210001", "name": "Alanina Aminotransferasa ALT", "sample": "Suero", "category": "Perfil Hepático / Enzimas" },
+        { "id": "2610210004", "name": "Aspartato Aminotransferasa AST", "sample": "Suero", "category": "Perfil Hepático / Enzimas" },
+        { "id": "2610210033", "name": "Fosfatasa Alcalina ALP", "sample": "Suero", "category": "Perfil Hepático / Enzimas" },
+        { "id": "2610210037", "name": "Gamma‑Glutamil Transpeptidasa GGT", "sample": "Suero", "category": "Perfil Hepático / Enzimas" },
+        { "id": "2610200004", "name": "Bilirrubina Total", "sample": "Suero", "category": "Perfil Hepático / Enzimas" },
+        { "id": "2610210005", "name": "Bilirrubina Directa", "sample": "Suero", "category": "Perfil Hepático / Enzimas" },
+        { "id": "2610200071", "name": "Bilirrubina Indirecta", "sample": "Suero", "category": "Perfil Hepático / Enzimas" },
+        { "id": "2610210025", "name": "Deshidrogenasa Láctica LDH", "sample": "Suero", "category": "Perfil Hepático / Enzimas" },
+        { "id": "2610210044", "name": "Índice De Resistencia A La Insulina HOMA‑IR", "sample": "Suero", "category": "Índices Calculados" },
+        { "id": "2610140018", "name": "Hormona Estimulante De La Tiroides TSH", "sample": "Suero", "category": "Hormonas – Tiroides" },
+        { "id": "2610140037", "name": "T3 Total", "sample": "Suero", "category": "Hormonas – Tiroides" },
+        { "id": "2610140035", "name": "T3 Triyodotironina Libre", "sample": "Suero", "category": "Hormonas – Tiroides" },
+        { "id": "2610140039", "name": "T4 Total", "sample": "Suero", "category": "Hormonas – Tiroides" },
+        { "id": "2610140038", "name": "T4 Libre", "sample": "Suero", "category": "Hormonas – Tiroides" },
+        { "id": "2610190001", "name": "Índice De Tiroxina Libre FT4I", "sample": "Suero", "category": "Hormonas – Tiroides" },
+        { "id": "2610140019", "name": "FSH", "sample": "Suero", "category": "Hormonas – Ginecológicas" },
+        { "id": "2610140020", "name": "LH", "sample": "Suero", "category": "Hormonas – Ginecológicas" },
+        { "id": "2610140010", "name": "Estradiol", "sample": "Suero", "category": "Hormonas – Ginecológicas" },
+        { "id": "2610200194", "name": "Progesterona", "sample": "Suero", "category": "Hormonas – Ginecológicas" },
+        { "id": "2610140031", "name": "Prolactina", "sample": "Suero", "category": "Hormonas – Ginecológicas" },
+        { "id": "2610140041", "name": "Testosterona Total", "sample": "Suero", "category": "Hormonas – Andrógenos" },
+        { "id": "2610140040", "name": "Testosterona Libre", "sample": "Suero", "category": "Hormonas – Andrógenos" },
+        { "id": "2610200001", "name": "17‑Alfa Hidroxiprogesterona", "sample": "Suero", "category": "Hormonas – Andrógenos" },
+        { "id": "2610200023", "name": "Androstenediona", "sample": "Suero", "category": "Hormonas – Andrógenos" },
+        { "id": "2610200099", "name": "Dehidroepiandrosterona DHEA", "sample": "Suero", "category": "Hormonas – Andrógenos" },
+        { "id": "2610200100", "name": "Dehidroepiandrosterona Sulfato DHEAS", "sample": "Suero", "category": "Hormonas – Andrógenos" },
+        { "id": "2610150141", "name": "Insulina", "sample": "Suero", "category": "Otras Hormonas" },
+        { "id": "2610210014", "name": "Cortisol", "sample": "Suero", "category": "Otras Hormonas" },
+        { "id": "2610210031", "name": "Ferritina", "sample": "Suero", "category": "Marcadores y Vitaminas" },
+        { "id": "2610210043", "name": "Hierro", "sample": "Suero", "category": "Marcadores y Vitaminas" },
+        { "id": "2610210042", "name": "Capacidad Total De Fijación De Hierro TIBC", "sample": "Suero", "category": "Marcadores y Vitaminas" },
+        { "id": "2610200221", "name": "Vitamina D (25‑Hidroxi)", "sample": "Suero", "category": "Marcadores y Vitaminas" },
+        { "id": "2610200219", "name": "Vitamina B12", "sample": "Suero", "category": "Marcadores y Vitaminas" },
+        { "id": "2610200006", "name": "Ácido Fólico Sérico", "sample": "Suero", "category": "Marcadores y Vitaminas" },
+        { "id": "2610150089", "name": "Anticuerpos Antinucleares ANA", "sample": "Suero", "category": "Inmunología / Autoinmunidad" },
+        { "id": "2610150037", "name": "Anti‑DNA De Doble Cadena", "sample": "Suero", "category": "Inmunología / Autoinmunidad" },
+        { "id": "2610140028", "name": "Anticuerpos Anti‑CCP", "sample": "Suero", "category": "Inmunología / Autoinmunidad" },
+        { "id": "2610200266", "name": "Anticuerpo Anti Peroxidasa Tiroidea TPO", "sample": "Suero", "category": "Inmunología / Autoinmunidad" },
+        { "id": "2610150103", "name": "Anticuerpos Anti Tiroglobulina TG", "sample": "Suero", "category": "Inmunología / Autoinmunidad" },
+        { "id": "2610150091", "name": "Anticuerpos Anti‑Receptor TSH TRAb", "sample": "Suero", "category": "Inmunología / Autoinmunidad" },
+        { "id": "2610150085", "name": "Anticuerpos Anti‑Mitocondriales AMA", "sample": "Suero", "category": "Inmunología / Autoinmunidad" },
+        { "id": "2610150086", "name": "Anticuerpos Anti‑Músculo Liso ASMA", "sample": "Suero", "category": "Inmunología / Autoinmunidad" },
+        { "id": "2610150035", "name": "Anticuerpos P‑ANCA Y C‑ANCA", "sample": "Suero", "category": "Inmunología / Autoinmunidad" },
+        { "id": "2610150023", "name": "Anticuerpos Anticardiolipinas IgG/IgM", "sample": "Suero", "category": "Inmunología / Autoinmunidad" },
+        { "id": "2610150051", "name": "Anticuerpos Anti‑β2‑Glicoproteína IgG", "sample": "Suero", "category": "Inmunología / Autoinmunidad" },
+        { "id": "2610200060", "name": "Anticuerpos Anti‑β2‑Glicoproteína IgM", "sample": "Suero", "category": "Inmunología / Autoinmunidad" },
+        { "id": "2610150112", "name": "VIH Presuntivo", "sample": "Suero", "category": "Serología y Pruebas Rápidas" },
+        { "id": "2610150154", "name": "VDRL Presuntivo Sífilis", "sample": "Suero", "category": "Serología y Pruebas Rápidas" },
+        { "id": null, "name": "Hepatitis B Prueba Rápida", "sample": "Suero", "category": "Serología y Pruebas Rápidas" },
+        { "id": "2610150062", "name": "Hepatitis C Prueba Rápida", "sample": "Suero", "category": "Serología y Pruebas Rápidas" },
+        { "id": "2610150145", "name": "PCR Látex Proteína C Reactiva", "sample": "Suero", "category": "Serología y Pruebas Rápidas" },
+        { "id": "2610150123", "name": "Antiestreptolisinas ASO", "sample": "Suero", "category": "Serología y Pruebas Rápidas" },
+        { "id": "2610150139", "name": "Factor Reumatoide FR Látex", "sample": "Suero", "category": "Serología y Pruebas Rápidas" },
+        { "id": "2610150148", "name": "Reacciones Febriles", "sample": "Suero", "category": "Serología y Pruebas Rápidas" },
+        { "id": "2610150150", "name": "Rosa De Bengala", "sample": "Suero", "category": "Serología y Pruebas Rápidas" },
+        { "id": "2610190106", "name": "Prueba Rápida De COVID / Influenza A‑B", "sample": "Suero", "category": "Serología y Pruebas Rápidas" },
+        { "id": "2610110025", "name": "Tiempo De Protrombina TP", "sample": "Plasma", "category": "Coagulación / Hemostasia" },
+        { "id": "2610110026", "name": "INR", "sample": "Plasma", "category": "Coagulación / Hemostasia" },
+        { "id": "2610110024", "name": "Tiempo De Tromboplastina Parcial Activada TPTa", "sample": "Plasma", "category": "Coagulación / Hemostasia" },
+        { "id": "2610110023", "name": "Tiempo De Trombina TT", "sample": "Plasma", "category": "Coagulación / Hemostasia" },
+        { "id": "2610110016", "name": "Fibrinógeno", "sample": "Plasma", "category": "Coagulación / Hemostasia" },
+        { "id": "2610220034", "name": "Examen General De Orina", "sample": "Orina", "category": "Urianálisis" },
+        { "id": "2610100061", "name": "Urocultivo", "sample": "Orina", "category": "Microbiología" },
+        { "id": "2610100044", "name": "Hemocultivo Aerobio", "sample": "Sangre", "category": "Microbiología" },
+        { "id": "2610100044", "name": "Hemocultivo Anaerobio", "sample": "Sangre", "category": "Microbiología" },
+        { "id": "2610100016", "name": "Cultivo De Exudado Faríngeo", "sample": "Exudado Faríngeo", "category": "Microbiología" },
+        { "id": "2610100039", "name": "Cultivo De Exudado Vaginal", "sample": "Exudado Vaginal", "category": "Microbiología" },
+        { "id": "2610100037", "name": "Cultivo De Exudado Uretral", "sample": "Exudado Uretral", "category": "Microbiología" },
+        { "id": "2610100018", "name": "Cultivo De Exudado De Herida / Absceso", "sample": "Exudado de Herida", "category": "Microbiología" },
+        { "id": "2610100026", "name": "Cultivo De Hongos", "sample": "Variable", "category": "Microbiología" },
+        { "id": "2610100024", "name": "Cultivo De Esputo", "sample": "Esputo", "category": "Microbiología" },
+        { "id": "2610100042", "name": "Cultivo De Semen (Espermocultivo)", "sample": "Semen", "category": "Microbiología" },
+        { "id": "2610100023", "name": "Cultivo De Punta De Catéter", "sample": "Punta de Catéter", "category": "Microbiología" },
+        { "id": "2610100040", "name": "Cultivo De Exudado Nasal", "sample": "Exudado Nasal", "category": "Microbiología" },
+        { "id": "2610100035", "name": "Cultivo De Secreción Ótica", "sample": "Exudado Ótico", "category": "Microbiología" },
+        { "id": "2610100024", "name": "Cultivo De Secreción Bronquial", "sample": "Secreción Bronquial", "category": "Microbiología" },
+        { "id": "2610180018", "name": "Coprocultivo", "sample": "Heces", "category": "Microbiología" },
+        { "id": "2610100020", "name": "Cultivo De Líquido Pleural", "sample": "Líquido Pleural", "category": "Microbiología" },
+        { "id": "2610100020", "name": "Cultivo De Líquido Sinovial", "sample": "Líquido Sinovial", "category": "Microbiología" },
+        { "id": "2610100020", "name": "Cultivo De Líquido Cefaloraquídeo", "sample": "Líquido Cefalorraquídeo", "category": "Microbiología" },
+        { "id": "2610100020", "name": "Cultivo De Líquidos Corporales", "sample": "Líquido Corporal", "category": "Microbiología" },
+        { "id": "2610180009", "name": "Coproparasitoscópico 1 Muestra", "sample": "Heces", "category": "Parasitología" },
+        { "id": "2610180010", "name": "Coproparasitoscópico 2 Muestras", "sample": "Heces", "category": "Parasitología" },
+        { "id": "2610180011", "name": "Coproparasitoscópico 3 Muestras", "sample": "Heces", "category": "Parasitología" },
+        { "id": "2610180008", "name": "Coprológico", "sample": "Heces", "category": "Parasitología" },
+        { "id": "2610180005", "name": "Prueba De Azúcares Reductores", "sample": "Heces u Orina", "category": "Parasitología" },
+        { "id": "2610180016", "name": "Sangre Oculta En Heces", "sample": "Heces", "category": "Parasitología" },
+        { "id": "2610180002", "name": "Amiba En Fresco", "sample": "Heces", "category": "Parasitología" },
+        { "id": "2610100045", "name": "Examen De Gota Gruesa", "sample": "Sangre Total", "category": "Parasitología" },
+        { "id": "2610160004", "name": "Citoquímico De Líquido Cefalorraquídeo", "sample": "Líquido Cefalorraquídeo", "category": "Líquidos Corporales (Citoquímicos)" },
+        { "id": "2610160005", "name": "Citoquímico De Líquido Pleural", "sample": "Líquido Pleural", "category": "Líquidos Corporales (Citoquímicos)" },
+        { "id": "2610160006", "name": "Citoquímico De Líquido Sinovial", "sample": "Líquido Sinovial", "category": "Líquidos Corporales (Citoquímicos)" },
+        { "id": "2610160007", "name": "Citoquímico De Líquido Bronquial", "sample": "Líquido Bronquial", "category": "Líquidos Corporales (Citoquímicos)" },
+        { "id": "2610160001", "name": "Citoquímico De Líquido De Ascitis O Peritoneal", "sample": "Líquido de Ascitis", "category": "Líquidos Corporales (Citoquímicos)" },
+        { "id": "2610160002", "name": "Citoquímico De Líquido De Diálisis", "sample": "Líquido de Diálisis", "category": "Líquidos Corporales (Citoquímicos)" },
+        { "id": "2610160007", "name": "Citoquímico De Líquido Orgánicos Varios", "sample": "Líquido Corporal", "category": "Líquidos Corporales (Citoquímicos)" },
+        { "id": "2610200227", "name": "Tamiz Neonatal Ampliado", "sample": "Sangre Capilar", "category": "Tamizaje" }
+    ];
 
-    // Base de datos de estudios detallados (extraída de las áreas del JSON)
-    const studiesDB = {
-        // Química Clínica
-        "Glucosa": { codigo: "2610210038", indicaciones: "Ayuno de 8 a 12 horas. Evitar alcohol 24 horas antes.", muestra: "Sangre" },
-        "Urea": { codigo: "2610210058", indicaciones: "Ayuno de 8 horas. Mantener hidratación normal.", muestra: "Sangre" },
-        "Creatinina": { codigo: "2610220021", indicaciones: "Ayuno de 8 horas. Evitar ejercicio intenso 24 horas antes.", muestra: "Sangre" },
-        "BUN": { codigo: "2610210050", indicaciones: "Ayuno de 8 horas. Buena hidratación.", muestra: "Sangre" },
-        "Ácido Úrico": { codigo: "2610200008", indicaciones: "Ayuno de 8 horas. Evitar carnes rojas, mariscos y alcohol 24 horas antes.", muestra: "Sangre" },
-        "Colesterol Total": { codigo: "2610210059", indicaciones: "Ayuno de 9 a 12 horas. Evitar grasas y alcohol el día previo.", muestra: "Sangre" },
-        "Colesterol HDL": { codigo: "2610210060", indicaciones: "Ayuno de 9 a 12 horas. No suspender medicamentos salvo indicación médica.", muestra: "Sangre" },
-        "Colesterol LDL": { codigo: "2610210061", indicaciones: "Ayuno de 9 a 12 horas.", muestra: "Sangre" },
-        "Colesterol VLDL": { codigo: "N/A", indicaciones: "Ayuno de 9 a 12 horas.", muestra: "Sangre" },
-        "Triglicéridos": { codigo: "2610210057", indicaciones: "Ayuno estricto de 12 horas. No consumir alcohol 48 horas antes.", muestra: "Sangre" },
-        "Sodio": { codigo: "2610210055", indicaciones: "No requiere ayuno. Evitar soluciones intravenosas previo a la toma.", muestra: "Sangre" },
-        "Potasio": { codigo: "2610210051", indicaciones: "No requiere ayuno. Evitar ejercicio intenso antes.", muestra: "Sangre" },
-        "Cloro": { codigo: "2610210010", indicaciones: "No requiere ayuno.", muestra: "Sangre" },
-        "Magnesio": { codigo: "2610210063", indicaciones: "Ayuno recomendado de 8 horas. Evitar suplementos de magnesio 72 horas antes.", muestra: "Sangre" },
-        "Calcio": { codigo: "2610210008", indicaciones: "Ayuno de 8 horas. Evitar suplementos de calcio previo.", muestra: "Sangre" },
-        "Fósforo": { codigo: "2610210036", indicaciones: "Ayuno de 8 horas.", muestra: "Sangre" },
-        "Albúmina": { codigo: "2610210002", indicaciones: "Ayuno de 8 horas.", muestra: "Sangre" },
-        "Globulina": { codigo: "2610130013", indicaciones: "Ayuno de 8 horas.", muestra: "Sangre" },
-        "Proteínas Totales": { codigo: "2610210054", indicaciones: "Ayuno de 8 horas.", muestra: "Sangre" },
-        "Alanina Aminotransferasa ALT": { codigo: "2610210001", indicaciones: "Ayuno de 8 horas. Evitar alcohol 24h antes.", muestra: "Sangre" },
-        "Aspartato Aminotransferasa AST": { codigo: "2610210003", indicaciones: "Ayuno de 8 horas. Evitar alcohol 24h antes.", muestra: "Sangre" },
-        "Bilirrubina Total": { codigo: "2610210042", indicaciones: "Ayuno de 8 horas. Evitar alcohol 24h antes.", muestra: "Sangre" },
-        "Bilirrubina Directa": { codigo: "2610210043", indicaciones: "Ayuno de 8 horas.", muestra: "Sangre" },
-        "Bilirrubina Indirecta": { codigo: "N/A", indicaciones: "Ayuno de 8 horas.", muestra: "Sangre" },
-        "Fosfatasa Alcalina ALP": { codigo: "2610210044", indicaciones: "Ayuno de 8 horas.", muestra: "Sangre" },
-        "Gamma-Glutamil Transpeptidasa GGT": { codigo: "2610210045", indicaciones: "Ayuno de 8 horas. Evitar alcohol 24h antes.", muestra: "Sangre" },
-        "Deshidrogenasa Láctica LDH": { codigo: "2610210046", indicaciones: "No requiere ayuno.", muestra: "Sangre" },
-        "Amilasa": { codigo: "2610210047", indicaciones: "Ayuno de 8 horas. Evitar alcohol.", muestra: "Sangre" },
-        "Lipasa": { codigo: "2610210048", indicaciones: "Ayuno de 8 horas.", muestra: "Sangre" },
-        "Hierro": { codigo: "2610210067", indicaciones: "Ayuno de 8 horas. Evitar suplementos de hierro 48h antes.", muestra: "Sangre" },
-        "Ferritina": { codigo: "2610210068", indicaciones: "Ayuno de 8 horas.", muestra: "Sangre" },
-        "Capacidad Latente De Fijación De Hierro UIBC": { codigo: "N/A", indicaciones: "Ayuno de 8 horas.", muestra: "Sangre" },
-        "Capacidad Total De Fijación De Hierro TIBC": { codigo: "N/A", indicaciones: "Ayuno de 8 horas.", muestra: "Sangre" },
-        "Porcentaje De Saturación De Transferrina": { codigo: "N/A", indicaciones: "Ayuno de 8 horas.", muestra: "Sangre" },
-        "Hemoglobina Glicosilada": { codigo: "2610210056", indicaciones: "No requiere ayuno.", muestra: "Sangre" },
-        "Glucosa Basal": { codigo: "2610210038", indicaciones: "Ayuno de 8 a 12 horas.", muestra: "Sangre" },
-        "Glucosa 1h": { codigo: "2610210038", indicaciones: "Se toma 1 hora después de carga de glucosa.", muestra: "Sangre" },
-        "Glucosa 2 h": { codigo: "2610210038", indicaciones: "Se toma 2 horas después de carga.", muestra: "Sangre" },
-        "Glucosa 3 h": { codigo: "2610210038", indicaciones: "Se toma 3 horas después de carga.", muestra: "Sangre" },
-        // Hematología
-        "Biometría Hemática Completa": { codigo: "2610130002", indicaciones: "No requiere ayuno. Acudir bien hidratado.", muestra: "Sangre" },
-        "Grupo Sanguíneo Y RH": { codigo: "2610130011", indicaciones: "No requiere ayuno.", muestra: "Sangre" },
-        "Velocidad De Sedimentación Globular VSG": { codigo: "2610130018", indicaciones: "No requiere ayuno. Evitar ejercicio intenso 24h antes.", muestra: "Sangre" },
-        // Hormonas
-        "Hormona Estimulante De La Tiroides TSH": { codigo: "2610140018", indicaciones: "No requiere ayuno. Tomar antes de medicamento tiroideo.", muestra: "Sangre" },
-        "T3 Total": { codigo: "2610140037", indicaciones: "No requiere ayuno.", muestra: "Sangre" },
-        "T3 Triyodotironina Libre": { codigo: "2610140035", indicaciones: "No requiere ayuno. Tomar antes de medicación tiroidea.", muestra: "Sangre" },
-        "T4 Total": { codigo: "2610140039", indicaciones: "No requiere ayuno.", muestra: "Sangre" },
-        "T4 Libre": { codigo: "2610140038", indicaciones: "No requiere ayuno. Tomar antes de medicamento.", muestra: "Sangre" },
-        "Índice De Fijación De Tiroxina IFT": { codigo: "N/A", indicaciones: "No requiere ayuno.", muestra: "Sangre" },
-        "Índice De Tiroxina Libre FT4I": { codigo: "N/A", indicaciones: "No requiere ayuno.", muestra: "Sangre" },
-        "FSH": { codigo: "2610140019", indicaciones: "No requiere ayuno. Indicar día del ciclo.", muestra: "Sangre" },
-        "LH": { codigo: "2610140020", indicaciones: "No requiere ayuno.", muestra: "Sangre" },
-        "Estradiol": { codigo: "2610140010", indicaciones: "No requiere ayuno.", muestra: "Sangre" },
-        "Progesterona": { codigo: "2610200194", indicaciones: "No requiere ayuno.", muestra: "Sangre" },
-        "Prolactina": { codigo: "2610140031", indicaciones: "Ayuno de 8 horas. Evitar ejercicio y estrés.", muestra: "Sangre" },
-        "Testosterona Total": { codigo: "2610140041", indicaciones: "Ayuno de 8 horas. Muestra matutina.", muestra: "Sangre" },
-        "Testosterona Libre": { codigo: "2610140040", indicaciones: "Ayuno de 8 horas. Muestra matutina.", muestra: "Sangre" },
-        "Testosterona Libre Y Total": { codigo: "N/A", indicaciones: "Ayuno de 8 horas.", muestra: "Sangre" },
-        "17-Alfa Hidroxiprogesterona": { codigo: "2610200001", indicaciones: "Ayuno de 8 horas.", muestra: "Sangre" },
-        "Androstenediona": { codigo: "2610200023", indicaciones: "Ayuno de 8 horas.", muestra: "Sangre" },
-        "Dehidroepiandrosterona Sulfato DHEAS": { codigo: "2610200100", indicaciones: "Ayuno de 8 horas.", muestra: "Sangre" },
-        "Dehidroepiandrosterona DHEA": { codigo: "2610200099", indicaciones: "Ayuno de 8 horas.", muestra: "Sangre" },
-        "Insulina": { codigo: "2610150141", indicaciones: "Ayuno estricto de 8 a 12 horas.", muestra: "Sangre" },
-        "Cortisol": { codigo: "2610210014", indicaciones: "Ayuno de 8 horas. Muestra matutina.", muestra: "Sangre" },
-        // Inmunología
-        "Proteína C Reactiva PCR Cuantitativa": { codigo: "2610150145", indicaciones: "No requiere ayuno.", muestra: "Sangre" },
-        "Factor Reumatoide FR": { codigo: "2610150139", indicaciones: "No requiere ayuno.", muestra: "Sangre" },
-        "Antiestreptolisinas ASO": { codigo: "2610150123", indicaciones: "No requiere ayuno.", muestra: "Sangre" },
-        "Anticuerpo Anti Peroxidasa Tiroidea TPO": { codigo: "2610200266", indicaciones: "No requiere ayuno.", muestra: "Sangre" },
-        "Anticuerpos Anti Tiroglobulina TG": { codigo: "2610150103", indicaciones: "No requiere ayuno.", muestra: "Sangre" },
-        // Coagulación
-        "Tiempo De Protrombina TP": { codigo: "2610110025", indicaciones: "No requiere ayuno. Informar anticoagulantes.", muestra: "Sangre" },
-        "Tiempo De Tromboplastina Parcial Activada TPTa": { codigo: "2610110024", indicaciones: "No requiere ayuno.", muestra: "Sangre" },
-        "INR": { codigo: "2610110026", indicaciones: "No requiere ayuno.", muestra: "Sangre" },
-        // Microbiología/Orina/Heces
-        "Examen General De Orina": { codigo: "2610190001", indicaciones: "Primera orina de la mañana, chorro medio.", muestra: "Orina" },
-        "Urocultivo": { codigo: "2610100061", indicaciones: "Recolectar primera orina de la mañana con aseo genital.", muestra: "Orina" },
-        // Otros
-        "Química Sanguínea 6 Elementos": { codigo: "PAQ", indicaciones: "Consulte perfil completo.", muestra: "Sangre" },
-        "Química Sanguínea 15 Elementos": { codigo: "PAQ", indicaciones: "Consulte perfil completo.", muestra: "Sangre" },
-        "Química Sanguínea 35 Elementos": { codigo: "PAQ", indicaciones: "Consulte perfil completo.", muestra: "Sangre" },
-        "Química Sanguínea 3 Elementos": { codigo: "PAQ", indicaciones: "Consulte perfil completo.", muestra: "Sangre" },
-        "Índice Aterogénico": { codigo: "N/A", indicaciones: "Cálculo derivado de perfil lipídico.", muestra: "Sangre" },
-        "Relación LDL/HDL": { codigo: "N/A", indicaciones: "Cálculo derivado.", muestra: "Sangre" },
-        "Relación Albúmina/Globulina": { codigo: "N/A", indicaciones: "Cálculo.", muestra: "Sangre" }
-    };
+    const packages = [
+        { "id": "2010110369", "name": "Check Up Qs 6 Elementos", "tests": ["Biometría Hemática Completa", "Glucosa", "Urea", "Creatinina", "Colesterol Total", "Triglicéridos"] },
+        { "id": "2010110370", "name": "Check Up Qs 15 Elementos", "tests": ["Biometría Hemática Completa", "Glucosa", "Urea", "Creatinina", "Ácido Úrico", "Colesterol Total", "Colesterol HDL", "Colesterol LDL", "Triglicéridos", "Alanina Aminotransferasa ALT", "Aspartato Aminotransferasa AST", "Fosfatasa Alcalina ALP", "Bilirrubina Total", "Proteínas Totales", "Examen General De Orina"] },
+        { "id": "2010110371", "name": "Check Up Qs 35 Elementos", "tests": ["Biometría Hemática Completa", "Glucosa", "Urea", "Creatinina", "BUN", "Ácido Úrico", "Colesterol Total", "Colesterol HDL", "Colesterol LDL", "Colesterol VLDL", "Triglicéridos", "Índice Aterogénico", "Relación LDL/HDL", "Alanina Aminotransferasa ALT", "Aspartato Aminotransferasa AST", "Fosfatasa Alcalina ALP", "Gamma‑Glutamil Transpeptidasa GGT", "Bilirrubina Total", "Bilirrubina Directa", "Bilirrubina Indirecta", "Proteínas Totales", "Albúmina", "Globulina", "Relación Albúmina/Globulina", "Sodio", "Potasio", "Cloro", "Calcio", "Fósforo", "Magnesio", "Examen General De Orina"] },
+        { "id": "2610190053", "name": "Química Sanguínea 3 Elementos", "tests": ["Glucosa", "Urea", "Creatinina"] },
+        { "id": "2610190058", "name": "Química Sanguínea 6 Elementos", "tests": ["Glucosa", "Urea", "Creatinina", "Ácido Úrico", "Colesterol Total", "Triglicéridos"] },
+        { "id": null, "name": "Química Sanguínea 15 Elementos", "tests": ["Glucosa", "Urea", "Creatinina", "Ácido Úrico", "Colesterol Total", "Triglicéridos", "Aspartato Aminotransferasa AST", "Alanina Aminotransferasa ALT", "Fosfatasa Alcalina ALP", "Gamma‑Glutamil Transpeptidasa GGT", "Bilirrubina Total", "Proteínas Totales", "Sodio", "Potasio", "Cloro"] },
+        { "id": "2610190064", "name": "Química Sanguínea 27 Elementos", "tests": ["Glucosa", "Urea", "Creatinina", "BUN", "Ácido Úrico", "Sodio", "Potasio", "Cloro", "Magnesio", "Calcio", "Fósforo", "Albúmina", "Aspartato Aminotransferasa AST", "Alanina Aminotransferasa ALT", "Bilirrubina Directa", "Bilirrubina Indirecta", "Bilirrubina Total", "Deshidrogenasa Láctica LDH", "Fosfatasa Alcalina ALP", "Gamma‑Glutamil Transpeptidasa GGT", "Globulina", "Proteínas Totales", "Relación Albúmina/Globulina", "Colesterol HDL", "Colesterol LDL", "Colesterol Total", "Triglicéridos"] },
+        { "id": "2610190078", "name": "Química Sanguínea 35 Elementos", "tests": ["Glucosa", "Urea", "Creatinina", "BUN", "Ácido Úrico", "Colesterol Total", "Colesterol HDL", "Colesterol LDL", "Colesterol VLDL", "Triglicéridos", "Aspartato Aminotransferasa AST", "Alanina Aminotransferasa ALT", "Fosfatasa Alcalina ALP", "Gamma‑Glutamil Transpeptidasa GGT", "Bilirrubina Total", "Bilirrubina Directa", "Bilirrubina Indirecta", "Albúmina", "Globulina", "Proteínas Totales", "Sodio", "Potasio", "Cloro", "Calcio", "Fósforo", "Magnesio", "Amilasa", "Lipasa", "CPK Creatina Fosfocinasa Total", "Deshidrogenasa Láctica LDH", "Hierro", "Índice Aterogénico", "Relación BUN/Creatinina", "Relación Albúmina/Globulina", "Relación LDL/HDL"] },
+        { "id": "2610210027", "name": "Electrolitos Séricos De 3", "tests": ["Sodio", "Potasio", "Cloro"] },
+        { "id": "2610210030", "name": "Electrolitos Séricos De 6", "tests": ["Sodio", "Potasio", "Cloro", "Calcio", "Magnesio", "Fósforo"] },
+        { "id": "2610190053", "name": "Perfil De Lípidos", "tests": ["Colesterol Total", "Colesterol HDL", "Colesterol LDL", "Colesterol VLDL", "Triglicéridos", "Índice Aterogénico", "Relación LDL/HDL"] },
+        { "id": "2610190025", "name": "Perfil Hepático", "tests": ["Albúmina", "Alanina Aminotransferasa ALT", "Aspartato Aminotransferasa AST", "Bilirrubina Directa", "Bilirrubina Indirecta", "Bilirrubina Total", "Deshidrogenasa Láctica LDH", "Fosfatasa Alcalina ALP", "Gamma‑Glutamil Transpeptidasa GGT", "Globulina", "Proteínas Totales", "Relación Albúmina/Globulina"] },
+        { "id": "2610190111", "name": "Perfil De Hierro", "tests": ["Hierro", "Ferritina", "Capacidad Latente De Fijación De Hierro UIBC", "Capacidad Total De Fijación De Hierro TIBC", "Porcentaje De Saturación De Transferrina"] },
+        { "id": "2610190045", "name": "Perfil Tiroideo", "tests": ["Hormona Estimulante De La Tiroides TSH", "T3 Total", "T3 Triyodotironina Libre", "T4 Total", "T4 Libre", "Índice De Fijación De Tiroxina IFT", "Índice De Tiroxina Libre FT4I"] },
+        { "id": "2610190024", "name": "Perfil Ginecológico", "tests": ["FSH", "LH", "Estradiol", "Progesterona", "Prolactina", "Testosterona Total"] },
+        { "id": "2610190005", "name": "Perfil De Andrógenos", "tests": ["17‑Alfa Hidroxiprogesterona", "Androstenediona", "Dehidroepiandrosterona DHEA", "Dehidroepiandrosterona Sulfato DHEAS", "Testosterona Libre Y Total"] },
+        { "id": "2610190040", "name": "Perfil Reumático", "tests": ["Proteína C Reactiva PCR Cuantitativa", "Ácido Úrico", "Factor Reumatoide FR", "Velocidad De Sedimentación Globular VSG", "Biometría Hemática Completa", "Antiestreptolisinas ASO"] },
+        { "id": null, "name": "Perfil Control De Diabetes", "tests": ["Glucosa", "Hemoglobina Glicosilada", "Examen General De Orina"] },
+        { "id": "2610210020", "name": "Curva De Tolerancia De Glucosa 2 H", "tests": ["Glucosa Basal", "Glucosa 1h", "Glucosa 2 h"] },
+        { "id": "2610210022", "name": "Curva De Tolerancia De Glucosa 3 H", "tests": ["Glucosa Basal", "Glucosa 1h", "Glucosa 2 h", "Glucosa 3 h"] },
+        { "id": "2610190112", "name": "Enzimas Pancreáticas", "tests": ["Amilasa", "Lipasa"] },
+        { "id": "2610190112", "name": "Preoperatorios", "tests": ["Biometría Hemática Completa", "Glucosa", "Urea", "Creatinina", "Grupo Sanguíneo Y RH", "Tiempo De Protrombina TP", "Tiempo De Tromboplastina Parcial Activada TPTa", "INR"] },
+        { "id": "2610200266", "name": "Anticuerpos Anti Tiroideos", "tests": ["Anticuerpo Anti Peroxidasa Tiroidea TPO", "Anticuerpos Anti Tiroglobulina TG"] },
+        { "id": "2610190011", "name": "Antidoping De 3", "tests": ["Anfetaminas", "Cocaína", "Tetrahidrocanabinoides"] },
+        { "id": "2610190011", "name": "Antidoping De 5", "tests": ["Anfetaminas", "Benzodiacepinas", "Cocaína", "Metanfetaminas", "Tetrahidrocanabinoides"] },
+        { "id": "2610200227", "name": "Tamiz Neonatal Ampliado", "tests": ["Tamiz Neonatal Ampliado"] }
+    ];
 
-    // Normalizar nombres para búsqueda
-    function normalizeName(name) {
-        return name.trim().toLowerCase().replace(/[^\w\s]/g, '');
+    // Crear mapa de búsqueda rápida por nombre de prueba
+    const testMap = new Map();
+    individualTests.forEach(test => {
+        const normalized = test.name.trim().toLowerCase().replace(/[^a-z0-9]/g, '');
+        testMap.set(normalized, test);
+    });
+
+    function getTestDetails(testName) {
+        const normalized = testName.trim().toLowerCase().replace(/[^a-z0-9]/g, '');
+        if (testMap.has(normalized)) {
+            return testMap.get(normalized);
+        }
+        for (let [key, value] of testMap.entries()) {
+            if (normalized.includes(key) || key.includes(normalized)) {
+                return value;
+            }
+        }
+        return { id: "No disponible", name: testName, sample: "Variable", category: "General" };
     }
 
-    function getStudyDetails(name) {
-        let key = Object.keys(studiesDB).find(k => normalizeName(k) === normalizeName(name));
-        if (key) return { ...studiesDB[key], nombre: key };
-        return { codigo: "No disponible", indicaciones: "Solicitar información al laboratorio.", muestra: "Variable", nombre: name };
+    function getInstructions(testName) {
+        const lower = testName.toLowerCase();
+        if (lower.includes("glucosa") && !lower.includes("glicosilada") && !lower.includes("curva")) return ["Ayuno de 8 a 12 horas.", "No consumir alcohol 24 horas antes.", "Solo agua permitida durante el ayuno.", "Tomar muestra preferentemente entre 7:00 y 9:00 AM."];
+        if (lower.includes("glucosa") && (lower.includes("basal") || lower.includes("1h") || lower.includes("2 h") || lower.includes("3 h"))) return ["Ayuno de 8 a 12 horas para la muestra basal.", "Las muestras posteriores se toman después de la carga de glucosa.", "Permanecer en el laboratorio durante todo el procedimiento."];
+        if (lower.includes("hemoglobina glicosilada")) return ["No requiere ayuno.", "Se puede realizar a cualquier hora del día."];
+        if (lower.includes("colesterol") || lower.includes("triglicéridos") || lower.includes("lipidos")) return ["Ayuno estricto de 12 horas.", "No consumir alimentos grasos ni alcohol 24 horas antes.", "Solo agua simple durante el ayuno."];
+        if (lower.includes("tsh") || lower.includes("t3") || lower.includes("t4")) return ["No requiere ayuno en la mayoría de casos.", "Tomar la muestra antes de la dosis diaria de medicamento tiroideo.", "Preferentemente en horario matutino."];
+        if (lower.includes("biometría") || lower.includes("hemática")) return ["No requiere ayuno.", "Acudir bien hidratado.", "Informar si ha tenido infecciones, sangrados o transfusiones recientes."];
+        if (lower.includes("orina") && !lower.includes("cultivo")) return ["Recolectar la primera orina de la mañana.", "Realizar aseo genital previo.", "Recolectar el chorro medio en frasco estéril.", "Entregar en el laboratorio en menos de 1 hora."];
+        if (lower.includes("urocultivo")) return ["Recolectar la primera orina de la mañana con aseo genital.", "Chorro medio en frasco estéril.", "No haber tomado antibióticos 48 horas antes (salvo indicación médica)."];
+        if (lower.includes("heces") || lower.includes("coproparasitoscópico") || lower.includes("coprológico")) return ["Recolectar una muestra de evacuación reciente.", "No mezclar con orina ni agua.", "Evitar laxantes, antibióticos y antiparasitarios 72 horas antes.", "Entregar en frasco estéril en menos de 2 horas."];
+        if (lower.includes("sangre oculta")) return ["Evitar carnes rojas, antiinflamatorios y suplementos de hierro 72 horas antes.", "Recolectar muestra de evacuación en frasco limpio."];
+        if (lower.includes("psa")) return ["Ayuno de 4 horas.", "Evitar eyaculación 48 horas previas.", "No realizar biopsia prostática reciente (esperar 6 semanas)."];
+        if (lower.includes("ferritina") || lower.includes("hierro") || lower.includes("tibc")) return ["Ayuno de 8 horas.", "Evitar suplementos de hierro 48 horas antes.", "Muestra matutina preferente."];
+        if (lower.includes("troponina") || lower.includes("cpk") || lower.includes("ck-mb")) return ["No requiere ayuno.", "Realizar ante sospecha de daño miocárdico.", "Informar si ha realizado ejercicio intenso reciente."];
+        if (lower.includes("prolactina")) return ["Ayuno de 8 horas.", "Evitar ejercicio, estrés y estimulación mamaria 24 horas antes.", "Tomar muestra entre 7:00 y 9:00 AM."];
+        if (lower.includes("cortisol")) return ["Ayuno de 8 horas.", "Tomar muestra entre 7:00 y 9:00 AM (ritmo circadiano).", "Evitar estrés físico y emocional previo."];
+        if (lower.includes("insulina") || lower.includes("homa")) return ["Ayuno de 8 a 12 horas.", "No fumar ni hacer ejercicio antes de la toma."];
+        if (lower.includes("exudado faríngeo")) return ["No comer ni beber 2 horas antes.", "No usar enjuagues bucales el día del estudio."];
+        if (lower.includes("exudado vaginal")) return ["No usar óvulos, duchas vaginales ni tener relaciones sexuales 48 horas antes.", "Evitar el periodo menstrual."];
+        if (lower.includes("exudado uretral")) return ["No orinar 2 horas antes de la toma.", "Evitar antibióticos antes del estudio."];
+        if (lower.includes("cultivo de esputo")) return ["Recolectar muestra matutina después de enjuagar la boca con agua.", "Toser profundamente para obtener secreción bronquial, no saliva."];
+        if (lower.includes("semen") || lower.includes("espermocultivo")) return ["Abstinencia sexual de 3 a 5 días.", "Recolectar por masturbación en frasco estéril.", "Entregar la muestra en el laboratorio en menos de 1 hora."];
+        if (lower.includes("prueba rápida")) return ["No requiere ayuno.", "Realizar preferentemente en presencia de síntomas."];
+        if (lower.includes("citoquímico") || lower.includes("líquido")) return ["La toma de muestra es realizada por personal médico.", "Seguir las indicaciones específicas del procedimiento."];
+        return ["Seguir las instrucciones proporcionadas por el laboratorio.", "Consultar si requiere ayuno o preparación especial.", "Presentar orden médica e identificación oficial."];
     }
 
-    // Popup management
+    // Popup
     const popup = document.getElementById("testPopup");
     const overlay = document.getElementById("popupOverlay");
     function showPopup(testName, x, y) {
-        const details = getStudyDetails(testName);
+        const details = getTestDetails(testName);
         document.getElementById("popupTestName").innerText = testName;
-        document.getElementById("popupCatalogId").innerHTML = details.codigo || "No registrado";
-        const instList = details.indicaciones.split('\n').filter(l => l.trim());
+        document.getElementById("popupCatalogId").innerHTML = details.id || "No disponible";
+        const instructions = getInstructions(testName);
         const ul = document.getElementById("popupInstructions");
-        ul.innerHTML = instList.map(item => `<li><i class="fas fa-circle" style="font-size:0.4rem; color:var(--secondary); margin-right:8px;"></i> ${item}</li>`).join('');
-        document.getElementById("popupSampleType").innerHTML = details.muestra || "Sangre / Orina / Otro";
+        ul.innerHTML = instructions.map(item => `<li><i class="fas fa-circle" style="font-size:0.4rem; color:var(--secondary); margin-right:8px;"></i> ${item}</li>`).join('');
+        document.getElementById("popupSampleType").innerHTML = details.sample || "Variable";
         popup.style.display = "block";
         overlay.style.display = "block";
         let left = x + 15, top = y - 10;
-        const popupRect = popup.getBoundingClientRect();
+        const rect = popup.getBoundingClientRect();
         if (left + 420 > window.innerWidth) left = x - 420;
         if (left < 10) left = 10;
-        if (top + popupRect.height > window.innerHeight) top = y - popupRect.height - 20;
+        if (top + rect.height > window.innerHeight) top = y - rect.height - 20;
         popup.style.left = left + "px";
         popup.style.top = top + "px";
     }
@@ -688,7 +762,7 @@
     document.getElementById("closePopupBtn").addEventListener("click", hidePopup);
     overlay.addEventListener("click", hidePopup);
 
-    function attachClickToStudies() {
+    function attachClickToTestElements() {
         document.querySelectorAll('.study-card, .package-studies-list li').forEach(el => {
             el.removeEventListener('click', clickHandler);
             el.addEventListener('click', clickHandler);
@@ -701,47 +775,88 @@
         showPopup(testName, e.clientX, e.clientY);
     }
 
-    // Render individual studies (todos los nombres únicos de studiesDB)
-    function renderIndividual(searchTerm = "") {
+    // --- Category filter logic ---
+    let selectedCategory = null;
+    let currentSearch = "";
+
+    function buildCategoryFilter() {
+        const categoriesSet = new Set();
+        individualTests.forEach(t => categoriesSet.add(t.category));
+        const sortedCategories = Array.from(categoriesSet).sort();
+        const container = document.getElementById("categoryFilter");
+        let html = `<div class="category-chip todos ${selectedCategory === null ? 'active' : ''}" data-category="">Todos</div>`;
+        sortedCategories.forEach(cat => {
+            html += `<div class="category-chip ${selectedCategory === cat ? 'active' : ''}" data-category="${escapeHtml(cat)}">${cat}</div>`;
+        });
+        container.innerHTML = html;
+        // attach event listeners
+        document.querySelectorAll('.category-chip').forEach(chip => {
+            chip.addEventListener('click', (e) => {
+                const cat = chip.getAttribute('data-category');
+                selectedCategory = cat === "" ? null : cat;
+                buildCategoryFilter(); // re-render to update active class
+                renderIndividual(currentSearch);
+            });
+        });
+    }
+
+    function renderIndividual(search = "") {
+        currentSearch = search;
         const container = document.getElementById("individualStudiesContainer");
-        let allStudies = Object.keys(studiesDB);
-        const term = searchTerm.trim().toLowerCase();
-        let filtered = term ? allStudies.filter(s => s.toLowerCase().includes(term)) : [...allStudies];
-        filtered.sort();
+        const term = search.trim().toLowerCase();
+        let filtered = [...individualTests];
+        if (term) {
+            filtered = filtered.filter(t => t.name.toLowerCase().includes(term));
+        }
+        if (selectedCategory) {
+            filtered = filtered.filter(t => t.category === selectedCategory);
+        }
         if (filtered.length === 0) {
-            container.innerHTML = `<div class="no-result"><i class="fas fa-search-minus"></i> No se encontraron estudios con "${escapeHtml(term)}".</div>`;
+            container.innerHTML = `<div class="no-result"><i class="fas fa-search-minus"></i> No se encontraron estudios con los filtros actuales.</div>`;
             document.getElementById("statsIndividual").innerHTML = "";
             return;
         }
-        let html = `<div class="studies-grid">`;
-        filtered.forEach(study => {
-            let display = study;
-            if (term) {
-                const regex = new RegExp(`(${term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, "gi");
-                display = study.replace(regex, `<span class="highlight">$1</span>`);
-            }
-            html += `<div class="study-card"><i class="fas fa-vial"></i> ${display}</div>`;
+        // Agrupar por categoría
+        const grouped = {};
+        filtered.forEach(test => {
+            const cat = test.category;
+            if (!grouped[cat]) grouped[cat] = [];
+            grouped[cat].push(test);
         });
-        html += `</div>`;
+        let html = "";
+        for (const [cat, tests] of Object.entries(grouped).sort()) {
+            html += `<div class="category-section"><div class="category-title">${cat}</div><div class="studies-grid">`;
+            tests.forEach(test => {
+                let display = test.name;
+                if (term) {
+                    const regex = new RegExp(`(${term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, "gi");
+                    display = test.name.replace(regex, `<span class="highlight">$1</span>`);
+                }
+                html += `<div class="study-card"><i class="fas fa-vial"></i> ${display}</div>`;
+            });
+            html += `</div></div>`;
+        }
         container.innerHTML = html;
-        document.getElementById("statsIndividual").innerHTML = `📊 ${filtered.length} estudios individuales disponibles.`;
-        attachClickToStudies();
+        const filterText = selectedCategory ? ` · Categoría: ${selectedCategory}` : "";
+        document.getElementById("statsIndividual").innerHTML = `📊 ${filtered.length} estudios individuales disponibles${filterText}.`;
+        attachClickToTestElements();
     }
 
-    function renderPackages(searchTerm = "") {
+    // Render packages (unchanged)
+    function renderPackages(search = "") {
         const container = document.getElementById("packagesGridContainer");
-        const term = searchTerm.trim().toLowerCase();
-        let pkgArray = Object.entries(packagesMap).map(([name, tests]) => ({ name, tests }));
+        const term = search.trim().toLowerCase();
+        let filtered = [...packages];
         if (term) {
-            pkgArray = pkgArray.filter(pkg => pkg.name.toLowerCase().includes(term) || pkg.tests.some(t => t.toLowerCase().includes(term)));
+            filtered = filtered.filter(pkg => pkg.name.toLowerCase().includes(term) || pkg.tests.some(t => t.toLowerCase().includes(term)));
         }
-        if (pkgArray.length === 0) {
+        if (filtered.length === 0) {
             container.innerHTML = `<div class="no-result"><i class="fas fa-search-minus"></i> No se encontraron paquetes con "${escapeHtml(term)}".</div>`;
             document.getElementById("statsPackages").innerHTML = "";
             return;
         }
         let html = "";
-        pkgArray.forEach(pkg => {
+        filtered.forEach(pkg => {
             html += `
                 <div class="package-card">
                     <div class="package-header">
@@ -749,33 +864,30 @@
                         <div class="package-badge"><i class="fas fa-list-ul"></i> ${pkg.tests.length} pruebas</div>
                     </div>
                     <div class="package-studies-list">
-                        <ul>
-                            ${pkg.tests.map(t => `<li><i class="fas fa-check-circle"></i> ${t}</li>`).join('')}
-                        </ul>
+                        <ul>${pkg.tests.map(t => `<li><i class="fas fa-check-circle"></i> ${t}</li>`).join('')}</ul>
                     </div>
-                    <div class="package-footer-note">
-                        <i class="fas fa-clock"></i> Requiere preparación según cada prueba individual.
-                    </div>
+                    <div class="package-footer-note"><i class="fas fa-clock"></i> Requiere preparación según cada prueba individual.</div>
                 </div>
             `;
         });
         container.innerHTML = html;
-        document.getElementById("statsPackages").innerHTML = `📦 ${pkgArray.length} paquetes disponibles.`;
-        attachClickToStudies();
+        document.getElementById("statsPackages").innerHTML = `📦 ${filtered.length} paquetes disponibles.`;
+        attachClickToTestElements();
     }
 
+    // Instructions tab (static)
     function renderInstructions() {
         const container = document.getElementById("instructionsDynamic");
-        const instrucciones = [
-            { title: "🔬 QUÍMICA SANGUÍNEA & LÍPIDOS", items: ["Ayuno 8-12h.", "No alcohol 24h antes.", "Muestra matutina preferente."] },
-            { title: "🩸 HORMONAS", items: ["Ayuno 8h (cuando aplica).", "Muestra entre 7-9 am.", "Evitar estrés físico."] },
-            { title: "🧪 EXÁMEN DE ORINA", items: ["Primera orina de la mañana.", "Aseo genital, chorro medio.", "Entregar en <1 hora."] },
-            { title: "🦠 HECES & PARASITOLÓGICOS", items: ["Muestra fresca, tamaño nuez.", "No mezclar con orina.", "Evitar laxantes 72h antes."] },
-            { title: "🩸 COAGULACIÓN", items: ["No requiere ayuno.", "Informar uso de anticoagulantes."] }
+        const items = [
+            { title: "🔬 QUÍMICA SANGUÍNEA & LÍPIDOS", tips: ["Ayuno 8-12h.", "No alcohol 24h antes.", "Muestra matutina preferente."] },
+            { title: "🩸 HORMONAS", tips: ["Ayuno 8h (cuando aplica).", "Muestra entre 7-9 am.", "Evitar estrés físico."] },
+            { title: "🧪 EXÁMEN DE ORINA", tips: ["Primera orina de la mañana.", "Aseo genital, chorro medio.", "Entregar en <1 hora."] },
+            { title: "🦠 HECES & PARASITOLÓGICOS", tips: ["Muestra fresca, tamaño nuez.", "No mezclar con orina.", "Evitar laxantes 72h antes."] },
+            { title: "🩸 COAGULACIÓN", tips: ["No requiere ayuno.", "Informar uso de anticoagulantes."] }
         ];
         let html = "";
-        instrucciones.forEach(inst => {
-            html += `<div class="instru-card"><div class="instru-title"><i class="fas fa-notes-medical"></i> ${inst.title}</div><div class="instru-body"><ul>${inst.items.map(it => `<li><i class="fas fa-circle" style="font-size:0.5rem; color:var(--secondary);"></i> ${it}</li>`).join('')}</ul></div></div>`;
+        items.forEach(i => {
+            html += `<div class="instru-card"><div class="instru-title"><i class="fas fa-notes-medical"></i> ${i.title}</div><div class="instru-body"><ul>${i.tips.map(t => `<li><i class="fas fa-circle" style="font-size:0.5rem; color:var(--secondary);"></i> ${t}</li>`).join('')}</ul></div></div>`;
         });
         html += `<div class="instru-card"><div class="instru-title"><i class="fas fa-shield-alt"></i> Normas generales</div><div class="instru-body"><ul><li>Presentar identificación oficial.</li><li>Informar medicamentos, embarazo o enfermedades.</li><li>Ropa cómoda para la toma de muestra.</li></ul></div></div>`;
         container.innerHTML = html;
@@ -783,39 +895,45 @@
 
     function escapeHtml(str) { return str.replace(/[&<>]/g, m => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;' }[m])); }
 
-    // Tabs
+    // Tab switching
     const tabs = document.querySelectorAll(".tab-btn");
-    const individualDiv = document.getElementById("individualTab");
-    const packagesDiv = document.getElementById("packagesTab");
+    const indivDiv = document.getElementById("individualTab");
+    const packDiv = document.getElementById("packagesTab");
     const prepDiv = document.getElementById("prepTab");
-    let currentTab = "individual";
-    let globalSearch = "";
+    let current = "individual";
 
-    function switchTab(tabId) {
-        individualDiv.classList.remove("active");
-        packagesDiv.classList.remove("active");
+    function switchTab(tab) {
+        indivDiv.classList.remove("active");
+        packDiv.classList.remove("active");
         prepDiv.classList.remove("active");
-        if (tabId === "individual") individualDiv.classList.add("active");
-        else if (tabId === "packages") packagesDiv.classList.add("active");
+        if (tab === "individual") indivDiv.classList.add("active");
+        else if (tab === "packages") packDiv.classList.add("active");
         else prepDiv.classList.add("active");
         tabs.forEach(btn => {
-            if (btn.getAttribute("data-tab") === tabId) btn.classList.add("active");
+            if (btn.getAttribute("data-tab") === tab) btn.classList.add("active");
             else btn.classList.remove("active");
         });
-        currentTab = tabId;
-        if (tabId === "individual") renderIndividual(globalSearch);
-        else if (tabId === "packages") renderPackages(globalSearch);
-        else renderInstructions();
+        current = tab;
+        if (tab === "individual") {
+            buildCategoryFilter();
+            renderIndividual(currentSearch);
+        } else if (tab === "packages") {
+            renderPackages(currentSearch);
+        } else {
+            renderInstructions();
+        }
     }
 
     tabs.forEach(btn => btn.addEventListener("click", () => switchTab(btn.getAttribute("data-tab"))));
     const searchInput = document.getElementById("globalSearch");
     searchInput.addEventListener("input", (e) => {
-        globalSearch = e.target.value;
-        if (currentTab === "individual") renderIndividual(globalSearch);
-        else if (currentTab === "packages") renderPackages(globalSearch);
+        currentSearch = e.target.value;
+        if (current === "individual") renderIndividual(currentSearch);
+        else if (current === "packages") renderPackages(currentSearch);
     });
 
+    // Initial render
+    buildCategoryFilter();
     renderIndividual("");
     renderPackages("");
     renderInstructions();
