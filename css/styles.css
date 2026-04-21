@@ -120,6 +120,9 @@ body {
     width: 220px;
     height: auto;
 }
+.lab-logo_mobile {
+    display: none;
+}
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(8px);}
     to { opacity: 1; transform: translateY(0);}
@@ -507,11 +510,26 @@ footer {
     font-weight: 500;
 }
 
-@media (max-width: 680px) {
+@media (max-width: 1024px) {
     .container { padding: 1rem; }
     .studies-grid { grid-template-columns: 1fr; }
     .packages-grid { grid-template-columns: 1fr; }
     .tab-btn { padding: 6px 16px; font-size: 0.85rem; }
     .category-filter { gap: 8px; }
     .category-chip { padding: 6px 14px; font-size: 0.75rem; }
+    .lab-logo {display: block; transform: translate(-90%, -70%); max-width: 20%}
+    .lab-logo_mobile {display: none}
+    .fa-flask { display: none; }
+}
+
+@media (max-width: 768px) {
+    .container { padding: 1rem; }
+    .studies-grid { grid-template-columns: 1fr; }
+    .packages-grid { grid-template-columns: 1fr; }
+    .tab-btn { padding: 6px 16px; font-size: 0.85rem; }
+    .category-filter { gap: 8px; }
+    .category-chip { padding: 6px 14px; font-size: 0.75rem; }
+    .lab-logo { display: none}
+    .lab-logo_mobile {display: block; margin: 0 auto 0.3rem auto; max-width: 65%}
+    .fa-flask { display: none; }
 }
