@@ -346,13 +346,14 @@ body {
     min-width: 18px;
 }
 .package-cost {
-    font-size: 1.2rem;
+    font-size: 2.0rem;
     font-weight: 700;
-    color: var(--secondary-dark);
+    color: var(--primary-dark);
     padding: 0.8rem 1.5rem;
     background: #FCFEF8;
     border-top: 1px solid #EAF0E2;
     border-bottom: 1px solid #EAF0E2;
+    text-align: center;
 }
 .package-footer-note {
     padding: 0.7rem 1.5rem 1.2rem;
@@ -413,7 +414,22 @@ body {
     border-top: 1px solid #EFF3E8;
     font-size: 0.75rem;
     color: #6b8c80;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+
+footer .phone {
+    margin-left: 70%;
+    margin-bottom: -3%;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #EAF0E4;
+}
+
+
+
 .popup-section {
     margin-bottom: 1rem;
 }
@@ -437,9 +453,13 @@ body {
     color: #1e5a4a;
     padding: 4px 10px;
     border-radius: 30px;
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     font-weight: 600;
     display: inline-block;
+}
+#popupCost {
+    font-size: 1.3rem;
+    font-weight: 700;
 }
 .overlay-popup {
     position: fixed;
@@ -538,6 +558,30 @@ footer {
     flex: 1;
 }
 
+.popup-section ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.hero-icon {
+    width: 10%;;
+}
+
+.info-note-box {
+    font-size: 1.25rem;
+    color: #577a6e;
+    font-weight: 500;
+    text-align: center;
+    display: block;
+    margin-bottom: -65px;
+}
+
+.phone {
+    margin-top: 12px;
+    font-size: 1rem;
+    color: #a6f9bd;
+}
+
 @media (max-width: 1024px) {
     .container { padding: 1rem; }
     .studies-grid { grid-template-columns: 1fr; }
@@ -545,12 +589,14 @@ footer {
     .tab-btn { padding: 6px 16px; font-size: 0.85rem; }
     .category-filter { gap: 8px; }
     .category-chip { padding: 6px 14px; font-size: 0.75rem; }
-    .lab-logo {display: block; transform: translate(-90%, -70%); max-width: 20%}
+    .lab-logo {display: block; transform: translate(-120%, -50%); max-width: 15%}
     .lab-logo_mobile {display: none}
     .fa-flask { display: none; }
+    footer .phone {display: contents;}
+    .info-note-box {margin-bottom: -50px;}
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
     .container { padding: 1rem; }
     .studies-grid { grid-template-columns: 1fr; }
     .packages-grid { grid-template-columns: 1fr; }

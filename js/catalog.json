@@ -2,7 +2,7 @@
   "individualTests": [
     {
       "id": "2610130002",
-      "name": "Biometría Hemática Completa",
+      "name": "Biometría Hemática",
       "sample": "Sangre Total",
       "category": "Hematología",
       "cost": 237.86,
@@ -25,7 +25,7 @@
     },
     {
       "id": "2610130018",
-      "name": "Velocidad De Sedimentación Globular VSG",
+      "name": "Velocidad De Sedimentación Globular (VSG)",
       "sample": "Sangre Total",
       "category": "Hematología",
       "cost": 253.18,
@@ -57,17 +57,14 @@
         "Tomar muestra preferentemente entre 7:00 y 9:00 AM."
       ]
     },
-    {
-      "id": "2610210020",
-      "name": "Glucosa Basal",
-      "sample": "Suero",
+        {
+      "id": "2610210041",
+      "name": "Hemoglobina Glicosilada HbA1c",
+      "sample": "Sangre Total",
       "category": "Química Clínica",
-      "cost": 137.49,
+      "cost": 375.38,
       "instructions": [
-        "Ayuno de 8 a 12 horas.",
-        "No consumir alcohol 24 horas antes.",
-        "Solo agua permitida durante el ayuno.",
-        "Tomar muestra preferentemente entre 7:00 y 9:00 AM."
+        "No es necesario acudir en ayuno."
       ]
     },
     {
@@ -251,7 +248,7 @@
       "name": "Globulina",
       "sample": "Suero",
       "category": "Química Clínica",
-      "cost": null,
+      "cost": 156.36,
       "instructions": [
         "Ayuno de 8 a 12 horas."
       ]
@@ -334,7 +331,7 @@
       "name": "Bilirrubina Indirecta",
       "sample": "Suero",
       "category": "Perfil Hepático / Enzimas",
-      "cost": null,
+      "cost": 198.31,
       "instructions": [
         "Ayuno de 8 a 12 horas."
       ]
@@ -363,9 +360,9 @@
     },
     {
       "id": "2610140018",
-      "name": "Hormona Estimulante De La Tiroides TSH",
+      "name": "Hormona Estimulante de la Tiroides TSH",
       "sample": "Suero",
-      "category": "Hormonas – Tiroides",
+      "category": "Hormonas Tiroideas",
       "cost": 483.82,
       "instructions": [
         "No requiere ayuno en la mayoría de casos.",
@@ -377,7 +374,7 @@
       "id": "2610140037",
       "name": "T3 Total",
       "sample": "Suero",
-      "category": "Hormonas – Tiroides",
+      "category": "Hormonas Tiroideas",
       "cost": 300.31,
       "instructions": [
         "No requiere ayuno en la mayoría de casos.",
@@ -388,7 +385,7 @@
       "id": "2610140035",
       "name": "T3 Triyodotironina Libre",
       "sample": "Suero",
-      "category": "Hormonas – Tiroides",
+      "category": "Hormonas Tiroideas",
       "cost": 384.75,
       "instructions": [
         "No requiere ayuno en la mayoría de casos.",
@@ -399,7 +396,7 @@
       "id": "2610140039",
       "name": "T4 Total",
       "sample": "Suero",
-      "category": "Hormonas – Tiroides",
+      "category": "Hormonas Tiroideas",
       "cost": 300.31,
       "instructions": [
         "No requiere ayuno en la mayoría de casos.",
@@ -410,7 +407,7 @@
       "id": "2610140038",
       "name": "T4 Libre",
       "sample": "Suero",
-      "category": "Hormonas – Tiroides",
+      "category": "Hormonas Tiroideas",
       "cost": 450.46,
       "instructions": [
         "No requiere ayuno en la mayoría de casos.",
@@ -421,15 +418,15 @@
       "id": "2610190001",
       "name": "Índice De Tiroxina Libre FT4I",
       "sample": "Suero",
-      "category": "Hormonas – Tiroides",
-      "cost": null,
+      "category": "Hormonas Tiroideas",
+      "cost": 826.81,
       "instructions": [
         "No requiere ayuno en la mayoría de casos."
       ]
     },
     {
       "id": "2610140019",
-      "name": "FSH",
+      "name": "Hormona Folículo Estimulante FSH",
       "sample": "Suero",
       "category": "Hormonas – Ginecológicas",
       "cost": 498.84,
@@ -440,7 +437,7 @@
     },
     {
       "id": "2610140020",
-      "name": "LH",
+      "name": "Hormona Luteinizante LH",
       "sample": "Suero",
       "category": "Hormonas – Ginecológicas",
       "cost": 498.84,
@@ -473,7 +470,7 @@
     },
     {
       "id": "2610140031",
-      "name": "Prolactina",
+      "name": "Prolactina PRL",
       "sample": "Suero",
       "category": "Hormonas – Ginecológicas",
       "cost": 681.53,
@@ -594,11 +591,23 @@
       ]
     },
     {
+      "id": "",
+      "name": "Capacidad Latente de Fijación de Hierro UIBC",
+      "sample": "Suero",
+      "category": "Marcadores y Vitaminas",
+      "cost": null,
+      "instructions": [
+        "Ayuno de 8 horas.",
+        "Evitar suplementos de hierro 48 horas antes.",
+        "Muestra matutina preferente."
+      ]
+    },
+    {
       "id": "2610210042",
       "name": "Capacidad Total De Fijación De Hierro TIBC",
       "sample": "Suero",
       "category": "Marcadores y Vitaminas",
-      "cost": null,
+      "cost": 520.34,
       "instructions": [
         "Ayuno de 8 horas.",
         "Evitar suplementos de hierro 48 horas antes."
@@ -692,7 +701,7 @@
       "name": "Anticuerpos Anti‑Receptor TSH TRAb",
       "sample": "Suero",
       "category": "Inmunología / Autoinmunidad",
-      "cost": 10783.35,
+      "cost": null,
       "instructions": [
         "Ayuno de 8 horas."
       ]
@@ -840,7 +849,7 @@
     },
     {
       "id": "2610150150",
-      "name": "Rosa De Bengala",
+      "name": "Rosa de Bengala",
       "sample": "Suero",
       "category": "Serología y Pruebas Rápidas",
       "cost": 240.25,
@@ -850,7 +859,7 @@
     },
     {
       "id": "2610190106",
-      "name": "Prueba Rápida De COVID / Influenza A‑B",
+      "name": "Prueba Rápida de COVID-19 / Influenza A‑B",
       "sample": "Suero",
       "category": "Serología y Pruebas Rápidas",
       "cost": null,
@@ -860,7 +869,7 @@
     },
     {
       "id": "2610110025",
-      "name": "Tiempo De Protrombina TP",
+      "name": "Tiempo de Protrombina (TP)",
       "sample": "Plasma",
       "category": "Coagulación / Hemostasia",
       "cost": 266.71,
@@ -870,19 +879,8 @@
       ]
     },
     {
-      "id": "2610110026",
-      "name": "INR",
-      "sample": "Plasma",
-      "category": "Coagulación / Hemostasia",
-      "cost": null,
-      "instructions": [
-        "No requiere ayuno.",
-        "Informar uso de anticoagulantes."
-      ]
-    },
-    {
       "id": "2610110024",
-      "name": "Tiempo De Tromboplastina Parcial Activada TPTa",
+      "name": "Tiempo de Tromboplastina Parcial Activada (TPTa)",
       "sample": "Plasma",
       "category": "Coagulación / Hemostasia",
       "cost": 256.28,
@@ -893,7 +891,7 @@
     },
     {
       "id": "2610110023",
-      "name": "Tiempo De Trombina TT",
+      "name": "Tiempo De Trombina (TT)",
       "sample": "Plasma",
       "category": "Coagulación / Hemostasia",
       "cost": 371.98,
@@ -913,7 +911,7 @@
     },
     {
       "id": "2610220034",
-      "name": "Examen General De Orina",
+      "name": "Examen General De Orina (EGO)",
       "sample": "Orina",
       "category": "Urianálisis",
       "cost": 131.87,
@@ -959,7 +957,7 @@
     },
     {
       "id": "2610100016",
-      "name": "Cultivo De Exudado Faríngeo",
+      "name": "Cultivo de Exudado Faríngeo",
       "sample": "Exudado Faríngeo",
       "category": "Microbiología",
       "cost": 891.27,
@@ -970,7 +968,7 @@
     },
     {
       "id": "2610100039",
-      "name": "Cultivo De Exudado Vaginal",
+      "name": "Cultivo de Exudado Vaginal",
       "sample": "Exudado Vaginal",
       "category": "Microbiología",
       "cost": 1224.14,
@@ -981,7 +979,7 @@
     },
     {
       "id": "2610100037",
-      "name": "Cultivo De Exudado Uretral",
+      "name": "Cultivo de Exudado Uretral",
       "sample": "Exudado Uretral",
       "category": "Microbiología",
       "cost": 1224.14,
@@ -992,7 +990,7 @@
     },
     {
       "id": "2610100018",
-      "name": "Cultivo De Exudado De Herida / Absceso",
+      "name": "Cultivo de Exudado De Herida / Absceso",
       "sample": "Exudado de Herida",
       "category": "Microbiología",
       "cost": 891.27,
@@ -1003,7 +1001,7 @@
     },
     {
       "id": "2610100026",
-      "name": "Cultivo De Hongos",
+      "name": "Cultivo de Hongos",
       "sample": "Variable",
       "category": "Microbiología",
       "cost": 671.32,
@@ -1013,7 +1011,7 @@
     },
     {
       "id": "2610100024",
-      "name": "Cultivo De Esputo",
+      "name": "Cultivo de Esputo",
       "sample": "Esputo",
       "category": "Microbiología",
       "cost": 1131.74,
@@ -1024,7 +1022,7 @@
     },
     {
       "id": "2610100042",
-      "name": "Cultivo De Semen (Espermocultivo)",
+      "name": "Cultivo de Semen (Espermocultivo)",
       "sample": "Semen",
       "category": "Microbiología",
       "cost": 1164.42,
@@ -1036,7 +1034,7 @@
     },
     {
       "id": "2610100023",
-      "name": "Cultivo De Punta De Catéter",
+      "name": "Cultivo de Punta De Catéter",
       "sample": "Punta de Catéter",
       "category": "Microbiología",
       "cost": 1299.05,
@@ -1046,7 +1044,7 @@
     },
     {
       "id": "2610100040",
-      "name": "Cultivo De Exudado Nasal",
+      "name": "Cultivo de Exudado Nasal",
       "sample": "Exudado Nasal",
       "category": "Microbiología",
       "cost": 1224.14,
@@ -1056,7 +1054,7 @@
     },
     {
       "id": "2610100035",
-      "name": "Cultivo De Secreción Ótica",
+      "name": "Cultivo de Secreción Ótica",
       "sample": "Exudado Ótico",
       "category": "Microbiología",
       "cost": 891.27,
@@ -1066,7 +1064,7 @@
     },
     {
       "id": "2610100024",
-      "name": "Cultivo De Secreción Bronquial",
+      "name": "Cultivo de Secreción Bronquial",
       "sample": "Secreción Bronquial",
       "category": "Microbiología",
       "cost": 1131.74,
@@ -1090,7 +1088,7 @@
     },
     {
       "id": "2610100020",
-      "name": "Cultivo De Líquido Pleural",
+      "name": "Cultivo de Líquido Pleural",
       "sample": "Líquido Pleural",
       "category": "Microbiología",
       "cost": 891.27,
@@ -1100,7 +1098,7 @@
     },
     {
       "id": "2610100020",
-      "name": "Cultivo De Líquido Sinovial",
+      "name": "Cultivo de Líquido Sinovial",
       "sample": "Líquido Sinovial",
       "category": "Microbiología",
       "cost": 891.27,
@@ -1110,7 +1108,7 @@
     },
     {
       "id": "2610100020",
-      "name": "Cultivo De Líquido Cefaloraquídeo",
+      "name": "Cultivo de Líquido Cefaloraquídeo",
       "sample": "Líquido Cefalorraquídeo",
       "category": "Microbiología",
       "cost": 891.27,
@@ -1120,7 +1118,7 @@
     },
     {
       "id": "2610100020",
-      "name": "Cultivo De Líquidos Corporales",
+      "name": "Cultivo de Líquidos Corporales",
       "sample": "Líquido Corporal",
       "category": "Microbiología",
       "cost": 891.27,
@@ -1169,7 +1167,7 @@
     },
     {
       "id": "2610180008",
-      "name": "Coprológico",
+      "name": "Estudio Coprológico",
       "sample": "Heces",
       "category": "Parasitología",
       "cost": 330.34,
@@ -1182,7 +1180,7 @@
     },
     {
       "id": "2610180005",
-      "name": "Prueba De Azúcares Reductores",
+      "name": "Prueba de Azúcares Reductores",
       "sample": "Heces u Orina",
       "category": "Parasitología",
       "cost": 237.13,
@@ -1193,7 +1191,7 @@
     },
     {
       "id": "2610180016",
-      "name": "Sangre Oculta En Heces",
+      "name": "Sangre Oculta en Heces",
       "sample": "Heces",
       "category": "Parasitología",
       "cost": 549.10,
@@ -1204,7 +1202,7 @@
     },
     {
       "id": "2610180002",
-      "name": "Amiba En Fresco",
+      "name": "Amiba en Fresco",
       "sample": "Heces",
       "category": "Parasitología",
       "cost": 236.44,
@@ -1216,7 +1214,7 @@
     },
     {
       "id": "2610100045",
-      "name": "Examen De Gota Gruesa",
+      "name": "Examen de Gota Gruesa",
       "sample": "Sangre Total",
       "category": "Parasitología",
       "cost": 308.71,
@@ -1227,7 +1225,7 @@
     },
     {
       "id": "2610160004",
-      "name": "Citoquímico De Líquido Cefalorraquídeo",
+      "name": "Citoquímico de Líquido Cefalorraquídeo",
       "sample": "Líquido Cefalorraquídeo",
       "category": "Líquidos Corporales (Citoquímicos)",
       "cost": 990.07,
@@ -1237,7 +1235,7 @@
     },
     {
       "id": "2610160005",
-      "name": "Citoquímico De Líquido Pleural",
+      "name": "Citoquímico de Líquido Pleural",
       "sample": "Líquido Pleural",
       "category": "Líquidos Corporales (Citoquímicos)",
       "cost": 427.97,
@@ -1247,7 +1245,7 @@
     },
     {
       "id": "2610160006",
-      "name": "Citoquímico De Líquido Sinovial",
+      "name": "Citoquímico de Líquido Sinovial",
       "sample": "Líquido Sinovial",
       "category": "Líquidos Corporales (Citoquímicos)",
       "cost": 427.97,
@@ -1257,7 +1255,7 @@
     },
     {
       "id": "2610160007",
-      "name": "Citoquímico De Líquido Bronquial",
+      "name": "Citoquímico de Líquido Bronquial",
       "sample": "Líquido Bronquial",
       "category": "Líquidos Corporales (Citoquímicos)",
       "cost": 990.07,
@@ -1267,7 +1265,7 @@
     },
     {
       "id": "2610160001",
-      "name": "Citoquímico De Líquido De Ascitis O Peritoneal",
+      "name": "Citoquímico de Líquido De Ascitis O Peritoneal",
       "sample": "Líquido de Ascitis",
       "category": "Líquidos Corporales (Citoquímicos)",
       "cost": 1592.45,
@@ -1277,7 +1275,7 @@
     },
     {
       "id": "2610160002",
-      "name": "Citoquímico De Líquido De Diálisis",
+      "name": "Citoquímico de Líquido De Diálisis",
       "sample": "Líquido de Diálisis",
       "category": "Líquidos Corporales (Citoquímicos)",
       "cost": 1592.45,
@@ -1287,7 +1285,7 @@
     },
     {
       "id": "2610160007",
-      "name": "Citoquímico De Líquido Orgánicos Varios",
+      "name": "Citoquímico de Líquido Orgánicos Varios",
       "sample": "Líquido Corporal",
       "category": "Líquidos Corporales (Citoquímicos)",
       "cost": 990.07,
@@ -1300,9 +1298,9 @@
       "name": "Tamiz Neonatal Ampliado",
       "sample": "Sangre Capilar",
       "category": "Tamizaje",
-      "cost": null,
+      "cost": 1274.71,
       "instructions": [
-        "Se realiza a recién nacidos entre el 3er y 5to día de vida.",
+        "Se realiza a recién nacidos entre las 24 y 72 horas de vida.",
         "La muestra se toma del talón del bebé."
       ]
     }
@@ -1312,14 +1310,16 @@
       "id": "2010110369",
       "name": "Check Up Qs 6 Elementos",
       "tests": [
-        "Biometría Hemática Completa",
+        "Biometría Hemática",
         "Glucosa",
         "Urea",
         "Creatinina",
+        "Ácido Úrico",
         "Colesterol Total",
-        "Triglicéridos"
+        "Triglicéridos",
+        "Examen General De Orina"
       ],
-      "cost": 518.21,
+      "cost": 705.00,
       "instructions": [
         "Ayuno de 8 a 12 horas.",
         "Seguir las indicaciones particulares de cada prueba."
@@ -1329,23 +1329,25 @@
       "id": "2010110370",
       "name": "Check Up Qs 15 Elementos",
       "tests": [
-        "Biometría Hemática Completa",
+        "Biometría Hemática",
         "Glucosa",
         "Urea",
         "Creatinina",
         "Ácido Úrico",
         "Colesterol Total",
-        "Colesterol HDL",
-        "Colesterol LDL",
         "Triglicéridos",
         "Alanina Aminotransferasa ALT",
         "Aspartato Aminotransferasa AST",
         "Fosfatasa Alcalina ALP",
+        "Gamma‑Glutamil Transpeptidasa GGT",
         "Bilirrubina Total",
         "Proteínas Totales",
+        "Sodio",
+        "Potasio",
+        "Cloro",
         "Examen General De Orina"
       ],
-      "cost": null,
+      "cost": 850.00,
       "instructions": [
         "Ayuno de 8 a 12 horas.",
         "Recolectar primera orina de la mañana para el EGO."
@@ -1355,11 +1357,12 @@
       "id": "2010110371",
       "name": "Check Up Qs 35 Elementos",
       "tests": [
-        "Biometría Hemática Completa",
+        "Biometría Hemática",
         "Glucosa",
         "Urea",
-        "Creatinina",
         "BUN",
+        "Creatinina",
+        "Relación BUN/Creatinina",
         "Ácido Úrico",
         "Colesterol Total",
         "Colesterol HDL",
@@ -1385,9 +1388,14 @@
         "Calcio",
         "Fósforo",
         "Magnesio",
+        "Amilasa",
+        "Lipasa",
+        "CPK Creatina Fosfocinasa Total",
+        "Deshidrogenasa Láctica LDH",
+        "Hierro",
         "Examen General De Orina"
       ],
-      "cost": null,
+      "cost": 1309.00,
       "instructions": [
         "Ayuno de 8 a 12 horas.",
         "Recolectar primera orina de la mañana."
@@ -1490,24 +1498,28 @@
       "tests": [
         "Glucosa",
         "Urea",
-        "Creatinina",
         "BUN",
+        "Creatinina",
+        "Relación BUN/Creatinina",
         "Ácido Úrico",
         "Colesterol Total",
         "Colesterol HDL",
         "Colesterol LDL",
         "Colesterol VLDL",
         "Triglicéridos",
-        "Aspartato Aminotransferasa AST",
+        "Índice Aterogénico",
+        "Relación LDL/HDL",
         "Alanina Aminotransferasa ALT",
+        "Aspartato Aminotransferasa AST",
         "Fosfatasa Alcalina ALP",
         "Gamma‑Glutamil Transpeptidasa GGT",
         "Bilirrubina Total",
         "Bilirrubina Directa",
         "Bilirrubina Indirecta",
+        "Proteínas Totales",
         "Albúmina",
         "Globulina",
-        "Proteínas Totales",
+        "Relación Albúmina/Globulina",
         "Sodio",
         "Potasio",
         "Cloro",
@@ -1518,11 +1530,7 @@
         "Lipasa",
         "CPK Creatina Fosfocinasa Total",
         "Deshidrogenasa Láctica LDH",
-        "Hierro",
-        "Índice Aterogénico",
-        "Relación BUN/Creatinina",
-        "Relación Albúmina/Globulina",
-        "Relación LDL/HDL"
+        "Hierro"
       ],
       "cost": 2010.66,
       "instructions": [
@@ -1531,7 +1539,7 @@
     },
     {
       "id": "2610210027",
-      "name": "Electrolitos Séricos De 3",
+      "name": "Electrolitos Séricos de 3",
       "tests": [
         "Sodio",
         "Potasio",
@@ -1544,7 +1552,7 @@
     },
     {
       "id": "2610210030",
-      "name": "Electrolitos Séricos De 6",
+      "name": "Electrolitos Séricos de 6",
       "tests": [
         "Sodio",
         "Potasio",
@@ -1560,7 +1568,7 @@
     },
     {
       "id": "2610190053",
-      "name": "Perfil De Lípidos",
+      "name": "Perfil de Lípidos",
       "tests": [
         "Colesterol Total",
         "Colesterol HDL",
@@ -1601,7 +1609,7 @@
     },
     {
       "id": "2610190111",
-      "name": "Perfil De Hierro",
+      "name": "Perfil de Hierro",
       "tests": [
         "Hierro",
         "Ferritina",
@@ -1652,7 +1660,7 @@
     },
     {
       "id": "2610190005",
-      "name": "Perfil De Andrógenos",
+      "name": "Perfil de Andrógenos",
       "tests": [
         "17‑Alfa Hidroxiprogesterona",
         "Androstenediona",
@@ -1673,8 +1681,8 @@
         "Proteína C Reactiva PCR Cuantitativa",
         "Ácido Úrico",
         "Factor Reumatoide FR",
-        "Velocidad De Sedimentación Globular VSG",
-        "Biometría Hemática Completa",
+        "Velocidad De Sedimentación Globular (VSG)",
+        "Biometría Hemática",
         "Antiestreptolisinas ASO"
       ],
       "cost": null,
@@ -1698,7 +1706,7 @@
     },
     {
       "id": "2610210020",
-      "name": "Curva De Tolerancia De Glucosa 2 H",
+      "name": "Curva de Tolerancia de Glucosa 2 H",
       "tests": [
         "Glucosa Basal",
         "Glucosa 1h",
@@ -1713,7 +1721,7 @@
     },
     {
       "id": "2610210022",
-      "name": "Curva De Tolerancia De Glucosa 3 H",
+      "name": "Curva de Tolerancia de Glucosa 3 H",
       "tests": [
         "Glucosa Basal",
         "Glucosa 1h",
@@ -1739,10 +1747,24 @@
       ]
     },
     {
+      "id": "2610110025",
+      "name": "Tiempos de Coagulación",
+      "tests": [
+        "Tiempo De Protrombina TP",
+        "INR",
+        "Tiempo De Tromboplastina Parcial Activada TPTa"
+      ],
+      "cost": 278.00,
+      "instructions": [
+        "Ayuno de 4 horas.",
+        "Informar uso de anticoagulantes."
+      ]
+    },
+    {
       "id": "2610190112",
       "name": "Preoperatorios",
       "tests": [
-        "Biometría Hemática Completa",
+        "Biometría Hemática",
         "Glucosa",
         "Urea",
         "Creatinina",

@@ -54,22 +54,20 @@
     }
 
     function getPackageCost(pkg) {
-        if (pkg.cost !== null && pkg.cost !== undefined) return pkg.cost;
-        // Calcular suma de pruebas individuales
-        let total = 0;
-        pkg.tests.forEach(testName => {
-            const details = getTestDetails(testName);
-            if (details.cost) total += details.cost;
-        });
-        return total > 0 ? total : null;
+    // Si el paquete tiene costo propio, lo devuelve (número)
+    if (pkg.cost !== null && pkg.cost !== undefined) {
+        return pkg.cost;
     }
+    // Si no tiene costo, devuelve el mensaje
+    return "Cotizar en caja";
+}
 
     // ---------- POPUP ----------
     function showPopup(testName, x, y) {
         const details = getTestDetails(testName);
         popupTestName.innerText = testName;
         popupCatalogId.innerHTML = details.id || "No disponible";
-        popupCost.innerText = details.cost ? `$${details.cost.toFixed(2)}` : 'No disponible';
+        popupCost.innerText = details.cost ? `$${details.cost.toFixed(2)}` : 'Cotizar en caja';
         const instructions = getInstructions(testName);
         popupInstructions.innerHTML = instructions.map(item => 
             `<li><i class="fas fa-circle" style="font-size:0.4rem; color:var(--secondary); margin-right:8px;"></i> ${item}</li>`
@@ -202,7 +200,7 @@
                     <div class="package-studies-list">
                         <ul>${pkg.tests.map(t => `<li data-testname="${escapeHtml(t)}"><i class="fas fa-check-circle"></i> ${t}</li>`).join('')}</ul>
                     </div>
-                    <div class="package-cost">💰 ${packageCost ? '$'+packageCost.toFixed(2) : 'No disponible'}</div>
+                    <div class="package-cost"> ${typeof packageCost === 'number' ? '$'+packageCost.toFixed(2) : packageCost}</div>
                     <div class="package-footer-note"><i class="fas fa-clock"></i> Requiere preparación según cada prueba individual.</div>
                 </div>
             `;
