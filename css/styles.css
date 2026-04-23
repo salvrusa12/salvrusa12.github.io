@@ -617,6 +617,49 @@ footer {
     cursor: pointer;
 }
 
+
+/* Botón flotante "Volver arriba" */
+.back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 1.5rem;
+    width: 50px;
+    height: 50px;
+    background-color: var(--primary);
+    color: #1E2A1C;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: all 0.2s ease;
+    z-index: 1050;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s, transform 0.2s;
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+}
+
+.back-to-top:active {
+    transform: translateY(2px);
+}
+
+
+
+
 @media (max-width: 1024px) {
     .container { padding: 1rem; }
     .studies-grid { grid-template-columns: 1fr; }
@@ -641,6 +684,16 @@ footer {
     .lab-logo { display: none}
     .lab-logo_mobile {display: block; margin: 0 auto 0.3rem auto; max-width: 65%}
     .fa-flask { display: none; }
+}
+
+@media (max-width: 768px) {
+    .back-to-top {
+        width: 44px;
+        height: 44px;
+        font-size: 1.2rem;
+        bottom: 1.2rem;
+        right: 1rem;
+    }
 }
 
 @media (max-width: 480px) {
