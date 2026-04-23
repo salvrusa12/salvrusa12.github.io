@@ -582,6 +582,31 @@ footer {
     color: #a6f9bd;
 }
 
+
+.package-name {
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+.package-name:hover {
+    text-decoration: underline;
+    opacity: 0.9;
+}
+
+.package-card {
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.package-studies-list li {
+    cursor: pointer;
+}
+
+/* Evita que el cursor de mano herede el de la tarjeta en elementos internos no cliqueables */
+.package-card .package-cost,
+.package-card .package-footer-note {
+    cursor: default;
+}
+
 @media (max-width: 1024px) {
     .container { padding: 1rem; }
     .studies-grid { grid-template-columns: 1fr; }
