@@ -8,6 +8,10 @@
     let selectedPackageCategory = null;
     let currentSearch = "";
     let currentTab = "individual";
+    let currentModalFilter = 'individual'; // 'individual' o 'package'
+
+    // Carrito de estudios seleccionados para la cita
+    let selectedTests = []; // array de nombres de estudios
 
     // Elementos del DOM
     const popup = document.getElementById("testPopup");
@@ -22,10 +26,21 @@
     const indivDiv = document.getElementById("individualTab");
     const packDiv = document.getElementById("packagesTab");
     const prepDiv = document.getElementById("prepTab");
+    const appointmentDiv = document.getElementById("appointmentTab");
     const searchInput = document.getElementById("globalSearch");
+
+
+    function updateTotalDisplay() {
+        const totalElement = document.getElementById("totalCostDisplay");
+        if (totalElement) {
+            const total = calculateTotalCost();
+            totalElement.innerText = formatCost(total);
+        }
+    }
 
     // ---------- FUNCIONES AUXILIARES ----------
     function escapeHtml(str) {
+        if (!str) return '';
         return str.replace(/[&<>]/g, m => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;' }[m]));
     }
 
@@ -129,14 +144,10 @@
         popupInstructions.innerHTML = instructions.map(item => 
             `<li><i class="fas fa-circle" style="font-size:0.4rem; color:var(--secondary); margin-right:8px;"></i> ${escapeHtml(item)}</li>`
         ).join('');
-
-        // ✅ Mostrar el tipo de muestra del paquete (campo "sample")
         popupSampleType.innerHTML = pkg.sample || "Variable según pruebas incluidas";
         
         popup.style.display = "block";
         overlay.style.display = "block";
-        popup.style.left = "";
-        popup.style.top = "";
     }
 
     function showPopup(testName, x, y) {
@@ -159,8 +170,6 @@
         
         popup.style.display = "block";
         overlay.style.display = "block";
-        popup.style.left = "";
-        popup.style.top = "";
     }
 
     function hidePopup() {
@@ -184,6 +193,29 @@
         });
     }
 
+
+    function getStudyCost(studyName) {
+        let test = catalogData.individualTests.find(t => t.name === studyName);
+        if (test) return test.cost;
+        let pkg = catalogData.packages.find(p => p.name === studyName);
+        if (pkg) return pkg.cost;
+        return null;
+    }
+
+
+    function calculateTotalCost() {
+        let total = 0;
+        selectedTests.forEach(studyName => {
+            const cost = getStudyCost(studyName);
+            if (typeof cost === 'number') {
+                total += cost;
+            }
+        });
+        return total;
+    }
+
+
+    // ---------- CATEGORY FILTERS ----------
     function buildCategoryFilter() {
         const categoriesSet = new Set();
         catalogData.individualTests.forEach(t => categoriesSet.add(t.category));
@@ -227,6 +259,7 @@
         });
     }
 
+    // ---------- RENDER INDIVIDUAL & PACKAGES ----------
     function renderIndividual(search = "") {
         currentSearch = search;
         const container = document.getElementById("individualStudiesContainer");
@@ -307,6 +340,7 @@
         });
         container.innerHTML = html;
         document.getElementById("statsPackages").innerHTML = `📦 ${filtered.length} paquetes disponibles.${selectedPackageCategory ? ` · Categoría: ${selectedPackageCategory}` : ''}`;
+        attachClickToTestElements();
     }
 
     function renderInstructions() {
@@ -328,13 +362,236 @@
         container.innerHTML = html;
     }
 
+    // ---------- FORMULARIO Y CARRITO ----------
+    function renderSelectedTestsList() {
+        const container = document.getElementById("selectedTestsList");
+        if (!container) return;
+
+        if (selectedTests.length === 0) {
+            container.innerHTML = '<div class="empty-selected">No hay estudios seleccionados. Use el botón "Agregar estudios" para elegir.</div>';
+            updateTotalDisplay();
+            return;
+        }
+
+        let html = '';
+        selectedTests.forEach((test, index) => {
+            html += `<div class="selected-test-item">
+                        <span><i class="fas fa-flask"></i> ${escapeHtml(test)}</span>
+                        <button class="remove-test" data-index="${index}"><i class="fas fa-trash-alt"></i></button>
+                    </div>`;
+        });
+        container.innerHTML = html;
+
+        document.querySelectorAll('.remove-test').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const idx = parseInt(btn.getAttribute('data-index'));
+                if (!isNaN(idx)) {
+                    selectedTests.splice(idx, 1);
+                    renderSelectedTestsList();
+                }
+            });
+        });
+
+        updateTotalDisplay();
+    }
+
+    // Modal de selección de estudios
+    const studySelectorModal = document.getElementById("studySelectorModal");
+    const openStudySelectorBtn = document.getElementById("openStudySelectorBtn");
+    const closeModalBtns = [document.getElementById("closeModalBtn"), document.getElementById("closeModalFooterBtn")];
+    const modalSearchInput = document.getElementById("modalSearchInput");
+    const modalResultsList = document.getElementById("modalResultsList");
+
+    function openModal() {
+        studySelectorModal.style.display = "flex";
+        modalSearchInput.value = "";
+        currentModalFilter = 'individual';
+        const filterBtns = document.querySelectorAll('.modal-filter-btn');
+        filterBtns.forEach(btn => {
+            if (btn.getAttribute('data-filter-type') === 'individual') {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+        renderModalResults("");
+    }
+
+    function closeModal() {
+        studySelectorModal.style.display = "none";
+    }
+
+    function renderModalResults(searchTerm) {
+        if (!modalResultsList) return;
+        const term = searchTerm.trim().toLowerCase();
+
+        let items = [];
+        if (currentModalFilter === 'individual') {
+            items = catalogData.individualTests.map(test => ({ type: 'individual', name: test.name }));
+        } else {
+            items = catalogData.packages.map(pkg => ({ type: 'package', name: pkg.name }));
+        }
+
+        if (term) {
+            items = items.filter(item => item.name.toLowerCase().includes(term));
+        }
+        items.sort((a, b) => a.name.localeCompare(b.name));
+
+        if (items.length === 0) {
+            modalResultsList.innerHTML = '<div class="no-result">No se encontraron estudios</div>';
+            return;
+        }
+
+        let html = '';
+        items.forEach(item => {
+            const alreadySelected = selectedTests.includes(item.name);
+            html += `<div class="modal-study-item">
+                        <span class="modal-study-name">${escapeHtml(item.name)}</span>
+                        <button class="btn-add-modal" data-name="${escapeHtml(item.name)}" ${alreadySelected ? 'disabled style="opacity:0.5;"' : ''}>
+                            ${alreadySelected ? '✓ Agregado' : '+ Agregar'}
+                        </button>
+                    </div>`;
+        });
+        modalResultsList.innerHTML = html;
+
+        document.querySelectorAll('.btn-add-modal').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const testName = btn.getAttribute('data-name');
+                if (testName && !selectedTests.includes(testName)) {
+                    selectedTests.push(testName);
+                    renderSelectedTestsList();
+                    renderModalResults(modalSearchInput.value);
+                }
+            });
+        });
+    }
+
+    if (openStudySelectorBtn) {
+        openStudySelectorBtn.addEventListener('click', openModal);
+    }
+    closeModalBtns.forEach(btn => {
+        if (btn) btn.addEventListener('click', closeModal);
+    });
+    if (modalSearchInput) {
+        modalSearchInput.addEventListener('input', (e) => {
+            renderModalResults(e.target.value);
+        });
+    }
+    window.addEventListener('click', (e) => {
+        if (e.target === studySelectorModal) closeModal();
+    });
+
+    const filterBtns = document.querySelectorAll('.modal-filter-btn');
+    if (filterBtns.length) {
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const filterValue = btn.getAttribute('data-filter-type');
+                if (filterValue === 'individual' || filterValue === 'package') {
+                    currentModalFilter = filterValue;
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    renderModalResults(modalSearchInput.value);
+                }
+            });
+        });
+    }
+
+    // ---------- ENVÍO DE FORMULARIO CON EMAILJS (MEJORADO) ----------
+    const appointmentForm = document.getElementById("appointmentForm");
+    const formMessage = document.getElementById("formMessage");
+
+    const serviceID = 'service_n899ono';   // Reemplaza si es necesario
+    const templateID = 'template_25vn2ml'; // Reemplaza si es necesario
+
+    if (appointmentForm) {
+        appointmentForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Obtener valores originales
+            let nombreRaw = document.getElementById("patientName").value.trim();
+            let telefonoRaw = document.getElementById("patientPhone").value.trim();
+            let correoRaw = document.getElementById("patientEmail").value.trim();
+            let fechaPref = document.getElementById("preferredDate").value;
+            let horaPref = document.getElementById("preferredTime").value;
+            let comentarioRaw = document.getElementById("patientComments").value;
+
+            // Limpiar caracteres problemáticos (saltos de línea, tabs, etc.)
+            const limpiar = (str) => (str || "").replace(/[\n\r\t]+/g, ' ').trim();
+            const nombre = limpiar(nombreRaw) || "No especificado";
+            const telefono = limpiar(telefonoRaw) || "No especificado";
+            const correo = limpiar(correoRaw) || "No especificado";
+            const comentario = limpiar(comentarioRaw) || "Sin comentarios adicionales";
+
+            // Validaciones
+            if (!nombre || nombre === "No especificado" || !telefono || telefono === "No especificado" || !correo || correo === "No especificado") {
+                formMessage.innerHTML = '<div class="form-message error">Por favor complete todos los campos obligatorios (*).</div>';
+                return;
+            }
+            if (selectedTests.length === 0) {
+                formMessage.innerHTML = '<div class="form-message error">Debe seleccionar al menos un estudio.</div>';
+                return;
+            }
+
+            // Crear lista de estudios con precios
+            const estudiosConPrecio = selectedTests.map((nombreEstudio, idx) => {
+                const costo = getStudyCost(nombreEstudio);
+                const costoFormateado = formatCost(costo);
+                return `${idx+1}. ${nombreEstudio} - ${costoFormateado}`;
+            }).join('\n');
+
+            // Hora: si está vacía se envía como cadena vacía (no "No especificada")
+            const horaClean = horaPref ? horaPref : "";
+
+            const totalCotizacion = formatCost(calculateTotalCost());
+
+            const templateParams = {
+                nombre: nombre,
+                telefono: telefono,
+                correo: correo,
+                estudios: estudiosConPrecio,
+                comentario: comentario,
+                fecha: fechaPref || "No especificada",
+                hora: horaClean,
+                total: totalCotizacion
+            };
+
+            const submitBtn = document.getElementById("sendRequestBtn");
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Enviando...';
+            submitBtn.disabled = true;
+
+            try {
+                const response = await emailjs.send(serviceID, templateID, templateParams);
+                if (response.status === 200) {
+                    formMessage.innerHTML = '<div class="form-message success"><i class="fas fa-check-circle"></i> Solicitud enviada correctamente. En breve nos pondremos en contacto.</div>';
+                    appointmentForm.reset();
+                    selectedTests = [];
+                    renderSelectedTestsList();
+                } else {
+                    throw new Error('Error en el envío');
+                }
+            } catch (error) {
+                console.error('EmailJS error:', error);
+                formMessage.innerHTML = '<div class="form-message error"><i class="fas fa-exclamation-triangle"></i> Ocurrió un error al enviar. Por favor intente más tarde o contacte directamente por teléfono.</div>';
+            } finally {
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }
+        });
+    }
+
+    // ---------- SWITCH TABS ----------
     function switchTab(tab) {
         indivDiv.classList.remove("active");
         packDiv.classList.remove("active");
         prepDiv.classList.remove("active");
+        if (appointmentDiv) appointmentDiv.classList.remove("active");
         if (tab === "individual") indivDiv.classList.add("active");
         else if (tab === "packages") packDiv.classList.add("active");
-        else prepDiv.classList.add("active");
+        else if (tab === "prep") prepDiv.classList.add("active");
+        else if (tab === "appointment" && appointmentDiv) appointmentDiv.classList.add("active");
+        
         tabs.forEach(btn => {
             if (btn.getAttribute("data-tab") === tab) btn.classList.add("active");
             else btn.classList.remove("active");
@@ -346,8 +603,10 @@
         } else if (tab === "packages") {
             buildPackageCategoryFilter();
             renderPackages(currentSearch);
-        } else {
+        } else if (tab === "prep") {
             renderInstructions();
+        } else if (tab === "appointment") {
+            renderSelectedTestsList();
         }
     }
 
@@ -396,7 +655,6 @@
         });
     }
 
-    // Botón volver arriba
     const backToTopBtn = document.getElementById('backToTopBtn');
     if (backToTopBtn) {
         window.addEventListener('scroll', () => {

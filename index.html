@@ -18,8 +18,8 @@
     <div class="hero">
         <img src="media/img/logo_mac_bueno.png" alt="Imagen de laboratorio clínico" class="lab-logo_mobile">
         <h1><i class="fas fa-flask"></i> Laboratorio MAC Santa Fe</h1>
-        <h2>Catálogo de estudios clínicos</h2>
-        <h2>para pacientes particulares externos</h2>
+        <h2>Catálogo de estudios para</h2>
+        <h2>pacientes particulares externos</h2>
         <img src="media/img/logo_mac_bueno.png" alt="Imagen de laboratorio clínico" class="lab-logo">
         <div class="hero-sub">Consulta tus estudios de manera individual, perfiles y preparaciones</div>
         <div class="badge-info"><i class="fas fa-microscope"></i> Haz clic en cualquier prueba para ver su ficha detallada</div>
@@ -29,6 +29,7 @@
         <button class="tab-btn" data-tab="packages"><i class="fas fa-boxes"></i> Paquetes y Perfiles</button>
         <button class="tab-btn active" data-tab="individual"><i class="fas fa-vial"></i> Estudios Individuales</button>
         <button class="tab-btn" data-tab="prep"><i class="fas fa-clipboard-list"></i> Indicaciones Generales</button>
+        <button class="tab-btn" data-tab="appointment"><i class="fas fa-calendar-check"></i> Solicitar estudios</button>
     </div>
 
     <div class="container">
@@ -52,6 +53,67 @@
                 <strong>Nota crítica:</strong> El incumplimiento de las condiciones de preparación puede alterar los resultados.
             </div>
         </div>
+        <div id="appointmentTab" class="tab-content">
+            <div class="appointment-form-container">
+                <h3><i class="fas fa-file-medical"></i> Solicitud de estudios / Agendar cita</h3>
+                <p>Complete el siguiente formulario con sus datos y los estudios que desea realizarse. Un asesor le contactará para confirmar fecha y hora.</p>
+                
+                <!-- Lista de estudios seleccionados -->
+                <div class="selected-tests-section">
+                    <label><i class="fas fa-list"></i> Estudios solicitados:</label>
+                    <div id="selectedTestsList" class="selected-tests-list">
+                        <div class="empty-selected">No hay estudios seleccionados. Use el botón "Agregar estudios" para elegir.</div>
+                    </div>
+                    <button type="button" id="openStudySelectorBtn" class="btn-add-study"><i class="fas fa-plus-circle"></i> Agregar estudios</button>
+                </div>
+
+                <!-- Formulario de datos -->
+                <form id="appointmentForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label><i class="fas fa-user"></i> Nombre completo *</label>
+                            <input type="text" id="patientName" required>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-phone-alt"></i> Teléfono *</label>
+                            <input type="tel" id="patientPhone" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label><i class="fas fa-envelope"></i> Correo electrónico *</label>
+                            <input type="email" id="patientEmail" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label><i class="fas fa-calendar-day"></i> Fecha preferente (opcional)</label>
+                            <input type="date" id="preferredDate">
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-clock"></i> Hora preferente (opcional)</label>
+                            <input type="time" id="preferredTime">
+                        </div>
+                    </div>
+
+                    <!-- Total de la cotización -->
+                    <div class="total-cost-container">
+                        <div class="total-label">
+                            <i class="fas fa-calculator"></i> <strong>Total aproximado de la cotización:</strong>
+                        </div>
+                        <div class="total-amount" id="totalCostDisplay">$0.00</div>
+                        <div class="total-note">* Los precios incluyen IVA. Sujeto a cambios sin previo aviso.</div>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-comment"></i> Comentarios adicionales</label>
+                        <textarea id="patientComments" rows="3" placeholder="Ej: indicaciones especiales, horario preferido, etc."></textarea>
+                    </div>
+                    <button type="submit" id="sendRequestBtn" class="btn-submit"><i class="fas fa-paper-plane"></i> Enviar solicitud</button>
+                </form>
+                <div id="formMessage" class="form-message"></div>
+            </div>
+        </div>
         <br></br>
         <div class="info-note-box">
             <i class="fas fa-info-circle"></i>
@@ -61,13 +123,12 @@
     </div>
     <footer>
         <p class="phone"><i class="fa-solid fa-mobile-screen-button"></i>     Llámenos al 55-52-32-30-49</p>
-
         <p><i class="fas fa-syringe"></i><b style="color: #a6f9bd; font-size: 18px;"> Laboratorio Clínico MAC Santa Fe · Excelencia diagnóstica </b></p>
         <p>📋 Información basada en cartera autorizada para pacientes particulares externos</p>
         <p>Precios sujetos a cambios sin previo aviso</p>
     </footer>
 
-    <!-- Popup modal -->
+    <!-- Popup modal para detalles del estudio -->
     <div class="overlay-popup" id="popupOverlay"></div>
     <div id="testPopup" class="test-popup" style="display: none;">
         <div class="popup-header">
@@ -101,14 +162,42 @@
         </div>
     </div>
 
+    <!-- Modal selector de estudios (para agregar al carrito) -->
+    <div id="studySelectorModal" class="modal-selector" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Seleccionar estudios</h3>
+                <button class="close-modal" id="closeModalBtn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-filter-buttons">
+                    <button class="modal-filter-btn active" data-filter-type="individual">🔬 Estudios individuales</button>
+                    <button class="modal-filter-btn" data-filter-type="package">📦 Paquetes</button>
+                </div>
+                <input type="text" id="modalSearchInput" placeholder="🔎 Buscar estudio o paquete..." class="search-input-modal">
+                <div id="modalResultsList" class="modal-results"></div>
+            </div>
+            <div class="modal-footer">
+                <button id="closeModalFooterBtn" class="btn-secondary">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Scripts -->
+    <script src="js/script.js"></script>
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+        // Inicializar EmailJS con tu Public Key (DEBES REEMPLAZARLA)
+        (function(){
+            emailjs.init("jRuo-TZkcjivxc-gj"); // Reemplazar con tu Public Key de EmailJS
+        })();
+    </script>
     <script src="js/script.js"></script>
 
     <!-- Botón flotante volver arriba -->
     <button id="backToTopBtn" class="back-to-top" aria-label="Volver arriba">
         <i class="fas fa-arrow-up"></i>
     </button>
-
-    <script src="js/script.js"></script>
 </body>
 </html>
