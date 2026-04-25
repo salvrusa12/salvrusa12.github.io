@@ -8,10 +8,13 @@
     let selectedPackageCategory = null;
     let currentSearch = "";
     let currentTab = "individual";
-    let currentModalFilter = 'individual'; // 'individual' o 'package'
+    let currentModalFilter = 'individual';
 
     // Carrito de estudios seleccionados para la cita
     let selectedTests = []; // array de nombres de estudios
+
+    // NUEVO: Mapa para almacenar detalles (ID, costo, tipo) de cada estudio/paquete por nombre
+    let studyDetailsMap = new Map();
 
     // Elementos del DOM
     const popup = document.getElementById("testPopup");
@@ -28,7 +31,6 @@
     const prepDiv = document.getElementById("prepTab");
     const appointmentDiv = document.getElementById("appointmentTab");
     const searchInput = document.getElementById("globalSearch");
-
 
     function updateTotalDisplay() {
         const totalElement = document.getElementById("totalCostDisplay");
@@ -50,6 +52,15 @@
             return '$' + cost.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
         }
         return "Cotizar en caja";
+    }
+
+    // NUEVA: Obtener detalles (id, costo, tipo) por nombre
+    function getStudyDetails(studyName) {
+        if (studyDetailsMap.has(studyName)) {
+            return studyDetailsMap.get(studyName);
+        }
+        // Fallback
+        return { id: "N/D", cost: null, type: 'unknown' };
     }
 
     function getPackageCategory(pkg) {
@@ -81,6 +92,29 @@
             const normalized = test.name.trim().toLowerCase().replace(/[^a-z0-9]/g, '');
             testMap.set(normalized, test);
         });
+    }
+
+    // Construye el mapa de detalles (ID, costo, tipo)
+    function buildStudyDetailsMap() {
+        studyDetailsMap.clear();
+        if (catalogData.individualTests) {
+            catalogData.individualTests.forEach(test => {
+                studyDetailsMap.set(test.name, {
+                    id: test.id || "N/D",
+                    cost: test.cost,
+                    type: 'individual'
+                });
+            });
+        }
+        if (catalogData.packages) {
+            catalogData.packages.forEach(pkg => {
+                studyDetailsMap.set(pkg.name, {
+                    id: pkg.id || "N/D",
+                    cost: pkg.cost,
+                    type: 'package'
+                });
+            });
+        }
     }
 
     function getTestDetails(testName) {
@@ -193,15 +227,10 @@
         });
     }
 
-
     function getStudyCost(studyName) {
-        let test = catalogData.individualTests.find(t => t.name === studyName);
-        if (test) return test.cost;
-        let pkg = catalogData.packages.find(p => p.name === studyName);
-        if (pkg) return pkg.cost;
-        return null;
+        const details = getStudyDetails(studyName);
+        return details.cost;
     }
-
 
     function calculateTotalCost() {
         let total = 0;
@@ -213,7 +242,6 @@
         });
         return total;
     }
-
 
     // ---------- CATEGORY FILTERS ----------
     function buildCategoryFilter() {
@@ -497,18 +525,17 @@
         });
     }
 
-    // ---------- ENVÍO DE FORMULARIO CON EMAILJS (MEJORADO) ----------
+    // ---------- ENVÍO DE FORMULARIO CON EMAILJS (INCLUYE ID) ----------
     const appointmentForm = document.getElementById("appointmentForm");
     const formMessage = document.getElementById("formMessage");
 
-    const serviceID = 'service_n899ono';   // Reemplaza si es necesario
-    const templateID = 'template_25vn2ml'; // Reemplaza si es necesario
+    const serviceID = 'service_n899ono';   // Ajusta si es necesario
+    const templateID = 'template_25vn2ml'; // Ajusta si es necesario
 
     if (appointmentForm) {
         appointmentForm.addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            // Obtener valores originales
             let nombreRaw = document.getElementById("patientName").value.trim();
             let telefonoRaw = document.getElementById("patientPhone").value.trim();
             let correoRaw = document.getElementById("patientEmail").value.trim();
@@ -516,14 +543,12 @@
             let horaPref = document.getElementById("preferredTime").value;
             let comentarioRaw = document.getElementById("patientComments").value;
 
-            // Limpiar caracteres problemáticos (saltos de línea, tabs, etc.)
             const limpiar = (str) => (str || "").replace(/[\n\r\t]+/g, ' ').trim();
             const nombre = limpiar(nombreRaw) || "No especificado";
             const telefono = limpiar(telefonoRaw) || "No especificado";
             const correo = limpiar(correoRaw) || "No especificado";
             const comentario = limpiar(comentarioRaw) || "Sin comentarios adicionales";
 
-            // Validaciones
             if (!nombre || nombre === "No especificado" || !telefono || telefono === "No especificado" || !correo || correo === "No especificado") {
                 formMessage.innerHTML = '<div class="form-message error">Por favor complete todos los campos obligatorios (*).</div>';
                 return;
@@ -533,16 +558,16 @@
                 return;
             }
 
-            // Crear lista de estudios con precios
+            // --- IMPORTANTE: Ahora incluimos el ID de cada estudio ---
             const estudiosConPrecio = selectedTests.map((nombreEstudio, idx) => {
-                const costo = getStudyCost(nombreEstudio);
+                const details = getStudyDetails(nombreEstudio);
+                const id = details.id && details.id !== "N/D" ? details.id : "Sin ID";
+                const costo = details.cost;
                 const costoFormateado = formatCost(costo);
-                return `${idx+1}. ${nombreEstudio} - ${costoFormateado}`;
+                return `${idx+1}. [ID: ${id}] ${nombreEstudio} - ${costoFormateado}`;
             }).join('\n');
 
-            // Hora: si está vacía se envía como cadena vacía (no "No especificada")
             const horaClean = horaPref ? horaPref : "";
-
             const totalCotizacion = formatCost(calculateTotalCost());
 
             const templateParams = {
@@ -627,6 +652,7 @@
             const response = await fetch('js/catalog.json');
             catalogData = await response.json();
             buildTestMap();
+            buildStudyDetailsMap();   // Llena el mapa de IDs
             buildCategoryFilter();
             buildPackageCategoryFilter();
             renderIndividual("");
@@ -655,20 +681,19 @@
         });
     }
 
-    const backToTopBtn = document.getElementById('backToTopBtn');
-    if (backToTopBtn) {
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 400) {
-                backToTopBtn.classList.add('show');
-            } else {
-                backToTopBtn.classList.remove('show');
-            }
-        });
-        backToTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
+    document.addEventListener('DOMContentLoaded', function() {
+        const backToTopBtn = document.getElementById('backToTopBtn');
+        if (backToTopBtn) {
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 400) {
+                    backToTopBtn.classList.add('show');
+                } else {
+                    backToTopBtn.classList.remove('show');
+                }
             });
-        });
-    }
+            backToTopBtn.addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+    });
 })();

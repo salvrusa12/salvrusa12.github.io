@@ -433,9 +433,21 @@ body {
 footer .phone {
     margin-left: -70%;
     margin-bottom: -3%;
-    font-weight: bold;
+    font-weight: 700;
     font-size: 1.5rem;
-    color: #EAF0E4;
+    color: #ffffff;
+}
+
+/* Dirección del laboratorio en el footer */
+.footer-address {
+    font-size: 1rem;          /* Letra más pequeña */
+    margin-top: 25px;           /* Separación del contenido superior */
+    text-align: center;
+    color: #ffffff;             /* Mismo color que el texto del footer */
+    opacity: 1;
+    line-height: 1;
+    margin-left: 0;  
+    font-weight: 700;           /* Anula cualquier margin-left heredado (ej. .phone) */
 }
 
 
@@ -1011,6 +1023,10 @@ footer {
     .fa-flask { display: none; }
     footer .phone {display: contents; font-size: 1.3rem;}
     .info-note-box {margin-bottom: -50px;}
+    .footer-address {
+        font-size: 0.6rem;
+        margin-top: 0.8rem;
+    }
 }
 
 @media (max-width: 1000px) {
@@ -1045,7 +1061,9 @@ footer {
     .package-card {
         margin-bottom: 1.2rem;
     }
-    
+    .back-to-top {
+        visibility: visible;
+    }
 }
 
 @media (max-width: 768px) {
