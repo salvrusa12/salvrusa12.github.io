@@ -10,13 +10,9 @@
     let currentTab = "individual";
     let currentModalFilter = 'individual';
 
-    // Carrito de estudios seleccionados para la cita
-    let selectedTests = []; // array de nombres de estudios
-
-    // NUEVO: Mapa para almacenar detalles (ID, costo, tipo) de cada estudio/paquete por nombre
+    let selectedTests = [];
     let studyDetailsMap = new Map();
 
-    // Elementos del DOM
     const popup = document.getElementById("testPopup");
     const overlay = document.getElementById("popupOverlay");
     const popupTestName = document.getElementById("popupTestName");
@@ -32,15 +28,66 @@
     const appointmentDiv = document.getElementById("appointmentTab");
     const searchInput = document.getElementById("globalSearch");
 
-    function updateTotalDisplay() {
-        const totalElement = document.getElementById("totalCostDisplay");
-        if (totalElement) {
-            const total = calculateTotalCost();
-            totalElement.innerText = formatCost(total);
+    // ---------- NUEVA FUNCIÓN: normalizar tipos de muestra ----------
+    function normalizeSampleTypes(sampleStr) {
+        if (!sampleStr) return [];
+        // Separar por comas o por " y " (español)
+        let parts = sampleStr.split(/[,y]+/).map(p => p.trim().toLowerCase());
+        let types = new Set();
+        for (let part of parts) {
+            if (part.includes("sangre total")) types.add("sangre_total");
+            else if (part.includes("suero")) types.add("suero");
+            else if (part.includes("plasma")) types.add("plasma");
+            else if (part.includes("orina")) types.add("orina");
+            else if (part.includes("heces")) types.add("heces");
+            else if (part.includes("exudado")) types.add("exudado");
+            else if (part.includes("semen")) types.add("semen");
+            else if (part.includes("esputo")) types.add("esputo");
+            else if (part.includes("líquido cefalorraquídeo") || part.includes("líquido corporal")) types.add("liquido");
+            else if (part.includes("sangre capilar")) types.add("sangre_capilar");
+            else if (part.includes("punta de catéter")) types.add("microbiologia");
+            else if (part.includes("cultivo")) types.add("microbiologia");
+            else if (part.includes("variable")) types.add("variable");
         }
+        return Array.from(types);
     }
 
-    // ---------- FUNCIONES AUXILIARES ----------
+    // ---------- NUEVA FUNCIÓN: renderizar iconos según tipo de muestra ----------
+    function renderSampleIcons(sampleStr) {
+        const types = normalizeSampleTypes(sampleStr);
+        if (types.length === 0) {
+            return `<span class="sample-text-fallback">${escapeHtml(sampleStr) || "No especificado"}</span>`;
+        }
+
+        const iconMap = {
+            suero: { img: "media/icon/Tubo_Oro_1.png", alt: "Suero", fa: "fa-droplet" },
+            sangre_total: { img: "media/icon/Tubo_lila_1.png", alt: "Sangre Total", fa: "fa-droplet" },
+            plasma: { img: "media/icon/Tubo_Azul_1.png", alt: "Plasma", fa: "fa-water" },
+            orina: { img: "media/icon/orina.png", alt: "Orina", fa: "fa-flask" },
+            heces: { img: "media/icon/heces.png", alt: "Heces", fa: "fa-poop" },
+            exudado: { img: "media/icon/hisopo.png", alt: "Exudado", fa: "fa-swab" },
+            semen: { img: "media/icon/semen.png", alt: "Semen", fa: "fa-microscope" },
+            esputo: { img: "media/icon/esputo.png", alt: "Esputo", fa: "fa-lungs" },
+            liquido: { img: "media/icon/liquido_corporal.png", alt: "Líquido corporal", fa: "fa-vial" },
+            sangre_capilar: { img: "media/icon/sangre_capilar.png", alt: "Sangre capilar", fa: "fa-hand-holding-droplet" },
+            microbiologia: { img: "media/icon/hisopo.png", alt: "Muestra microbiológica", fa: "fa-bacteria" },
+            variable: { img: "", alt: "Variable", fa: "fa-question-circle" }
+        };
+
+        let iconsHtml = `<div class="icon-row">`;
+        for (let type of types) {
+            const map = iconMap[type] || iconMap.variable;
+            if (map.img) {
+                iconsHtml += `<img src="${map.img}" alt="${map.alt}" class="sample-type-icon" title="${map.alt}" loading="lazy">`;
+            } else {
+                iconsHtml += `<i class="fas ${map.fa} sample-type-fa" title="${map.alt}"></i>`;
+            }
+        }
+        iconsHtml += `</div>`;
+        return iconsHtml;
+    }
+
+    // ---------- FUNCIONES EXISTENTES (solo se modifican showPopup y showPackagePopup) ----------
     function escapeHtml(str) {
         if (!str) return '';
         return str.replace(/[&<>]/g, m => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;' }[m]));
@@ -54,12 +101,8 @@
         return "Cotizar en caja";
     }
 
-    // NUEVA: Obtener detalles (id, costo, tipo) por nombre
     function getStudyDetails(studyName) {
-        if (studyDetailsMap.has(studyName)) {
-            return studyDetailsMap.get(studyName);
-        }
-        // Fallback
+        if (studyDetailsMap.has(studyName)) return studyDetailsMap.get(studyName);
         return { id: "N/D", cost: null, type: 'unknown' };
     }
 
@@ -94,25 +137,16 @@
         });
     }
 
-    // Construye el mapa de detalles (ID, costo, tipo)
     function buildStudyDetailsMap() {
         studyDetailsMap.clear();
         if (catalogData.individualTests) {
             catalogData.individualTests.forEach(test => {
-                studyDetailsMap.set(test.name, {
-                    id: test.id || "N/D",
-                    cost: test.cost,
-                    type: 'individual'
-                });
+                studyDetailsMap.set(test.name, { id: test.id || "N/D", cost: test.cost, type: 'individual' });
             });
         }
         if (catalogData.packages) {
             catalogData.packages.forEach(pkg => {
-                studyDetailsMap.set(pkg.name, {
-                    id: pkg.id || "N/D",
-                    cost: pkg.cost,
-                    type: 'package'
-                });
+                studyDetailsMap.set(pkg.name, { id: pkg.id || "N/D", cost: pkg.cost, type: 'package' });
             });
         }
     }
@@ -128,9 +162,7 @@
 
     function getInstructions(testName) {
         const details = getTestDetails(testName);
-        return details.instructions && details.instructions.length
-            ? details.instructions
-            : ["Seguir las instrucciones proporcionadas por el laboratorio.", "Consultar si requiere ayuno o preparación especial."];
+        return details.instructions && details.instructions.length ? details.instructions : ["Seguir las instrucciones proporcionadas por el laboratorio.", "Consultar si requiere ayuno o preparación especial."];
     }
 
     function getPackageCost(pkg) {
@@ -146,44 +178,16 @@
                 descSection = document.createElement("div");
                 descSection.className = "popup-section";
                 descSection.id = "popupDescriptionSection";
-                descSection.innerHTML = `<strong id="popupDescriptionTitle"><i class="fas fa-info-circle"></i> Descripción</strong>
-                                         <p id="popupDescription"></p>`;
+                descSection.innerHTML = `<strong id="popupDescriptionTitle"><i class="fas fa-info-circle"></i> Descripción</strong><p id="popupDescription"></p>`;
                 const firstSection = popupBody.querySelector(".popup-section");
-                if (firstSection) {
-                    popupBody.insertBefore(descSection, firstSection.nextSibling);
-                } else {
-                    popupBody.appendChild(descSection);
-                }
+                if (firstSection) popupBody.insertBefore(descSection, firstSection.nextSibling);
+                else popupBody.appendChild(descSection);
             }
         }
         return descSection;
     }
 
-    function showPackagePopup(pkg, event) {
-        if (event) event.stopPropagation();
-        popupTestName.innerText = pkg.name;
-        popupCatalogId.innerHTML = pkg.id || "No disponible";
-        const packageCost = getPackageCost(pkg);
-        popupCost.innerText = formatCost(packageCost);
-        
-        ensureDescriptionSection();
-        const descriptionTitle = document.getElementById("popupDescriptionTitle");
-        const descriptionElement = document.getElementById("popupDescription");
-        if (descriptionTitle) descriptionTitle.innerHTML = '<i class="fas fa-info-circle"></i> Descripción del paquete';
-        if (descriptionElement) descriptionElement.innerHTML = escapeHtml(pkg.description || "Sin descripción adicional.");
-        
-        const instructions = pkg.instructions && pkg.instructions.length
-            ? pkg.instructions
-            : ["Paquete de estudios clínicos.", "Consulte los requisitos de cada prueba incluida."];
-        popupInstructions.innerHTML = instructions.map(item => 
-            `<li><i class="fas fa-circle" style="font-size:0.4rem; color:var(--secondary); margin-right:8px;"></i> ${escapeHtml(item)}</li>`
-        ).join('');
-        popupSampleType.innerHTML = pkg.sample || "Variable según pruebas incluidas";
-        
-        popup.style.display = "block";
-        overlay.style.display = "block";
-    }
-
+    // MODIFICADA: usa renderSampleIcons
     function showPopup(testName, x, y) {
         const details = getTestDetails(testName);
         popupTestName.innerText = testName;
@@ -197,10 +201,38 @@
         if (descriptionElement) descriptionElement.innerHTML = escapeHtml(details.description || "Sin descripción disponible.");
         
         const instructions = getInstructions(testName);
-        popupInstructions.innerHTML = instructions.map(item => 
-            `<li><i class="fas fa-circle" style="font-size:0.4rem; color:var(--secondary); margin-right:8px;"></i> ${escapeHtml(item)}</li>`
-        ).join('');
-        popupSampleType.innerHTML = details.sample || "Variable";
+        popupInstructions.innerHTML = instructions.map(item => `<li><i class="fas fa-circle" style="font-size:0.4rem; color:var(--secondary); margin-right:8px;"></i> ${escapeHtml(item)}</li>`).join('');
+        
+        // --- NUEVO: mostrar tipo de muestra con iconos dinámicos ---
+        const sampleText = details.sample || "Variable";
+        const iconsHtml = renderSampleIcons(sampleText);
+        popupSampleType.innerHTML = `<div class="sample-type-text">${escapeHtml(sampleText)}</div>${iconsHtml}`;
+        
+        popup.style.display = "block";
+        overlay.style.display = "block";
+    }
+
+    // MODIFICADA: igual para paquetes
+    function showPackagePopup(pkg, event) {
+        if (event) event.stopPropagation();
+        popupTestName.innerText = pkg.name;
+        popupCatalogId.innerHTML = pkg.id || "No disponible";
+        const packageCost = getPackageCost(pkg);
+        popupCost.innerText = formatCost(packageCost);
+        
+        ensureDescriptionSection();
+        const descriptionTitle = document.getElementById("popupDescriptionTitle");
+        const descriptionElement = document.getElementById("popupDescription");
+        if (descriptionTitle) descriptionTitle.innerHTML = '<i class="fas fa-info-circle"></i> Descripción del paquete';
+        if (descriptionElement) descriptionElement.innerHTML = escapeHtml(pkg.description || "Sin descripción adicional.");
+        
+        const instructions = pkg.instructions && pkg.instructions.length ? pkg.instructions : ["Paquete de estudios clínicos.", "Consulte los requisitos de cada prueba incluida."];
+        popupInstructions.innerHTML = instructions.map(item => `<li><i class="fas fa-circle" style="font-size:0.4rem; color:var(--secondary); margin-right:8px;"></i> ${escapeHtml(item)}</li>`).join('');
+        
+        // --- NUEVO: iconos dinámicos para el paquete (sample puede ser varios) ---
+        const sampleText = pkg.sample || "Variable según pruebas incluidas";
+        const iconsHtml = renderSampleIcons(sampleText);
+        popupSampleType.innerHTML = `<div class="sample-type-text">${escapeHtml(sampleText)}</div>${iconsHtml}`;
         
         popup.style.display = "block";
         overlay.style.display = "block";
@@ -236,14 +268,17 @@
         let total = 0;
         selectedTests.forEach(studyName => {
             const cost = getStudyCost(studyName);
-            if (typeof cost === 'number') {
-                total += cost;
-            }
+            if (typeof cost === 'number') total += cost;
         });
         return total;
     }
 
-    // ---------- CATEGORY FILTERS ----------
+    function updateTotalDisplay() {
+        const totalElement = document.getElementById("totalCostDisplay");
+        if (totalElement) totalElement.innerText = formatCost(calculateTotalCost());
+    }
+
+    // ---------- FILTROS Y RENDER ----------
     function buildCategoryFilter() {
         const categoriesSet = new Set();
         catalogData.individualTests.forEach(t => categoriesSet.add(t.category));
@@ -266,9 +301,7 @@
 
     function buildPackageCategoryFilter() {
         const categoriesSet = new Set();
-        catalogData.packages.forEach(pkg => {
-            categoriesSet.add(getPackageCategory(pkg));
-        });
+        catalogData.packages.forEach(pkg => categoriesSet.add(getPackageCategory(pkg)));
         const sortedCategories = Array.from(categoriesSet).sort();
         const container = document.getElementById("packageCategoryFilter");
         if (!container) return;
@@ -287,7 +320,6 @@
         });
     }
 
-    // ---------- RENDER INDIVIDUAL & PACKAGES ----------
     function renderIndividual(search = "") {
         currentSearch = search;
         const container = document.getElementById("individualStudiesContainer");
@@ -301,11 +333,7 @@
             return;
         }
         const grouped = {};
-        filtered.forEach(test => {
-            const cat = test.category;
-            if (!grouped[cat]) grouped[cat] = [];
-            grouped[cat].push(test);
-        });
+        filtered.forEach(test => { const cat = test.category; if (!grouped[cat]) grouped[cat] = []; grouped[cat].push(test); });
         let html = "";
         for (const [cat, tests] of Object.entries(grouped).sort()) {
             html += `<div class="category-section"><div class="category-title">${cat}</div><div class="studies-grid">`;
@@ -316,10 +344,10 @@
                     display = test.name.replace(regex, `<span class="highlight">$1</span>`);
                 }
                 html += `<div class="study-card" data-testname="${escapeHtml(test.name)}">
-                    <i class="fas fa-vial"></i> 
-                    <span>${display}</span>
-                    <span class="test-cost">${formatCost(test.cost)}</span>
-                </div>`;
+                            <i class="fas fa-vial"></i> 
+                            <span>${display}</span>
+                            <span class="test-cost">${formatCost(test.cost)}</span>
+                         </div>`;
             });
             html += `</div></div>`;
         }
@@ -333,15 +361,8 @@
         const container = document.getElementById("packagesGridContainer");
         const term = search.trim().toLowerCase();
         let filtered = [...catalogData.packages];
-        if (term) {
-            filtered = filtered.filter(pkg => 
-                pkg.name.toLowerCase().includes(term) || 
-                pkg.tests.some(t => t.toLowerCase().includes(term))
-            );
-        }
-        if (selectedPackageCategory) {
-            filtered = filtered.filter(pkg => getPackageCategory(pkg) === selectedPackageCategory);
-        }
+        if (term) filtered = filtered.filter(pkg => pkg.name.toLowerCase().includes(term) || pkg.tests.some(t => t.toLowerCase().includes(term)));
+        if (selectedPackageCategory) filtered = filtered.filter(pkg => getPackageCategory(pkg) === selectedPackageCategory);
         if (filtered.length === 0) {
             container.innerHTML = `<div class="no-result"><i class="fas fa-search-minus"></i> No se encontraron paquetes con los filtros actuales.</div>`;
             document.getElementById("statsPackages").innerHTML = "";
@@ -350,21 +371,15 @@
         let html = "";
         filtered.forEach(pkg => {
             const packageCost = getPackageCost(pkg);
-            html += `
-                <div class="package-card" data-package-name="${escapeHtml(pkg.name)}">
-                    <div class="package-header">
-                        <div class="package-name">
-                            <i class="fa-solid fa-vials"></i> ${pkg.name}
+            html += `<div class="package-card" data-package-name="${escapeHtml(pkg.name)}">
+                        <div class="package-header">
+                            <div class="package-name"><i class="fa-solid fa-vials"></i> ${pkg.name}</div>
+                            <div class="package-badge"><i class="fas fa-list-ul"></i> ${pkg.tests.length} pruebas</div>
                         </div>
-                        <div class="package-badge"><i class="fas fa-list-ul"></i> ${pkg.tests.length} pruebas</div>
-                    </div>
-                    <div class="package-studies-list">
-                        <ul>${pkg.tests.map(t => `<li><i class="fas fa-check-circle"></i> ${t}</li>`).join('')}</ul>
-                    </div>
-                    <div class="package-cost">${formatCost(packageCost)}</div>
-                    <div class="package-footer-note"><i class="fas fa-clock"></i> Requiere preparación según cada prueba individual.</div>
-                </div>
-            `;
+                        <div class="package-studies-list"><ul>${pkg.tests.map(t => `<li><i class="fas fa-check-circle"></i> ${t}</li>`).join('')}</ul></div>
+                        <div class="package-cost">${formatCost(packageCost)}</div>
+                        <div class="package-footer-note"><i class="fas fa-clock"></i> Requiere preparación según cada prueba individual.</div>
+                    </div>`;
         });
         container.innerHTML = html;
         document.getElementById("statsPackages").innerHTML = `📦 ${filtered.length} paquetes disponibles.${selectedPackageCategory ? ` · Categoría: ${selectedPackageCategory}` : ''}`;
@@ -390,40 +405,31 @@
         container.innerHTML = html;
     }
 
-    // ---------- FORMULARIO Y CARRITO ----------
+    // ---------- CARRITO Y FORMULARIO (sin cambios relevantes, solo se mantiene) ----------
     function renderSelectedTestsList() {
         const container = document.getElementById("selectedTestsList");
         if (!container) return;
-
         if (selectedTests.length === 0) {
             container.innerHTML = '<div class="empty-selected">No hay estudios seleccionados. Use el botón "Agregar estudios" para elegir.</div>';
             updateTotalDisplay();
             return;
         }
-
         let html = '';
         selectedTests.forEach((test, index) => {
-            html += `<div class="selected-test-item">
-                        <span><i class="fas fa-flask"></i> ${escapeHtml(test)}</span>
-                        <button class="remove-test" data-index="${index}"><i class="fas fa-trash-alt"></i></button>
-                    </div>`;
+            html += `<div class="selected-test-item"><span><i class="fas fa-flask"></i> ${escapeHtml(test)}</span>
+                     <button class="remove-test" data-index="${index}"><i class="fas fa-trash-alt"></i></button></div>`;
         });
         container.innerHTML = html;
-
         document.querySelectorAll('.remove-test').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 const idx = parseInt(btn.getAttribute('data-index'));
-                if (!isNaN(idx)) {
-                    selectedTests.splice(idx, 1);
-                    renderSelectedTestsList();
-                }
+                if (!isNaN(idx)) { selectedTests.splice(idx, 1); renderSelectedTestsList(); }
             });
         });
-
         updateTotalDisplay();
     }
 
-    // Modal de selección de estudios
+    // Modal selector (sin cambios)
     const studySelectorModal = document.getElementById("studySelectorModal");
     const openStudySelectorBtn = document.getElementById("openStudySelectorBtn");
     const closeModalBtns = [document.getElementById("closeModalBtn"), document.getElementById("closeModalFooterBtn")];
@@ -435,89 +441,46 @@
         modalSearchInput.value = "";
         currentModalFilter = 'individual';
         const filterBtns = document.querySelectorAll('.modal-filter-btn');
-        filterBtns.forEach(btn => {
-            if (btn.getAttribute('data-filter-type') === 'individual') {
-                btn.classList.add('active');
-            } else {
-                btn.classList.remove('active');
-            }
-        });
+        filterBtns.forEach(btn => { if (btn.getAttribute('data-filter-type') === 'individual') btn.classList.add('active'); else btn.classList.remove('active'); });
         renderModalResults("");
     }
-
-    function closeModal() {
-        studySelectorModal.style.display = "none";
-    }
-
+    function closeModal() { studySelectorModal.style.display = "none"; }
     function renderModalResults(searchTerm) {
         if (!modalResultsList) return;
         const term = searchTerm.trim().toLowerCase();
-
         let items = [];
-        if (currentModalFilter === 'individual') {
-            items = catalogData.individualTests.map(test => ({ type: 'individual', name: test.name }));
-        } else {
-            items = catalogData.packages.map(pkg => ({ type: 'package', name: pkg.name }));
-        }
-
-        if (term) {
-            items = items.filter(item => item.name.toLowerCase().includes(term));
-        }
+        if (currentModalFilter === 'individual') items = catalogData.individualTests.map(test => ({ type: 'individual', name: test.name }));
+        else items = catalogData.packages.map(pkg => ({ type: 'package', name: pkg.name }));
+        if (term) items = items.filter(item => item.name.toLowerCase().includes(term));
         items.sort((a, b) => a.name.localeCompare(b.name));
-
-        if (items.length === 0) {
-            modalResultsList.innerHTML = '<div class="no-result">No se encontraron estudios</div>';
-            return;
-        }
-
+        if (items.length === 0) { modalResultsList.innerHTML = '<div class="no-result">No se encontraron estudios</div>'; return; }
         let html = '';
         items.forEach(item => {
             const alreadySelected = selectedTests.includes(item.name);
-            html += `<div class="modal-study-item">
-                        <span class="modal-study-name">${escapeHtml(item.name)}</span>
-                        <button class="btn-add-modal" data-name="${escapeHtml(item.name)}" ${alreadySelected ? 'disabled style="opacity:0.5;"' : ''}>
-                            ${alreadySelected ? '✓ Agregado' : '+ Agregar'}
-                        </button>
-                    </div>`;
+            html += `<div class="modal-study-item"><span class="modal-study-name">${escapeHtml(item.name)}</span>
+                     <button class="btn-add-modal" data-name="${escapeHtml(item.name)}" ${alreadySelected ? 'disabled style="opacity:0.5;"' : ''}>${alreadySelected ? '✓ Agregado' : '+ Agregar'}</button></div>`;
         });
         modalResultsList.innerHTML = html;
-
         document.querySelectorAll('.btn-add-modal').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.stopPropagation();
                 const testName = btn.getAttribute('data-name');
-                if (testName && !selectedTests.includes(testName)) {
-                    selectedTests.push(testName);
-                    renderSelectedTestsList();
-                    renderModalResults(modalSearchInput.value);
-                }
+                if (testName && !selectedTests.includes(testName)) { selectedTests.push(testName); renderSelectedTestsList(); renderModalResults(modalSearchInput.value); }
             });
         });
     }
-
-    if (openStudySelectorBtn) {
-        openStudySelectorBtn.addEventListener('click', openModal);
-    }
-    closeModalBtns.forEach(btn => {
-        if (btn) btn.addEventListener('click', closeModal);
-    });
-    if (modalSearchInput) {
-        modalSearchInput.addEventListener('input', (e) => {
-            renderModalResults(e.target.value);
-        });
-    }
-    window.addEventListener('click', (e) => {
-        if (e.target === studySelectorModal) closeModal();
-    });
-
-    const filterBtns = document.querySelectorAll('.modal-filter-btn');
-    if (filterBtns.length) {
-        filterBtns.forEach(btn => {
+    if (openStudySelectorBtn) openStudySelectorBtn.addEventListener('click', openModal);
+    closeModalBtns.forEach(btn => { if (btn) btn.addEventListener('click', closeModal); });
+    if (modalSearchInput) modalSearchInput.addEventListener('input', (e) => renderModalResults(e.target.value));
+    window.addEventListener('click', (e) => { if (e.target === studySelectorModal) closeModal(); });
+    const filterBtnsModal = document.querySelectorAll('.modal-filter-btn');
+    if (filterBtnsModal.length) {
+        filterBtnsModal.forEach(btn => {
             btn.addEventListener('click', () => {
                 const filterValue = btn.getAttribute('data-filter-type');
                 if (filterValue === 'individual' || filterValue === 'package') {
                     currentModalFilter = filterValue;
-                    filterBtns.forEach(b => b.classList.remove('active'));
+                    filterBtnsModal.forEach(b => b.classList.remove('active'));
                     btn.classList.add('active');
                     renderModalResults(modalSearchInput.value);
                 }
@@ -525,30 +488,25 @@
         });
     }
 
-    // ---------- ENVÍO DE FORMULARIO CON EMAILJS (INCLUYE ID) ----------
+    // EmailJS (sin cambios)
     const appointmentForm = document.getElementById("appointmentForm");
     const formMessage = document.getElementById("formMessage");
-
-    const serviceID = 'service_n899ono';   // Ajusta si es necesario
-    const templateID = 'template_25vn2ml'; // Ajusta si es necesario
-
+    const serviceID = 'service_n899ono';
+    const templateID = 'template_25vn2ml';
     if (appointmentForm) {
         appointmentForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-
             let nombreRaw = document.getElementById("patientName").value.trim();
             let telefonoRaw = document.getElementById("patientPhone").value.trim();
             let correoRaw = document.getElementById("patientEmail").value.trim();
             let fechaPref = document.getElementById("preferredDate").value;
             let horaPref = document.getElementById("preferredTime").value;
             let comentarioRaw = document.getElementById("patientComments").value;
-
             const limpiar = (str) => (str || "").replace(/[\n\r\t]+/g, ' ').trim();
             const nombre = limpiar(nombreRaw) || "No especificado";
             const telefono = limpiar(telefonoRaw) || "No especificado";
             const correo = limpiar(correoRaw) || "No especificado";
             const comentario = limpiar(comentarioRaw) || "Sin comentarios adicionales";
-
             if (!nombre || nombre === "No especificado" || !telefono || telefono === "No especificado" || !correo || correo === "No especificado") {
                 formMessage.innerHTML = '<div class="form-message error">Por favor complete todos los campos obligatorios (*).</div>';
                 return;
@@ -557,8 +515,6 @@
                 formMessage.innerHTML = '<div class="form-message error">Debe seleccionar al menos un estudio.</div>';
                 return;
             }
-
-            // --- IMPORTANTE: Ahora incluimos el ID de cada estudio ---
             const estudiosConPrecio = selectedTests.map((nombreEstudio, idx) => {
                 const details = getStudyDetails(nombreEstudio);
                 const id = details.id && details.id !== "N/D" ? details.id : "Sin ID";
@@ -566,26 +522,13 @@
                 const costoFormateado = formatCost(costo);
                 return `${idx+1}. [ID: ${id}] ${nombreEstudio} - ${costoFormateado}`;
             }).join('\n');
-
             const horaClean = horaPref ? horaPref : "";
             const totalCotizacion = formatCost(calculateTotalCost());
-
-            const templateParams = {
-                nombre: nombre,
-                telefono: telefono,
-                correo: correo,
-                estudios: estudiosConPrecio,
-                comentario: comentario,
-                fecha: fechaPref || "No especificada",
-                hora: horaClean,
-                total: totalCotizacion
-            };
-
+            const templateParams = { nombre, telefono, correo, estudios: estudiosConPrecio, comentario, fecha: fechaPref || "No especificada", hora: horaClean, total: totalCotizacion };
             const submitBtn = document.getElementById("sendRequestBtn");
             const originalText = submitBtn.innerHTML;
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Enviando...';
             submitBtn.disabled = true;
-
             try {
                 const response = await emailjs.send(serviceID, templateID, templateParams);
                 if (response.status === 200) {
@@ -593,9 +536,7 @@
                     appointmentForm.reset();
                     selectedTests = [];
                     renderSelectedTestsList();
-                } else {
-                    throw new Error('Error en el envío');
-                }
+                } else throw new Error('Error en el envío');
             } catch (error) {
                 console.error('EmailJS error:', error);
                 formMessage.innerHTML = '<div class="form-message error"><i class="fas fa-exclamation-triangle"></i> Ocurrió un error al enviar. Por favor intente más tarde o contacte directamente por teléfono.</div>';
@@ -606,7 +547,7 @@
         });
     }
 
-    // ---------- SWITCH TABS ----------
+    // TABS Y CARGA INICIAL
     function switchTab(tab) {
         indivDiv.classList.remove("active");
         packDiv.classList.remove("active");
@@ -616,43 +557,25 @@
         else if (tab === "packages") packDiv.classList.add("active");
         else if (tab === "prep") prepDiv.classList.add("active");
         else if (tab === "appointment" && appointmentDiv) appointmentDiv.classList.add("active");
-        
-        tabs.forEach(btn => {
-            if (btn.getAttribute("data-tab") === tab) btn.classList.add("active");
-            else btn.classList.remove("active");
-        });
+        tabs.forEach(btn => { if (btn.getAttribute("data-tab") === tab) btn.classList.add("active"); else btn.classList.remove("active"); });
         currentTab = tab;
-        if (tab === "individual") {
-            buildCategoryFilter();
-            renderIndividual(currentSearch);
-        } else if (tab === "packages") {
-            buildPackageCategoryFilter();
-            renderPackages(currentSearch);
-        } else if (tab === "prep") {
-            renderInstructions();
-        } else if (tab === "appointment") {
-            renderSelectedTestsList();
-        }
+        if (tab === "individual") { buildCategoryFilter(); renderIndividual(currentSearch); }
+        else if (tab === "packages") { buildPackageCategoryFilter(); renderPackages(currentSearch); }
+        else if (tab === "prep") renderInstructions();
+        else if (tab === "appointment") renderSelectedTestsList();
     }
-
     tabs.forEach(btn => btn.addEventListener("click", () => switchTab(btn.getAttribute("data-tab"))));
-
     let searchTimeout;
     searchInput.addEventListener("input", (e) => {
         clearTimeout(searchTimeout);
-        searchTimeout = setTimeout(() => {
-            currentSearch = e.target.value;
-            if (currentTab === "individual") renderIndividual(currentSearch);
-            else if (currentTab === "packages") renderPackages(currentSearch);
-        }, 250);
+        searchTimeout = setTimeout(() => { currentSearch = e.target.value; if (currentTab === "individual") renderIndividual(currentSearch); else if (currentTab === "packages") renderPackages(currentSearch); }, 250);
     });
-
     async function loadCatalog() {
         try {
             const response = await fetch('js/catalog.json');
             catalogData = await response.json();
             buildTestMap();
-            buildStudyDetailsMap();   // Llena el mapa de IDs
+            buildStudyDetailsMap();
             buildCategoryFilter();
             buildPackageCategoryFilter();
             renderIndividual("");
@@ -664,9 +587,7 @@
             document.getElementById("individualStudiesContainer").innerHTML = `<div class="no-result">Error al cargar el catálogo. Por favor recargue la página.</div>`;
         }
     }
-
     loadCatalog();
-
     const packagesContainer = document.getElementById("packagesGridContainer");
     if (packagesContainer) {
         packagesContainer.addEventListener('click', (e) => {
@@ -680,20 +601,11 @@
             }
         });
     }
-
     document.addEventListener('DOMContentLoaded', function() {
         const backToTopBtn = document.getElementById('backToTopBtn');
         if (backToTopBtn) {
-            window.addEventListener('scroll', function() {
-                if (window.scrollY > 400) {
-                    backToTopBtn.classList.add('show');
-                } else {
-                    backToTopBtn.classList.remove('show');
-                }
-            });
-            backToTopBtn.addEventListener('click', function() {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
+            window.addEventListener('scroll', function() { if (window.scrollY > 400) backToTopBtn.classList.add('show'); else backToTopBtn.classList.remove('show'); });
+            backToTopBtn.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
         }
     });
 })();

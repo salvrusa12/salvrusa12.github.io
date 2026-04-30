@@ -1290,7 +1290,7 @@
     {
       "id": "2610180005",
       "name": "Prueba de Azúcares Reductores",
-      "sample": "Heces u Orina",
+      "sample": "Heces, Orina",
       "category": "Parasitología",
       "cost": 237.13,
       "description": "Detecta azúcares no absorbidos en heces (intolerancia a lactosa, malabsorción de carbohidratos).",
@@ -1855,7 +1855,7 @@
         "Examen General De Orina"
       ],
       "cost": null,
-      "sample": "Sangre Total y Orina",
+      "sample": "Suero, Sangre Total y Orina",
       "instructions": [
         "Ayuno de 8 horas para glucosa.",
         "Hemoglobina glicosilada no requiere ayuno."

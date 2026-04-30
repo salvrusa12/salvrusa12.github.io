@@ -1,3 +1,4 @@
+/* ========== RESET Y VARIABLES ========== */
 * {
     margin: 0;
     padding: 0;
@@ -22,6 +23,7 @@ body {
     --shadow-md: 0 12px 28px rgba(0,0,0,0.08);
 }
 
+/* ========== HERO ========== */
 .hero {
     background: linear-gradient(10deg, #133d10 0%, #008D7B 100%);
     color: white;
@@ -60,7 +62,22 @@ body {
     margin-top: 18px;
     backdrop-filter: blur(4px);
 }
+.lab-logo {
+    position: absolute;
+    top: 40%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+    width: 220px;
+    height: auto;
+}
+.lab-logo_mobile {
+    display: none;
+}
+.hero-icon {
+    width: 10%;
+}
 
+/* ========== NAVEGACIÓN TABS ========== */
 .nav-tabs {
     display: flex;
     flex-wrap: wrap;
@@ -100,6 +117,7 @@ body {
     box-shadow: 0 6px 12px rgba(163,195,41,0.3);
 }
 
+/* ========== CONTENEDOR PRINCIPAL ========== */
 .container {
     max-width: 1400px;
     margin: 0 auto;
@@ -112,22 +130,12 @@ body {
 .tab-content.active {
     display: block;
 }
-.lab-logo {
-    position: absolute;
-    top: 40%;
-    left: 20%;
-    transform: translate(-50%, -50%);
-    width: 220px;
-    height: auto;
-}
-.lab-logo_mobile {
-    display: none;
-}
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(8px);}
     to { opacity: 1; transform: translateY(0);}
 }
 
+/* ========== BÚSQUEDA ========== */
 .search-wrapper {
     margin-bottom: 2rem;
     display: flex;
@@ -151,6 +159,7 @@ body {
     box-shadow: 0 0 0 4px rgba(163,195,41,0.2);
 }
 
+/* ========== FILTROS POR CATEGORÍA ========== */
 .category-filter {
     display: flex;
     flex-wrap: wrap;
@@ -195,6 +204,7 @@ body {
     border-color: var(--secondary-dark);
 }
 
+/* ========== ESTUDIOS INDIVIDUALES ========== */
 .category-section {
     margin-bottom: 2rem;
 }
@@ -266,7 +276,17 @@ body {
     font-weight: 500;
     border: 1px dashed var(--secondary);
 }
+.stats-info {
+    background: #EFF7E6;
+    border-radius: 60px;
+    padding: 6px 16px;
+    font-size: 0.75rem;
+    display: inline-block;
+    margin-top: 1rem;
+    font-weight: 500;
+}
 
+/* ========== PAQUETES ========== */
 .packages-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -281,6 +301,7 @@ body {
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    cursor: pointer;
 }
 .package-card:hover {
     transform: translateY(-4px);
@@ -299,10 +320,15 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
+    cursor: pointer;
 }
 .package-name i {
     color: var(--secondary);
     font-size: 1.4rem;
+}
+.package-name:hover {
+    text-decoration: underline;
+    opacity: 0.9;
 }
 .package-badge {
     font-size: 0.7rem;
@@ -336,7 +362,6 @@ body {
     transition: background 0.1s;
     border-radius: 12px;
     padding-left: 6px;
-    cursor: pointer;
 }
 .package-studies-list li:hover {
     background: #F0F9EA;
@@ -355,14 +380,17 @@ body {
     border-top: 1px solid #EAF0E2;
     border-bottom: 1px solid #EAF0E2;
     text-align: center;
+    cursor: pointer;
 }
 .package-footer-note {
     padding: 0.7rem 1.5rem 1.2rem;
     font-size: 0.7rem;
     color: #6b8c80;
     background: white;
+    cursor: pointer;
 }
 
+/* ========== POPUP DE DETALLE ========== */
 .test-popup {
     position: fixed;
     z-index: 1001;
@@ -373,6 +401,12 @@ body {
     width: 90%;
     border-top: 6px solid var(--primary);
     overflow: hidden;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
 }
 .popup-header {
     background: #FCFEF8;
@@ -406,52 +440,9 @@ body {
 }
 .popup-body {
     padding: 1rem 1.2rem 1.2rem;
-    max-height: 60vh;
     overflow-y: auto;
+    flex: 1;
 }
-
-#popupDescription {
-    font-size: 0.9rem;
-    color: #577a6e;
-    line-height: 1.4;
-    text-align: justify;
-    font-weight: 700;
-}
-
-.popup-footer {
-    background: #FCFEF8;
-    padding: 0.8rem 1.2rem;
-    border-top: 1px solid #EFF3E8;
-    font-size: 0.75rem;
-    color: #6b8c80;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-footer .phone {
-    margin-left: -70%;
-    margin-bottom: -3%;
-    font-weight: 700;
-    font-size: 1.5rem;
-    color: #ffffff;
-}
-
-/* Dirección del laboratorio en el footer */
-.footer-address {
-    font-size: 1rem;          /* Letra más pequeña */
-    margin-top: 25px;           /* Separación del contenido superior */
-    text-align: center;
-    color: #ffffff;             /* Mismo color que el texto del footer */
-    opacity: 1;
-    line-height: 1;
-    margin-left: 0;  
-    font-weight: 700;           /* Anula cualquier margin-left heredado (ej. .phone) */
-}
-
-
-
 .popup-section {
     margin-bottom: 1rem;
 }
@@ -463,12 +454,19 @@ footer .phone {
     font-size: 0.85rem;
 }
 .popup-section ul {
-    padding-left: 1.2rem;
-    margin-top: 4px;
+    list-style: none;
+    padding-left: 0;
 }
 .popup-section li {
     margin-bottom: 5px;
     font-size: 0.85rem;
+}
+#popupDescription {
+    font-size: 0.9rem;
+    color: #577a6e;
+    line-height: 1.4;
+    text-align: justify;
+    font-weight: 700;
 }
 .badge-id {
     background: #E9F3E2;
@@ -483,6 +481,17 @@ footer .phone {
     font-size: 1.3rem;
     font-weight: 700;
 }
+.popup-footer {
+    background: #FCFEF8;
+    padding: 0.8rem 1.2rem;
+    border-top: 1px solid #EFF3E8;
+    font-size: 0.75rem;
+    color: #6b8c80;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .overlay-popup {
     position: fixed;
     top: 0;
@@ -494,6 +503,7 @@ footer .phone {
     display: none;
 }
 
+/* ========== INSTRUCCIONES GENERALES ========== */
 .instructions-grid {
     display: flex;
     flex-direction: column;
@@ -534,61 +544,19 @@ footer .phone {
     margin-top: 2rem;
     border-left: 5px solid var(--primary);
 }
+
+/* ========== FOOTER ========== */
 footer {
     background: #112B27;
     color: #C1DFD8;
     text-align: center;
-    padding: 2rem;
+    padding: 1rem;
     margin-top: 3rem;
     font-size: 0.85rem;
 }
-.stats-info {
-    background: #EFF7E6;
-    border-radius: 60px;
-    padding: 6px 16px;
-    font-size: 0.75rem;
-    display: inline-block;
-    margin-top: 1rem;
-    font-weight: 500;
+.footer p {
+    margin-bottom: -2%;
 }
-.test-popup {
-    position: fixed;
-    z-index: 1001;
-    background: white;
-    border-radius: 28px;
-    box-shadow: 0 25px 40px -12px rgba(0,0,0,0.25);
-    max-width: 420px;
-    width: 90%;
-    border-top: 6px solid var(--primary);
-    overflow: hidden;
-
-    /* 👇 Nuevas propiedades para centrar */
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    
-    /* Para móviles muy pequeños */
-    max-height: 90vh;
-    display: flex;
-    flex-direction: column;
-}
-
-/* Ajuste del cuerpo del popup para scroll interno */
-.popup-body {
-    padding: 1rem 1.2rem 1.2rem;
-    overflow-y: auto;
-    flex: 1;
-}
-
-.popup-section ul {
-    list-style: none;
-    padding-left: 0;
-}
-
-.hero-icon {
-    width: 10%;;
-}
-
 .info-note-box {
     font-size: 1.25rem;
     color: #577a6e;
@@ -597,83 +565,85 @@ footer {
     display: block;
     margin-bottom: -65px;
 }
-
 #ext_price {
     font-size: 1.00rem;
 }
 
+/* Contenedor de la línea superior (responsable + teléfono) */
+.info-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Responsable sanitario: bloque izquierdo centrado en 15% ancho (desktop) */
+.health-license {
+    width: 15%;
+    text-align: center;
+    font-size: 0.75rem;
+    line-height: 1.3;
+    margin: 0;
+    padding: 0;
+    color: #d2fcf2;
+}
+
+/* Teléfono: a la derecha, tamaño grande en escritorio */
 .phone {
-    margin-top: 12px;
-    font-size: 1rem;
+    margin: 0;
+    padding: 0;
+    font-size: 1.7rem;
+    white-space: nowrap;
+    font-weight: 700;
+    color: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    width: auto;
+}
+.phone i {
     color: #a6f9bd;
 }
 
-
-.package-name {
-    cursor: pointer;
-    transition: opacity 0.2s;
-}
-.package-name:hover {
-    text-decoration: underline;
-    opacity: 0.9;
-}
-
-.package-card {
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.package-studies-list li {
-    cursor: pointer;
-}
-
-/* Evita que el cursor de mano herede el de la tarjeta en elementos internos no cliqueables */
-.package-card .package-cost,
-.package-card .package-footer-note {
-    cursor: pointer;
-}
-
-
-/* Botón flotante "Volver arriba" */
-.back-to-top {
-    position: fixed;
-    bottom: 2rem;
-    right: 1.5rem;
-    width: 50px;
-    height: 50px;
-    background-color: var(--primary);
-    color: #1E2A1C;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    transition: all 0.2s ease;
-    z-index: 1050;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s, visibility 0.3s, transform 0.2s;
-}
-
-.back-to-top.show {
+/* Dirección */
+.footer-address {
+    font-size: 1rem;
+    margin-top: 25px;
+    text-align: center;
+    color: #ffffff;
     opacity: 1;
-    visibility: visible;
+    line-height: 1;
+    margin-left: 0;
+    font-weight: 700;
 }
 
-.back-to-top:hover {
-    background-color: var(--primary-dark);
-    transform: translateY(-3px);
-    box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+/* Enlaces legales */
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1.5rem;
+    padding: 0 1rem;
+}
+.privacy-link {
+    color: #c1dfd8;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+.privacy-link:hover {
+    color: #a6f9bd;
+    text-decoration: underline;
 }
 
-.back-to-top:active {
-    transform: translateY(2px);
-}
-
-/* ===== FORMULARIO DE SOLICITUD ===== */
+/* ========== FORMULARIO DE SOLICITUD ========== */
 .appointment-form-container {
     background: white;
     border-radius: 32px;
@@ -681,20 +651,17 @@ footer {
     box-shadow: var(--shadow-sm);
     border: 1px solid #EAF0E4;
 }
-
 .appointment-form-container h3 {
     font-size: 1.8rem;
     color: #1A5A52;
     margin-bottom: 0.5rem;
 }
-
 .selected-tests-section {
     background: #F9FCF4;
     border-radius: 24px;
     padding: 1.2rem;
     margin: 1.5rem 0;
 }
-
 .selected-tests-list {
     min-height: 80px;
     max-height: 200px;
@@ -705,7 +672,6 @@ footer {
     margin-bottom: 1rem;
     border: 1px solid #E4EFDA;
 }
-
 .selected-test-item {
     display: flex;
     justify-content: space-between;
@@ -714,7 +680,6 @@ footer {
     border-bottom: 1px solid #EDF3E5;
     font-size: 0.9rem;
 }
-
 .selected-test-item .remove-test {
     background: none;
     border: none;
@@ -723,18 +688,15 @@ footer {
     font-size: 1rem;
     padding: 0 8px;
 }
-
 .selected-test-item .remove-test:hover {
     color: #c9302c;
 }
-
 .empty-selected {
     color: #8aa88a;
     text-align: center;
     font-style: italic;
     padding: 1rem;
 }
-
 .btn-add-study {
     background: var(--secondary);
     color: white;
@@ -748,24 +710,20 @@ footer {
     align-items: center;
     gap: 8px;
 }
-
 .btn-add-study:hover {
     background: var(--secondary-dark);
     transform: translateY(-2px);
 }
-
 .form-row {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
     margin-bottom: 1rem;
 }
-
 .form-group {
     flex: 1;
     min-width: 180px;
 }
-
 .form-group label {
     font-weight: 600;
     color: #1e5a4a;
@@ -773,7 +731,6 @@ footer {
     margin-bottom: 6px;
     font-size: 0.85rem;
 }
-
 .form-group input, .form-group textarea {
     width: 100%;
     padding: 12px 16px;
@@ -782,13 +739,11 @@ footer {
     font-family: inherit;
     transition: 0.2s;
 }
-
 .form-group input:focus, .form-group textarea:focus {
     outline: none;
     border-color: var(--primary);
     box-shadow: 0 0 0 3px rgba(163,195,41,0.2);
 }
-
 .btn-submit {
     background: var(--primary);
     color: #1E2A1C;
@@ -806,12 +761,10 @@ footer {
     width: 100%;
     justify-content: center;
 }
-
 .btn-submit:hover {
     background: var(--primary-dark);
     transform: translateY(-2px);
 }
-
 .form-message {
     margin-top: 1rem;
     padding: 1rem;
@@ -819,18 +772,40 @@ footer {
     text-align: center;
     font-weight: 500;
 }
-
 .form-message.success {
     background: #E0F2E9;
     color: #0a6e4a;
 }
-
 .form-message.error {
     background: #FBE9E7;
     color: #c0392b;
 }
+.total-cost-container {
+    background: #F0F7E8;
+    border-radius: 28px;
+    padding: 1rem 1.5rem;
+    margin: 1rem 0;
+    text-align: center;
+    border: 1px solid #D4E2CA;
+}
+.total-label {
+    font-size: 0.9rem;
+    color: #1e5a4a;
+    margin-bottom: 6px;
+}
+.total-amount {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--primary-dark);
+    letter-spacing: -0.5px;
+}
+.total-note {
+    font-size: 0.7rem;
+    color: #6b8c80;
+    margin-top: 6px;
+}
 
-/* Modal selector de estudios */
+/* ========== MODAL SELECTOR DE ESTUDIOS ========== */
 .modal-selector {
     position: fixed;
     top: 0;
@@ -843,7 +818,6 @@ footer {
     justify-content: center;
     align-items: center;
 }
-
 .modal-content {
     background: white;
     width: 90%;
@@ -855,7 +829,6 @@ footer {
     overflow: hidden;
     box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
 }
-
 .modal-header {
     display: flex;
     justify-content: space-between;
@@ -864,12 +837,10 @@ footer {
     border-bottom: 1px solid #EAF0E2;
     background: #FCFEF8;
 }
-
 .modal-header h3 {
     margin: 0;
     color: #1A5A52;
 }
-
 .close-modal {
     background: none;
     border: none;
@@ -877,17 +848,14 @@ footer {
     cursor: pointer;
     color: #8aa88a;
 }
-
 .close-modal:hover {
     color: #d9534f;
 }
-
 .modal-body {
     padding: 1rem;
     flex: 1;
     overflow-y: auto;
 }
-
 .search-input-modal {
     width: 100%;
     padding: 12px 18px;
@@ -896,65 +864,6 @@ footer {
     margin-bottom: 1rem;
     font-family: inherit;
 }
-
-.modal-results {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.modal-study-item {
-    background: #F9FCF4;
-    padding: 10px 16px;
-    border-radius: 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    transition: 0.1s;
-}
-
-.modal-study-item:hover {
-    background: #E9F3E2;
-}
-
-.modal-study-name {
-    font-weight: 500;
-}
-
-.btn-add-modal {
-    background: var(--secondary);
-    color: white;
-    border: none;
-    border-radius: 40px;
-    padding: 5px 14px;
-    font-size: 0.75rem;
-    cursor: pointer;
-    transition: 0.1s;
-}
-
-.btn-add-modal:hover {
-    background: var(--secondary-dark);
-}
-
-.modal-footer {
-    padding: 1rem;
-    border-top: 1px solid #EAF0E2;
-    display: flex;
-    justify-content: flex-end;
-}
-
-.btn-secondary {
-    background: #E9F3E2;
-    border: none;
-    padding: 8px 20px;
-    border-radius: 40px;
-    cursor: pointer;
-    font-weight: 500;
-}
-
-
-/* Botones de filtro dentro del modal */
 .modal-filter-buttons {
     display: flex;
     gap: 10px;
@@ -983,34 +892,124 @@ footer {
     background: #E9F3E2;
     border-color: var(--primary);
 }
-
-
-.total-cost-container {
-    background: #F0F7E8;
-    border-radius: 28px;
-    padding: 1rem 1.5rem;
-    margin: 1rem 0;
-    text-align: center;
-    border: 1px solid #D4E2CA;
+.modal-results {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
-.total-label {
+.modal-study-item {
+    background: #F9FCF4;
+    padding: 10px 16px;
+    border-radius: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.1s;
+}
+.modal-study-item:hover {
+    background: #E9F3E2;
+}
+.modal-study-name {
+    font-weight: 500;
+}
+.btn-add-modal {
+    background: var(--secondary);
+    color: white;
+    border: none;
+    border-radius: 40px;
+    padding: 5px 14px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: 0.1s;
+}
+.btn-add-modal:hover {
+    background: var(--secondary-dark);
+}
+.modal-footer {
+    padding: 1rem;
+    border-top: 1px solid #EAF0E2;
+    display: flex;
+    justify-content: flex-end;
+}
+.btn-secondary {
+    background: #E9F3E2;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 40px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+/* ========== ICONOS DE TIPO DE MUESTRA ========== */
+.icon-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    margin-top: 8px;
+    justify-content: flex-start;
+}
+.sample-type-icon {
+    width: 45px;
+    height: auto;
+    max-width: 100%;
+    object-fit: contain;
+    transition: transform 0.2s ease;
+}
+.sample-type-fa {
+    font-size: 2rem;
+    color: var(--secondary-dark);
+}
+.sample-type-text {
+    font-weight: 500;
+    margin-bottom: 4px;
     font-size: 0.9rem;
-    color: #1e5a4a;
-    margin-bottom: 6px;
+    color: #2c5e56;
 }
-.total-amount {
-    font-size: 2.2rem;
-    font-weight: 800;
-    color: var(--primary-dark);
-    letter-spacing: -0.5px;
-}
-.total-note {
-    font-size: 0.7rem;
-    color: #6b8c80;
-    margin-top: 6px;
+.sample-text-fallback {
+    font-style: italic;
+    color: #8aa88a;
 }
 
+/* ========== BOTÓN VOLVER ARRIBA ========== */
+.back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 1.5rem;
+    width: 50px;
+    height: 50px;
+    background-color: var(--primary);
+    color: #1E2A1C;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: all 0.2s ease;
+    z-index: 1050;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s, transform 0.2s;
+}
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+.back-to-top:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+}
+.back-to-top:active {
+    transform: translateY(2px);
+}
 
+/* ========== MEDIA QUERIES RESPONSIVE ========== */
+/* Pantallas medianas (tablets) */
 @media (max-width: 1024px) {
     .container { padding: 1rem; }
     .studies-grid { grid-template-columns: 1fr; }
@@ -1018,17 +1017,24 @@ footer {
     .tab-btn { padding: 6px 16px; font-size: 0.85rem; }
     .category-filter { gap: 8px; }
     .category-chip { padding: 6px 14px; font-size: 0.75rem; }
-    .lab-logo {display: block; transform: translate(-120%, -50%); max-width: 15%}
-    .lab-logo_mobile {display: none}
+    .lab-logo { display: block; transform: translate(-120%, -50%); max-width: 15%; }
+    .lab-logo_mobile { display: none; }
     .fa-flask { display: none; }
-    footer .phone {display: contents; font-size: 1.3rem;}
-    .info-note-box {margin-bottom: -50px;}
-    .footer-address {
-        font-size: 0.6rem;
-        margin-top: 0.8rem;
+    .info-note-box { margin-bottom: -50px; }
+    .footer-address { font-size: 0.6rem; margin-top: 0.8rem; }
+    
+    /* Ajustes específicos footer en tablet */
+    .phone {
+        font-size: 1.1rem;
+        white-space: nowrap;
+    }
+    .health-license {
+        width: 20%;
+        font-size: 0.7rem;
     }
 }
 
+/* Pantallas pequeñas (móviles anchos) */
 @media (max-width: 1000px) {
     .container { padding: 1rem; }
     .studies-grid { grid-template-columns: 1fr; }
@@ -1036,56 +1042,79 @@ footer {
     .tab-btn { padding: 6px 16px; font-size: 0.85rem; }
     .category-filter { gap: 8px; }
     .category-chip { padding: 6px 14px; font-size: 0.75rem; }
-    .lab-logo { display: none}
-    .lab-logo_mobile {display: block; margin: 0 auto 0.3rem auto; max-width: 65%}
+    .lab-logo { display: none; }
+    .lab-logo_mobile { display: block; margin: 0 auto 0.3rem auto; max-width: 65%; }
     .fa-flask { display: none; }
-
-    .study-card,
-    .package-card {
-        width: 90%;
-        margin-left: auto;
-        margin-right: auto;
+    .study-card, .package-card { width: 90%; margin-left: auto; margin-right: auto; }
+    .studies-grid, .packages-grid { justify-items: center; align-items: center; }
+    .study-card { padding: 12px 16px; }
+    .package-card { margin-bottom: 1.2rem; }
+    .back-to-top { visibility: visible; }
+    .sample-type-icon { width: 35px; }
+    .sample-type-fa { font-size: 1.6rem; }
+        .info-footer {
+        flex-direction: column;
+        justify-content: center;
+        gap: 0.5rem;
+        margin: 0.5rem 0;
     }
-
-    /* Evita que el grid estire las tarjetas al 100% */
-    .studies-grid,
-    .packages-grid {
-        justify-items: center;
-        align-items: center;
+    .health-license {
+        width: auto;
+        font-size: 0.7rem;
+        margin: 0;
     }
-
-    /* Opcional: mejorar el espaciado interno de las tarjetas */
-    .study-card {
-        padding: 12px 16px;
-    }
-    .package-card {
-        margin-bottom: 1.2rem;
-    }
-    .back-to-top {
-        visibility: visible;
-    }
-}
-
-@media (max-width: 768px) {
-    .back-to-top {
-        width: 44px;
-        height: 44px;
-        font-size: 1.2rem;
-        bottom: 1.2rem;
-        right: 1rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .test-popup {
-        width: 95%;
-        max-width: 95%;
-        border-radius: 20px;
-    }
-    .popup-header h3 {
+    .phone {
         font-size: 1rem;
+        white-space: normal;
+        width: auto;
+        margin: 0;
     }
-    .popup-body {
-        padding: 0.8rem;
+}
+
+/* Móviles (menos de 768px) */
+@media (max-width: 768px) {
+    .back-to-top { width: 44px; height: 44px; font-size: 1.2rem; bottom: 1.2rem; right: 1rem; }
+    
+    /* Footer en móvil: se apila verticalmente sin romperse */
+    .info-footer {
+        flex-direction: column;
+        justify-content: center;
+        gap: 0.5rem;
+        margin: 0.5rem 0;
+    }
+    .health-license {
+        width: auto;
+        font-size: 0.7rem;
+        margin: 0;
+    }
+    .phone {
+        font-size: 1rem;
+        white-space: normal;
+        width: auto;
+        margin: 0;
+    }
+    .footer-links {
+        gap: 1rem;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 1rem;
+    }
+    .privacy-link {
+        font-size: 0.75rem;
+    }
+}
+
+/* Móviles muy pequeños (menos de 480px) */
+@media (max-width: 480px) {
+    .test-popup { width: 95%; max-width: 95%; border-radius: 20px; }
+    .popup-header h3 { font-size: 1rem; }
+    .popup-body { padding: 0.8rem; }
+    .popup-footer { padding: 0.1rem; font-size: 0.65rem; }
+    
+    .phone {
+        font-size: 0.9rem;
+    }
+    .health-license {
+        font-size: 0.65rem;
     }
 }
