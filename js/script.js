@@ -28,7 +28,7 @@
     const appointmentDiv = document.getElementById("appointmentTab");
     const searchInput = document.getElementById("globalSearch");
 
-    // ---------- NUEVA FUNCIÓN: normalizar tipos de muestra ----------
+    //Normalizar tipos de muestra ----------
     function normalizeSampleTypes(sampleStr) {
         if (!sampleStr) return [];
         // Separar por comas o por " y " (español)
@@ -553,23 +553,49 @@
         packDiv.classList.remove("active");
         prepDiv.classList.remove("active");
         if (appointmentDiv) appointmentDiv.classList.remove("active");
+
         if (tab === "individual") indivDiv.classList.add("active");
         else if (tab === "packages") packDiv.classList.add("active");
         else if (tab === "prep") prepDiv.classList.add("active");
         else if (tab === "appointment" && appointmentDiv) appointmentDiv.classList.add("active");
-        tabs.forEach(btn => { if (btn.getAttribute("data-tab") === tab) btn.classList.add("active"); else btn.classList.remove("active"); });
+
+        tabs.forEach(btn => {
+            if (btn.getAttribute("data-tab") === tab) btn.classList.add("active");
+            else btn.classList.remove("active");
+        });
+
+        // Ocultar/mostrar el cuadro de búsqueda global
+        const searchWrapper = document.querySelector('.search-wrapper');
+        if (searchWrapper) {
+            searchWrapper.style.display = tab === 'appointment' ? 'none' : 'flex';
+        }
+
         currentTab = tab;
-        if (tab === "individual") { buildCategoryFilter(); renderIndividual(currentSearch); }
-        else if (tab === "packages") { buildPackageCategoryFilter(); renderPackages(currentSearch); }
-        else if (tab === "prep") renderInstructions();
-        else if (tab === "appointment") renderSelectedTestsList();
+        if (tab === "individual") {
+            buildCategoryFilter();
+            renderIndividual(currentSearch);
+        } else if (tab === "packages") {
+            buildPackageCategoryFilter();
+            renderPackages(currentSearch);
+        } else if (tab === "prep") {
+            renderInstructions();
+        } else if (tab === "appointment") {
+            renderSelectedTestsList();
+        }
     }
+
     tabs.forEach(btn => btn.addEventListener("click", () => switchTab(btn.getAttribute("data-tab"))));
+
     let searchTimeout;
     searchInput.addEventListener("input", (e) => {
         clearTimeout(searchTimeout);
-        searchTimeout = setTimeout(() => { currentSearch = e.target.value; if (currentTab === "individual") renderIndividual(currentSearch); else if (currentTab === "packages") renderPackages(currentSearch); }, 250);
+        searchTimeout = setTimeout(() => {
+            currentSearch = e.target.value;
+            if (currentTab === "individual") renderIndividual(currentSearch);
+            else if (currentTab === "packages") renderPackages(currentSearch);
+        }, 250);
     });
+
     async function loadCatalog() {
         try {
             const response = await fetch('js/catalog.json');
@@ -588,6 +614,7 @@
         }
     }
     loadCatalog();
+
     const packagesContainer = document.getElementById("packagesGridContainer");
     if (packagesContainer) {
         packagesContainer.addEventListener('click', (e) => {
@@ -601,11 +628,20 @@
             }
         });
     }
+
     document.addEventListener('DOMContentLoaded', function() {
         const backToTopBtn = document.getElementById('backToTopBtn');
         if (backToTopBtn) {
-            window.addEventListener('scroll', function() { if (window.scrollY > 400) backToTopBtn.classList.add('show'); else backToTopBtn.classList.remove('show'); });
-            backToTopBtn.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 400) backToTopBtn.classList.add('show');
+                else backToTopBtn.classList.remove('show');
+            });
+            backToTopBtn.addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         }
     });
+
+
+
 })();
