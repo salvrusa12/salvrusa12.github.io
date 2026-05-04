@@ -649,7 +649,7 @@
       "name": "Capacidad Latente de Fijación de Hierro UIBC",
       "sample": "Suero",
       "category": "Marcadores y Vitaminas",
-      "cost": null,
+      "cost": 350.00,
       "description": "Mide la transferrina no saturada. Útil en el diagnóstico diferencial de anemias y sobrecarga de hierro.",
       "instructions": [
         "Ayuno de 8 horas.",
@@ -865,7 +865,7 @@
       "name": "Hepatitis B Prueba Rápida",
       "sample": "Suero",
       "category": "Serología y Pruebas Rápidas",
-      "cost": null,
+      "cost": 1160.00,
       "description": "Detección rápida del antígeno de superficie del virus de Hepatitis B (HBsAg). Tamizaje para infección activa.",
       "instructions": [
         "No requiere ayuno."
@@ -942,7 +942,7 @@
       "name": "Prueba Rápida de COVID-19 / Influenza A‑B",
       "sample": "Suero",
       "category": "Serología y Pruebas Rápidas",
-      "cost": null,
+      "cost": 530.00,
       "description": "Detección simultánea de antígenos para SARS-CoV-2, Influenza A y B en hisopado nasofaríngeo.",
       "instructions": [
         "No requiere ayuno."
@@ -1418,7 +1418,7 @@
       "name": "Tamiz Neonatal Ampliado",
       "sample": "Sangre Capilar",
       "category": "Tamizaje",
-      "cost": 1274.71,
+      "cost": 1765.00,
       "description": "Detección temprana de más de 50 enfermedades metabólicas, endocrinas y genéticas en recién nacidos (hipotiroidismo, fenilcetonuria, fibrosis quística, etc.).",
       "instructions": [
         "Se realiza a recién nacidos entre las 24 y 72 horas de vida.",
@@ -1820,7 +1820,7 @@
         "Dehidroepiandrosterona Sulfato DHEAS",
         "Testosterona Libre Y Total"
       ],
-      "cost": null,
+      "cost": 4435.00,
       "sample": "Suero",
       "instructions": [
         "Ayuno de 8 horas.",
@@ -1839,7 +1839,7 @@
         "Biometría Hemática",
         "Antiestreptolisinas ASO"
       ],
-      "cost": null,
+      "cost": 1180.00,
       "sample": "Sangre Total y Suero",
       "instructions": [
         "Ayuno de 8 horas para ácido úrico."
@@ -1870,7 +1870,7 @@
         "Glucosa 1h",
         "Glucosa 2 h"
       ],
-      "cost": null,
+      "cost": 865.00,
       "sample": "Suero",
       "instructions": [
         "Ayuno de 8 a 12 horas para la muestra basal.",
@@ -1939,7 +1939,7 @@
         "Tiempo De Tromboplastina Parcial Activada TPTa",
         "INR"
       ],
-      "cost": null,
+      "cost": 1160.00,
       "sample": "Sangre Total, Suero y Plasma",
       "instructions": [
         "Ayuno de 8 a 12 horas.",
@@ -1954,7 +1954,7 @@
         "Anticuerpo Anti Peroxidasa Tiroidea TPO",
         "Anticuerpos Anti Tiroglobulina TG"
       ],
-      "cost": null,
+      "cost": 1230.00,
       "sample": "Suero",
       "instructions": [
         "No requiere ayuno."
@@ -1987,7 +1987,7 @@
         "Metanfetaminas",
         "Tetrahidrocanabinoides"
       ],
-      "cost": null,
+      "cost": 1040.00,
       "sample": "Orina",
       "instructions": [
         "No requiere ayuno.",
@@ -2001,7 +2001,7 @@
       "tests": [
         "Tamiz Neonatal Ampliado"
       ],
-      "cost": null,
+      "cost": 1765.00,
       "sample": "Sangre Capilar",
       "instructions": [
         "Se realiza a recién nacidos entre las 24 y 72 horas de vida."
