@@ -5,7 +5,7 @@
       "name": "Biometría Hemática",
       "sample": "Sangre Total",
       "category": "Hematología",
-      "cost": 237.86,
+      "cost": 240.00,
       "description": "Valora los componentes celulares de la sangre: glóbulos rojos, blancos y plaquetas. Útil para detectar anemias, infecciones, leucemias y trastornos de coagulación.",
       "instructions": [
         "No requiere ayuno.",
@@ -18,7 +18,7 @@
       "name": "Grupo Sanguíneo Y RH",
       "sample": "Sangre Total",
       "category": "Hematología",
-      "cost": 236.72,
+      "cost": 240.00,
       "description": "Determina el tipo de sangre (A, B, AB, O) y el factor Rh positivo o negativo. Esencial para transfusiones, donación y embarazo.",
       "instructions": [
         "No requiere ayuno.",
@@ -30,7 +30,7 @@
       "name": "Velocidad De Sedimentación Globular (VSG)",
       "sample": "Sangre Total",
       "category": "Hematología",
-      "cost": 253.18,
+      "cost": 255.00,
       "description": "Mide la rapidez con que sedimentan los glóbulos rojos. Se eleva en procesos inflamatorios, infecciosos o autoinmunes.",
       "instructions": [
         "No requiere ayuno.",
@@ -42,7 +42,7 @@
       "name": "Conteo De Reticulocitos",
       "sample": "Sangre Total",
       "category": "Hematología",
-      "cost": 180.20,
+      "cost": 185.00,
       "description": "Evalúa la producción de glóbulos rojos nuevos por la médula ósea. Ayuda a diferenciar tipos de anemia y a monitorizar su tratamiento.",
       "instructions": [
         "No requiere ayuno."
@@ -53,7 +53,7 @@
       "name": "Glucosa",
       "sample": "Suero",
       "category": "Química Clínica",
-      "cost": 137.49,
+      "cost": 140.00,
       "description": "Mide el nivel de azúcar en sangre. Fundamental para el diagnóstico y seguimiento de diabetes mellitus, hipoglucemia y otras alteraciones metabólicas.",
       "instructions": [
         "Ayuno de 8 a 12 horas.",
@@ -67,7 +67,7 @@
       "name": "Hemoglobina Glicosilada HbA1c",
       "sample": "Sangre Total",
       "category": "Química Clínica",
-      "cost": 375.38,
+      "cost": 380.00,
       "description": "Refleja el promedio de glucosa en sangre durante los últimos 2-3 meses. Es el estándar para el control metabólico en pacientes diabéticos.",
       "instructions": [
         "No es necesario acudir en ayuno."
@@ -78,7 +78,7 @@
       "name": "Glucosa Postprandial",
       "sample": "Suero",
       "category": "Química Clínica",
-      "cost": 183.94,
+      "cost": 185.00,
       "description": "Mide la glucosa 2 horas después de una comida. Evalúa la capacidad del cuerpo para manejar la glucosa post-ingesta, útil en diabetes y prediabetes.",
       "instructions": [
         "Ayuno de 8 a 12 horas para la muestra basal.",
@@ -91,7 +91,7 @@
       "name": "Urea",
       "sample": "Suero",
       "category": "Química Clínica",
-      "cost": 110.37,
+      "cost": 115.00,
       "description": "Producto del metabolismo proteico. Se eleva en deshidratación, falla renal, dieta alta en proteínas o sangrado digestivo.",
       "instructions": [
         "Ayuno de 8 a 12 horas.",
@@ -103,7 +103,7 @@
       "name": "Creatinina",
       "sample": "Suero",
       "category": "Química Clínica",
-      "cost": 126.24,
+      "cost": 130.00,
       "description": "Marcador clave de la función renal. Sus niveles se incrementan cuando los riñones no filtran adecuadamente.",
       "instructions": [
         "Ayuno de 8 a 12 horas.",
@@ -115,7 +115,7 @@
       "name": "Nitrógeno Uréico en Sangre (BUN)",
       "sample": "Suero",
       "category": "Química Clínica",
-      "cost": 110.37,
+      "cost": 115.00,
       "description": "Complemento de la creatinina para evaluar la función renal y el estado de hidratación. Se eleva en daño renal o deshidratación.",
       "instructions": [
         "Ayuno de 8 a 12 horas.",
@@ -128,7 +128,7 @@
       "name": "Ácido Úrico",
       "sample": "Suero",
       "category": "Química Clínica",
-      "cost": 305.97,
+      "cost": 310.00,
       "description": "Producto de la degradación de purinas. Niveles altos causan gota, cálculos renales y se asocian a riesgo cardiovascular.",
       "instructions": [
         "Ayuno de 8 a 12 horas.",
@@ -140,7 +140,7 @@
       "name": "Colesterol Total",
       "sample": "Suero",
       "category": "Química Clínica",
-      "cost": 150.15,
+      "cost": 155.00,
       "description": "Mide la cantidad total de colesterol (lipoproteínas). Su elevación es factor de riesgo para enfermedades cardiovasculares.",
       "instructions": [
         "Ayuno estricto de 12 horas.",
@@ -153,7 +153,7 @@
       "name": "Colesterol HDL",
       "sample": "Suero",
       "category": "Química Clínica",
-      "cost": 228.54,
+      "cost": 230.00,
       "description": "El “colesterol bueno”. Ayuda a eliminar el exceso de colesterol de las arterias; niveles bajos aumentan riesgo cardiovascular.",
       "instructions": [
         "Ayuno estricto de 12 horas.",
@@ -165,7 +165,7 @@
       "name": "Colesterol LDL",
       "sample": "Suero",
       "category": "Química Clínica",
-      "cost": 280.57,
+      "cost": 285.00,
       "description": "El “colesterol malo”. Su exceso se deposita en las arterias formando placas de ateroma, principal causa de infartos y ACV.",
       "instructions": [
         "Ayuno estricto de 12 horas.",
@@ -177,7 +177,7 @@
       "name": "Triglicéridos",
       "sample": "Suero",
       "category": "Química Clínica",
-      "cost": 220.38,
+      "cost": 225.00,
       "description": "Grasas que almacenan energía. Elevados por obesidad, diabetes o consumo de alcohol, aumentan riesgo de pancreatitis y enfermedad cardiovascular.",
       "instructions": [
         "Ayuno estricto de 12 horas.",
@@ -189,7 +189,7 @@
       "name": "Calcio",
       "sample": "Suero",
       "category": "Química Clínica",
-      "cost": 247.75,
+      "cost": 250.00,
       "description": "Mineral esencial para huesos, dientes, contracción muscular y coagulación. Se altera en enfermedades óseas, renales, tiroideas o paratiroideas.",
       "instructions": [
         "Ayuno de 8 a 12 horas.",
@@ -201,7 +201,7 @@
       "name": "Sodio",
       "sample": "Suero",
       "category": "Química Clínica",
-      "cost": 368.25,
+      "cost": 370.00,
       "description": "Regula el equilibrio hídrico y la presión arterial. Se altera en deshidratación, sobrehidratación, insuficiencia renal o uso de diuréticos.",
       "instructions": [
         "Ayuno de 8 a 12 horas.",
@@ -213,7 +213,7 @@
       "name": "Potasio",
       "sample": "Suero",
       "category": "Química Clínica",
-      "cost": 368.25,
+      "cost": 370.00,
       "description": "Fundamental para la función nerviosa y muscular, especialmente cardíaca. Alteraciones graves pueden causar arritmias o debilidad.",
       "instructions": [
         "Ayuno de 8 a 12 horas.",
@@ -225,7 +225,7 @@
       "name": "Cloro",
       "sample": "Suero",
       "category": "Química Clínica",
-      "cost": 282.63,
+      "cost": 285.00,
       "description": "Junto con el sodio, mantiene el equilibrio ácido-base y la presión osmótica. Se altera en trastornos hidroelectrolíticos.",
       "instructions": [
         "Ayuno de 8 a 12 horas."
@@ -236,7 +236,7 @@
       "name": "Magnesio",
       "sample": "Suero",
       "category": "Química Clínica",
-      "cost": 195.21,
+      "cost": 200.00,
       "description": "Importante para la función muscular, nerviosa y ósea. Su deficiencia se asocia a calambres, arritmias y osteoporosis.",
       "instructions": [
         "Ayuno de 8 a 12 horas.",
@@ -248,7 +248,7 @@
       "name": "Fósforo",
       "sample": "Suero",
       "category": "Química Clínica",
-      "cost": 247.75,
+      "cost": 250.00,
       "description": "Esencial para huesos y producción de energía. Se eleva en insuficiencia renal y baja en desnutrición o hiperparatiroidismo.",
       "instructions": [
         "Ayuno de 8 a 12 horas."
@@ -259,7 +259,7 @@
       "name": "Albúmina",
       "sample": "Suero",
       "category": "Química Clínica",
-      "cost": 282.51,
+      "cost": 285.00,
       "description": "Proteína más abundante en sangre. Baja en enfermedades hepáticas, renales (síndrome nefrótico) o desnutrición.",
       "instructions": [
         "Ayuno de 8 a 12 horas."
@@ -270,7 +270,7 @@
       "name": "Globulina",
       "sample": "Suero",
       "category": "Química Clínica",
-      "cost": 156.36,
+      "cost": 160.00,
       "description": "Incluye anticuerpos y otras proteínas. Se eleva en infecciones crónicas, enfermedades autoinmunes o mieloma múltiple.",
       "instructions": [
         "Ayuno de 8 a 12 horas."
@@ -281,7 +281,7 @@
       "name": "Proteínas Totales",
       "sample": "Suero",
       "category": "Química Clínica",
-      "cost": 180.20,
+      "cost": 185.00,
       "description": "Suma de albúmina y globulinas. Útil para evaluar estado nutricional, enfermedades hepáticas, renales o inflamatorias.",
       "instructions": [
         "Ayuno de 8 a 12 horas."
@@ -292,7 +292,7 @@
       "name": "Alanina Aminotransferasa ALT",
       "sample": "Suero",
       "category": "Perfil Hepático / Enzimas",
-      "cost": 188.11,
+      "cost": 190.00,
       "description": "Enzima hepática que se eleva principalmente en daño hepático agudo (hepatitis, fármacos, alcohol).",
       "instructions": [
         "Ayuno de 8 a 12 horas.",
@@ -304,7 +304,7 @@
       "name": "Aspartato Aminotransferasa AST",
       "sample": "Suero",
       "category": "Perfil Hepático / Enzimas",
-      "cost": 180.20,
+      "cost": 185.00,
       "description": "Enzima presente en hígado, corazón y músculo. Se eleva en daño celular hepático, cardíaco o muscular.",
       "instructions": [
         "Ayuno de 8 a 12 horas.",
@@ -316,7 +316,7 @@
       "name": "Fosfatasa Alcalina ALP",
       "sample": "Suero",
       "category": "Perfil Hepático / Enzimas",
-      "cost": 187.71,
+      "cost": 190.00,
       "description": "Se eleva en enfermedades hepatobiliares (colestasis) y en trastornos óseos (Paget, tumores).",
       "instructions": [
         "Ayuno de 8 a 12 horas."
@@ -327,7 +327,7 @@
       "name": "Gamma‑Glutamil Transpeptidasa GGT",
       "sample": "Suero",
       "category": "Perfil Hepático / Enzimas",
-      "cost": 187.71,
+      "cost": 190.00,
       "description": "Marcador sensible de daño hepático, especialmente por consumo de alcohol o fármacos hepatotóxicos.",
       "instructions": [
         "Ayuno de 8 a 12 horas.",
@@ -339,7 +339,7 @@
       "name": "Bilirrubina Total",
       "sample": "Suero",
       "category": "Perfil Hepático / Enzimas",
-      "cost": 197.09,
+      "cost": 200.00,
       "description": "Producto de degradación de hemoglobina. Elevada en ictericia, enfermedades hepáticas o hemólisis.",
       "instructions": [
         "Ayuno de 8 a 12 horas."
@@ -350,7 +350,7 @@
       "name": "Bilirrubina Directa",
       "sample": "Suero",
       "category": "Perfil Hepático / Enzimas",
-      "cost": 183.94,
+      "cost": 185.00,
       "description": "Forma conjugada de bilirrubina. Se eleva en obstrucción biliar y hepatitis.",
       "instructions": [
         "Ayuno de 8 a 12 horas."
@@ -361,7 +361,7 @@
       "name": "Bilirrubina Indirecta",
       "sample": "Suero",
       "category": "Perfil Hepático / Enzimas",
-      "cost": 198.31,
+      "cost": 200.00,
       "description": "Fracción no conjugada. Se eleva en hemólisis, síndrome de Gilbert y enfermedades hepáticas.",
       "instructions": [
         "Ayuno de 8 a 12 horas."
@@ -372,7 +372,7 @@
       "name": "Deshidrogenasa Láctica LDH",
       "sample": "Suero",
       "category": "Perfil Hepático / Enzimas",
-      "cost": 415.23,
+      "cost": 420.00,
       "description": "Enzima ubicua. Elevada en daño tisular (hígado, corazón, pulmón, hemólisis, neoplasias).",
       "instructions": [
         "Ayuno de 8 a 12 horas.",
@@ -384,7 +384,7 @@
       "name": "Índice De Resistencia A La Insulina HOMA‑IR",
       "sample": "Suero",
       "category": "Índices Calculados",
-      "cost": 423.99,
+      "cost": 425.00,
       "description": "Estimador de resistencia a la insulina, factor de riesgo para diabetes tipo 2, síndrome metabólico y obesidad.",
       "instructions": [
         "Ayuno de 8 a 12 horas.",
@@ -396,7 +396,7 @@
       "name": "Hormona Estimulante de la Tiroides TSH",
       "sample": "Suero",
       "category": "Hormonas Tiroideas",
-      "cost": 483.82,
+      "cost": 485.00,
       "description": "Principal prueba para evaluar función tiroidea. TSH alta sugiere hipotiroidismo; baja, hipertiroidismo.",
       "instructions": [
         "No requiere ayuno en la mayoría de casos.",
@@ -409,7 +409,7 @@
       "name": "T3 Total",
       "sample": "Suero",
       "category": "Hormonas Tiroideas",
-      "cost": 300.31,
+      "cost": 305.00,
       "description": "Hormona tiroidea activa. Se eleva en hipertiroidismo. Su medición ayuda a evaluar la función tiroidea.",
       "instructions": [
         "No requiere ayuno en la mayoría de casos.",
@@ -421,7 +421,7 @@
       "name": "T3 Triyodotironina Libre",
       "sample": "Suero",
       "category": "Hormonas Tiroideas",
-      "cost": 384.75,
+      "cost": 385.00,
       "description": "Fracción libre (no unida a proteínas) de la T3, más precisa. Sensible en hipertiroidismo.",
       "instructions": [
         "No requiere ayuno en la mayoría de casos.",
@@ -433,7 +433,7 @@
       "name": "T4 Total",
       "sample": "Suero",
       "category": "Hormonas Tiroideas",
-      "cost": 300.31,
+      "cost": 305.00,
       "description": "Forma de almacenamiento de la hormona tiroidea. Se eleva en hipertiroidismo y baja en hipotiroidismo.",
       "instructions": [
         "No requiere ayuno en la mayoría de casos.",
@@ -445,7 +445,7 @@
       "name": "T4 Libre",
       "sample": "Suero",
       "category": "Hormonas Tiroideas",
-      "cost": 450.46,
+      "cost": 455.00,
       "description": "Mejor reflejo del estado tiroideo, ya que no se ve afectada por proteínas transportadoras.",
       "instructions": [
         "No requiere ayuno en la mayoría de casos.",
@@ -457,7 +457,7 @@
       "name": "Índice De Tiroxina Libre FT4I",
       "sample": "Suero",
       "category": "Hormonas Tiroideas",
-      "cost": 826.81,
+      "cost": 830.00,
       "description": "Estimación de la T4 libre ajustada a la capacidad de unión de proteínas. Útil en alteraciones de proteínas transportadoras.",
       "instructions": [
         "No requiere ayuno en la mayoría de casos."
@@ -468,7 +468,7 @@
       "name": "Hormona Folículo Estimulante FSH",
       "sample": "Suero",
       "category": "Hormonas – Ginecológicas",
-      "cost": 498.84,
+      "cost": 500.00,
       "description": "Regula la función ovárica y testicular. Niveles altos en menopausia o falla ovárica; bajos en hipogonadismo hipogonadotrófico.",
       "instructions": [
         "No requiere ayuno.",
@@ -480,7 +480,7 @@
       "name": "Hormona Luteinizante LH",
       "sample": "Suero",
       "category": "Hormonas – Ginecológicas",
-      "cost": 498.84,
+      "cost": 500.00,
       "description": "Induce la ovulación y producción de testosterona. Útil en infertilidad, menopausia y trastornos menstruales.",
       "instructions": [
         "No requiere ayuno.",
@@ -492,7 +492,7 @@
       "name": "Estradiol",
       "sample": "Suero",
       "category": "Hormonas – Ginecológicas",
-      "cost": 405.41,
+      "cost": 410.00,
       "description": "Principal estrógeno. Regula el ciclo menstrual y caracteres sexuales femeninos. Se usa en fertilidad y menopausia.",
       "instructions": [
         "No requiere ayuno.",
@@ -504,7 +504,7 @@
       "name": "Progesterona",
       "sample": "Suero",
       "category": "Hormonas – Ginecológicas",
-      "cost": 360.36,
+      "cost": 365.00,
       "description": "Hormona clave en el ciclo menstrual y el embarazo. Evalúa ovulación y apoyo de la fase lútea.",
       "instructions": [
         "Ayuno de 8 horas.",
@@ -516,7 +516,7 @@
       "name": "Prolactina PRL",
       "sample": "Suero",
       "category": "Hormonas – Ginecológicas",
-      "cost": 681.53,
+      "cost": 685.00,
       "description": "Estimula la producción de leche. Elevada en prolactinoma, estrés, fármacos o hipotiroidismo.",
       "instructions": [
         "Ayuno de 8 horas.",
@@ -529,7 +529,7 @@
       "name": "Testosterona Total",
       "sample": "Suero",
       "category": "Hormonas – Andrógenos",
-      "cost": 404.82,
+      "cost": 405.00,
       "description": "Hormona sexual masculina. Se usa en evaluación de hipogonadismo, infertilidad, hirsutismo y trastornos de la diferenciación sexual.",
       "instructions": [
         "Ayuno de 8 horas.",
@@ -541,7 +541,7 @@
       "name": "Testosterona Libre",
       "sample": "Suero",
       "category": "Hormonas – Andrógenos",
-      "cost": 683.22,
+      "cost": 685.00,
       "description": "Fracción biológicamente activa. Útil en pacientes con alteraciones de proteínas transportadoras (SHBG).",
       "instructions": [
         "Ayuno de 8 horas.",
@@ -553,7 +553,7 @@
       "name": "17‑Alfa Hidroxiprogesterona",
       "sample": "Suero",
       "category": "Hormonas – Andrógenos",
-      "cost": 775.15,
+      "cost": 780.00,
       "description": "Intermediario en la síntesis de cortisol y aldosterona. Elevada en hiperplasia adrenal congénita.",
       "instructions": [
         "Ayuno de 8 horas.",
@@ -565,7 +565,7 @@
       "name": "Androstenediona",
       "sample": "Suero",
       "category": "Hormonas – Andrógenos",
-      "cost": 582.39,
+      "cost": 585.00,
       "description": "Andrógeno producido por ovarios y suprarrenales. Elevada en síndrome de ovario poliquístico y tumores suprarrenales.",
       "instructions": [
         "Ayuno de 8 horas."
@@ -576,7 +576,7 @@
       "name": "Dehidroepiandrosterona DHEA",
       "sample": "Suero",
       "category": "Hormonas – Andrógenos",
-      "cost": 621.56,
+      "cost": 625.00,
       "description": "Andrógeno suprarrenal. Se usa como marcador de función suprarrenal y en evaluación de hirsutismo.",
       "instructions": [
         "Ayuno de 8 horas."
@@ -587,7 +587,7 @@
       "name": "Dehidroepiandrosterona Sulfato DHEAS",
       "sample": "Suero",
       "category": "Hormonas – Andrógenos",
-      "cost": 654.97,
+      "cost": 655.00,
       "description": "Principal andrógeno circulante, de origen suprarrenal. Elevado en tumores suprarrenales e hiperplasia adrenal.",
       "instructions": [
         "Ayuno de 8 horas."
@@ -598,7 +598,7 @@
       "name": "Insulina",
       "sample": "Suero",
       "category": "Otras Hormonas",
-      "cost": 449.80,
+      "cost": 450.00,
       "description": "Regula el metabolismo de la glucosa. Se usa para diagnosticar resistencia a la insulina, hipoglucemia y tumores pancreáticos.",
       "instructions": [
         "Ayuno de 8 a 12 horas.",
@@ -610,7 +610,7 @@
       "name": "Cortisol",
       "sample": "Suero",
       "category": "Otras Hormonas",
-      "cost": 404.82,
+      "cost": 405.00,
       "description": "Hormona del estrés. Se evalúa en enfermedad de Cushing, insuficiencia suprarrenal y ritmo circadiano.",
       "instructions": [
         "Ayuno de 8 horas.",
@@ -623,7 +623,7 @@
       "name": "Ferritina",
       "sample": "Suero",
       "category": "Marcadores y Vitaminas",
-      "cost": 758.29,
+      "cost": 760.00,
       "description": "Refleja las reservas de hierro. Baja en anemia ferropénica; alta en sobrecarga de hierro (hemocromatosis) o inflamación.",
       "instructions": [
         "Ayuno de 8 horas.",
@@ -636,7 +636,7 @@
       "name": "Hierro",
       "sample": "Suero",
       "category": "Marcadores y Vitaminas",
-      "cost": 253.80,
+      "cost": 255.00,
       "description": "Nivel de hierro circulante. Se altera en anemia, hemocromatosis y enfermedades crónicas.",
       "instructions": [
         "Ayuno de 8 horas.",
@@ -662,7 +662,7 @@
       "name": "Capacidad Total De Fijación De Hierro TIBC",
       "sample": "Suero",
       "category": "Marcadores y Vitaminas",
-      "cost": 520.34,
+      "cost": 525.00,
       "description": "Estima la capacidad de la transferrina para unir hierro. Ayuda a clasificar anemias y evaluar metabolismo del hierro.",
       "instructions": [
         "Ayuno de 8 horas.",
@@ -674,7 +674,7 @@
       "name": "Vitamina D (25‑Hidroxi)",
       "sample": "Suero",
       "category": "Marcadores y Vitaminas",
-      "cost": 721.97,
+      "cost": 725.00,
       "description": "Nivel de vitamina D. Su deficiencia se asocia a osteoporosis, raquitismo, enfermedades autoinmunes e infecciosas.",
       "instructions": [
         "Ayuno de 8 horas.",
@@ -686,7 +686,7 @@
       "name": "Vitamina B12",
       "sample": "Suero",
       "category": "Marcadores y Vitaminas",
-      "cost": 501.62,
+      "cost": 505.00,
       "description": "Esencial para la formación de glóbulos rojos y el sistema nervioso. Su deficiencia causa anemia y neuropatía.",
       "instructions": [
         "Ayuno de 8 horas.",
@@ -698,7 +698,7 @@
       "name": "Ácido Fólico Sérico",
       "sample": "Suero",
       "category": "Marcadores y Vitaminas",
-      "cost": 593.18,
+      "cost": 595.00,
       "description": "Vitamina B9, necesaria para la síntesis de ADN. Su deficiencia produce anemia megaloblástica y defectos del tubo neural en el embarazo.",
       "instructions": [
         "Ayuno de 8 horas.",
@@ -710,7 +710,7 @@
       "name": "Anticuerpos Antinucleares ANA",
       "sample": "Suero",
       "category": "Inmunología / Autoinmunidad",
-      "cost": 1501.49,
+      "cost": 1505.00,
       "description": "Prueba de tamizaje para enfermedades autoinmunes sistémicas como lupus eritematoso, esclerodermia y artritis reumatoide.",
       "instructions": [
         "Ayuno de 8 horas."
@@ -721,7 +721,7 @@
       "name": "Anti‑DNA De Doble Cadena",
       "sample": "Suero",
       "category": "Inmunología / Autoinmunidad",
-      "cost": 750.76,
+      "cost": 755.00,
       "description": "Autoanticuerpo específico para lupus eritematoso sistémico. Se relaciona con actividad de la enfermedad y nefritis lúpica.",
       "instructions": [
         "Ayuno de 8 horas."
@@ -732,7 +732,7 @@
       "name": "Anticuerpos Anti‑CCP",
       "sample": "Suero",
       "category": "Inmunología / Autoinmunidad",
-      "cost": 1858.14,
+      "cost": 1860.00,
       "description": "Altamente específico para artritis reumatoide. Detectable en fases tempranas, útil para pronóstico y diagnóstico.",
       "instructions": [
         "Ayuno de 8 horas."
@@ -743,7 +743,7 @@
       "name": "Anticuerpo Anti Peroxidasa Tiroidea TPO",
       "sample": "Suero",
       "category": "Inmunología / Autoinmunidad",
-      "cost": 645.67,
+      "cost": 650.00,
       "description": "Marcador de tiroiditis autoinmune (Hashimoto) y enfermedad de Graves. Ayuda a diagnosticar hipotiroidismo autoinmune.",
       "instructions": [
         "No requiere ayuno."
@@ -754,7 +754,7 @@
       "name": "Anticuerpos Anti Tiroglobulina TG",
       "sample": "Suero",
       "category": "Inmunología / Autoinmunidad",
-      "cost": 810.83,
+      "cost": 815.00,
       "description": "Autoanticuerpo presente en tiroiditis autoinmune. Se usa junto con anti-TPO para diagnóstico de Hashimoto.",
       "instructions": [
         "No requiere ayuno."
@@ -776,7 +776,7 @@
       "name": "Anticuerpos Anti‑Mitocondriales AMA",
       "sample": "Suero",
       "category": "Inmunología / Autoinmunidad",
-      "cost": 659.97,
+      "cost": 660.00,
       "description": "Marcador primario de cirrosis biliar primaria (colangitis biliar autoinmune).",
       "instructions": [
         "Ayuno de 8 horas."
@@ -787,7 +787,7 @@
       "name": "Anticuerpos Anti‑Músculo Liso ASMA",
       "sample": "Suero",
       "category": "Inmunología / Autoinmunidad",
-      "cost": 1148.76,
+      "cost": 1150.00,
       "description": "Asociado a hepatitis autoinmune tipo 1. Útil para diagnóstico diferencial de enfermedad hepática.",
       "instructions": [
         "Ayuno de 8 horas."
@@ -798,7 +798,7 @@
       "name": "Anticuerpos P‑ANCA Y C‑ANCA",
       "sample": "Suero",
       "category": "Inmunología / Autoinmunidad",
-      "cost": 1231.27,
+      "cost": 1235.00,
       "description": "Marcadores de vasculitis autoinmunes: c-ANCA en granulomatosis de Wegener, p-ANCA en poliangeítis microscópica.",
       "instructions": [
         "Ayuno de 8 horas."
@@ -809,7 +809,7 @@
       "name": "Anticuerpos Anticardiolipinas IgG/IgM",
       "sample": "Suero",
       "category": "Inmunología / Autoinmunidad",
-      "cost": 1570.18,
+      "cost": 1575.00,
       "description": "Parte del síndrome antifosfolípido. Se asocian a trombosis, pérdidas gestacionales recurrentes y trombocitopenia.",
       "instructions": [
         "Ayuno de 8 horas."
@@ -820,7 +820,7 @@
       "name": "Anticuerpos Anti‑β2‑Glicoproteína IgG",
       "sample": "Suero",
       "category": "Inmunología / Autoinmunidad",
-      "cost": 806.18,
+      "cost": 810.00,
       "description": "Autoanticuerpo asociado a síndrome antifosfolípido, con alta especificidad para fenómenos trombóticos.",
       "instructions": [
         "Ayuno de 8 horas."
@@ -831,7 +831,7 @@
       "name": "Anticuerpos Anti‑β2‑Glicoproteína IgM",
       "sample": "Suero",
       "category": "Inmunología / Autoinmunidad",
-      "cost": 2424.48,
+      "cost": 2425.00,
       "description": "IgM del anticuerpo anti-β2-glicoproteína, también involucrada en el síndrome antifosfolípido.",
       "instructions": [
         "Ayuno de 8 horas."
@@ -842,7 +842,7 @@
       "name": "VIH Presuntivo",
       "sample": "Suero",
       "category": "Serología y Pruebas Rápidas",
-      "cost": 438.46,
+      "cost": 440.00,
       "description": "Prueba rápida de tamizaje para anticuerpos contra el Virus de Inmunodeficiencia Humana (VIH). Requiere confirmación si es reactiva.",
       "instructions": [
         "No requiere ayuno.",
@@ -854,7 +854,7 @@
       "name": "VDRL Presuntivo Sífilis",
       "sample": "Suero",
       "category": "Serología y Pruebas Rápidas",
-      "cost": 165.17,
+      "cost": 170.00,
       "description": "Tamizaje para sífilis. Detecta anticuerpos contra el Treponema pallidum. Si es reactivo se debe confirmar con prueba treponémica.",
       "instructions": [
         "No requiere ayuno."
@@ -876,7 +876,7 @@
       "name": "Hepatitis C Prueba Rápida",
       "sample": "Suero",
       "category": "Serología y Pruebas Rápidas",
-      "cost": 828.96,
+      "cost": 830.00,
       "description": "Prueba cualitativa para anticuerpos contra el Virus de Hepatitis C. Útil como tamizaje inicial.",
       "instructions": [
         "No requiere ayuno."
@@ -887,7 +887,7 @@
       "name": "PCR Látex Proteína C Reactiva",
       "sample": "Suero",
       "category": "Serología y Pruebas Rápidas",
-      "cost": 215.63,
+      "cost": 220.00,
       "description": "Mide la proteína C reactiva sensible. Se eleva en procesos inflamatorios, infecciosos o autoinmunes. Valor pronóstico cardiovascular.",
       "instructions": [
         "No requiere ayuno."
@@ -898,7 +898,7 @@
       "name": "Antiestreptolisinas ASO",
       "sample": "Suero",
       "category": "Serología y Pruebas Rápidas",
-      "cost": 487.68,
+      "cost": 490.00,
       "description": "Detecta infección reciente por estreptococo beta-hemolítico. Útil en diagnóstico de fiebre reumática y glomerulonefritis postestreptocócica.",
       "instructions": [
         "No requiere ayuno."
@@ -909,7 +909,7 @@
       "name": "Factor Reumatoide FR Látex",
       "sample": "Suero",
       "category": "Serología y Pruebas Rápidas",
-      "cost": 685.15,
+      "cost": 690.00,
       "description": "Autoanticuerpo presente en artritis reumatoide, aunque también en otras enfermedades autoinmunes o infecciosas.",
       "instructions": [
         "No requiere ayuno."
@@ -920,7 +920,7 @@
       "name": "Reacciones Febriles",
       "sample": "Suero",
       "category": "Serología y Pruebas Rápidas",
-      "cost": 679.43,
+      "cost": 680.00 ,
       "description": "Panel para anticuerpos contra salmonella, brucella, rickettsias y otros agentes de fiebre de origen desconocido.",
       "instructions": [
         "No requiere ayuno."
@@ -931,7 +931,7 @@
       "name": "Rosa de Bengala",
       "sample": "Suero",
       "category": "Serología y Pruebas Rápidas",
-      "cost": 240.25,
+      "cost": 245.00,
       "description": "Tamizaje para brucelosis. Detecta anticuerpos contra Brucella abortus. Se confirma con otras pruebas.",
       "instructions": [
         "No requiere ayuno."
@@ -953,7 +953,7 @@
       "name": "Tiempo de Protrombina (TP)",
       "sample": "Plasma",
       "category": "Coagulación / Hemostasia",
-      "cost": 266.71,
+      "cost": 270.00,
       "description": "Evalúa la vía extrínseca de la coagulación. Se usa para monitorizar anticoagulantes como warfarina y en hepatopatías.",
       "instructions": [
         "No requiere ayuno.",
@@ -965,7 +965,7 @@
       "name": "Tiempo de Tromboplastina Parcial Activada (TPTa)",
       "sample": "Plasma",
       "category": "Coagulación / Hemostasia",
-      "cost": 256.28,
+      "cost": 260.00,
       "description": "Mide la vía intrínseca. Útil en tamizaje prequirúrgico y para monitorizar heparina.",
       "instructions": [
         "No requiere ayuno.",
@@ -977,7 +977,7 @@
       "name": "Tiempo De Trombina (TT)",
       "sample": "Plasma",
       "category": "Coagulación / Hemostasia",
-      "cost": 371.98,
+      "cost": 375.00,
       "description": "Evalúa la conversión de fibrinógeno a fibrina. Se altera en afibrinogenemia, heparina o fármacos trombolíticos.",
       "instructions": [
         "No requiere ayuno."
@@ -988,7 +988,7 @@
       "name": "Fibrinógeno",
       "sample": "Plasma",
       "category": "Coagulación / Hemostasia",
-      "cost": 366.93,
+      "cost": 370.00,
       "description": "Proteína de coagulación. Elevado en procesos inflamatorios, bajo en enfermedad hepática grave o coagulación intravascular diseminada.",
       "instructions": [
         "No requiere ayuno."
@@ -999,7 +999,7 @@
       "name": "Examen General De Orina (EGO)",
       "sample": "Orina",
       "category": "Urianálisis",
-      "cost": 131.87,
+      "cost": 135.00,
       "description": "Análisis físico, químico y microscópico de orina. Detecta infección urinaria, enfermedad renal, diabetes y trastornos metabólicos.",
       "instructions": [
         "Recolectar la primera orina de la mañana.",
@@ -1013,7 +1013,7 @@
       "name": "Urocultivo",
       "sample": "Orina",
       "category": "Microbiología",
-      "cost": 891.27,
+      "cost": 895.00,
       "description": "Cultivo e identificación de bacterias en orina, con antibiograma. Es el estándar para diagnóstico de infección urinaria.",
       "instructions": [
         "Recolectar la primera orina de la mañana con aseo genital.",
@@ -1026,7 +1026,7 @@
       "name": "Hemocultivo Aerobio",
       "sample": "Sangre",
       "category": "Microbiología",
-      "cost": 1210.26,
+      "cost": 1215.00,
       "description": "Detección de bacterias aerobias en sangre. Fundamental en sepsis, endocarditis y fiebre de origen desconocido.",
       "instructions": [
         "La toma de muestra es realizada por personal de salud.",
@@ -1038,7 +1038,7 @@
       "name": "Hemocultivo Anaerobio",
       "sample": "Sangre",
       "category": "Microbiología",
-      "cost": 1210.26,
+      "cost": 1215.00,
       "description": "Detección de bacterias anaerobias en sangre. Complementa el hemocultivo aerobio en casos de sepsis grave.",
       "instructions": [
         "La toma de muestra es realizada por personal de salud."
@@ -1049,7 +1049,7 @@
       "name": "Cultivo de Exudado Faríngeo",
       "sample": "Exudado Faríngeo",
       "category": "Microbiología",
-      "cost": 891.27,
+      "cost": 895.00,
       "description": "Identifica agentes de faringitis bacteriana (Streptococcus pyogenes) y otros patógenos orofaríngeos.",
       "instructions": [
         "No comer ni beber 2 horas antes.",
@@ -1061,7 +1061,7 @@
       "name": "Cultivo de Exudado Vaginal",
       "sample": "Exudado Vaginal",
       "category": "Microbiología",
-      "cost": 1224.14,
+      "cost": 1225.00,
       "description": "Diagnóstico de vaginosis bacteriana, candidiasis y otras infecciones del tracto genital inferior.",
       "instructions": [
         "No usar óvulos, duchas vaginales ni tener relaciones sexuales 48 horas antes.",
@@ -1073,7 +1073,7 @@
       "name": "Cultivo de Exudado Uretral",
       "sample": "Exudado Uretral",
       "category": "Microbiología",
-      "cost": 1224.14,
+      "cost": 1225.00,
       "description": "Detección de uretritis por Neisseria gonorrhoeae, Chlamydia trachomatis y otras bacterias.",
       "instructions": [
         "No orinar 2 horas antes de la toma.",
@@ -1085,7 +1085,7 @@
       "name": "Cultivo de Exudado De Herida / Absceso",
       "sample": "Exudado de Herida",
       "category": "Microbiología",
-      "cost": 891.27,
+      "cost": 895.00 ,
       "description": "Identifica microorganismos responsables de infección en heridas quirúrgicas, traumáticas o abscesos.",
       "instructions": [
         "La toma de muestra debe ser realizada por personal de salud.",
@@ -1097,7 +1097,7 @@
       "name": "Cultivo de Hongos",
       "sample": "Variable",
       "category": "Microbiología",
-      "cost": 671.32,
+      "cost": 675.00,
       "description": "Detección de hongos patógenos en muestras como piel, uñas, mucosas o secreciones.",
       "instructions": [
         "Depende del sitio de toma. Seguir indicaciones específicas."
@@ -1108,7 +1108,7 @@
       "name": "Cultivo de Esputo",
       "sample": "Esputo",
       "category": "Microbiología",
-      "cost": 1131.74,
+      "cost": 1135.00,
       "description": "Diagnóstico de infecciones respiratorias bajas: neumonía, bronquitis, tuberculosis.",
       "instructions": [
         "Recolectar muestra matutina después de enjuagar la boca con agua.",
@@ -1120,7 +1120,7 @@
       "name": "Cultivo de Semen (Espermocultivo)",
       "sample": "Semen",
       "category": "Microbiología",
-      "cost": 1164.42,
+      "cost": 1165.00,
       "description": "Detecta bacterias en el semen, útil en prostatitis, epididimitis e infertilidad masculina.",
       "instructions": [
         "Abstinencia sexual de 3 a 5 días.",
@@ -1133,7 +1133,7 @@
       "name": "Cultivo de Punta De Catéter",
       "sample": "Punta de Catéter",
       "category": "Microbiología",
-      "cost": 1299.05,
+      "cost": 1300.00,
       "description": "Investigación de bacteriemia asociada a catéter. Se cultiva la punta del catéter removido.",
       "instructions": [
         "La muestra debe ser recolectada por personal de salud en condiciones estériles."
@@ -1144,7 +1144,7 @@
       "name": "Cultivo de Exudado Nasal",
       "sample": "Exudado Nasal",
       "category": "Microbiología",
-      "cost": 1224.14,
+      "cost": 1225.00,
       "description": "Detección de portadores de Staphylococcus aureus u otros patógenos nasales.",
       "instructions": [
         "No usar sprays nasales 24 horas antes."
@@ -1155,7 +1155,7 @@
       "name": "Cultivo de Secreción Ótica",
       "sample": "Exudado Ótico",
       "category": "Microbiología",
-      "cost": 891.27,
+      "cost": 895.00,
       "description": "Diagnóstico de otitis externa u otitis media supurada, con identificación del agente causal.",
       "instructions": [
         "No aplicar gotas óticas 24 horas antes."
@@ -1166,7 +1166,7 @@
       "name": "Cultivo de Secreción Bronquial",
       "sample": "Secreción Bronquial",
       "category": "Microbiología",
-      "cost": 1131.74,
+      "cost": 1135.00,
       "description": "Muestra más profunda que el esputo, obtenida por broncoscopia. Para neumonías nosocomiales o en inmunodeprimidos.",
       "instructions": [
         "Recolectar muestra matutina después de enjuagar la boca con agua.",
@@ -1178,7 +1178,7 @@
       "name": "Coprocultivo",
       "sample": "Heces",
       "category": "Microbiología",
-      "cost": 891.27,
+      "cost": 895.00,
       "description": "Detección de bacterias patógenas entéricas (Salmonella, Shigella, Campylobacter, E. coli patógena).",
       "instructions": [
         "Recolectar una muestra de evacuación reciente.",
@@ -1192,7 +1192,7 @@
       "name": "Cultivo de Líquido Pleural",
       "sample": "Líquido Pleural",
       "category": "Microbiología",
-      "cost": 891.27,
+      "cost": 895.00,
       "description": "Identifica infección en derrame pleural (empiema). Muestra obtenida por toracocentesis.",
       "instructions": [
         "La toma de muestra es realizada por personal médico."
@@ -1203,7 +1203,7 @@
       "name": "Cultivo de Líquido Sinovial",
       "sample": "Líquido Sinovial",
       "category": "Microbiología",
-      "cost": 891.27,
+      "cost": 895.00,
       "description": "Diagnóstico de artritis séptica. Se cultiva el líquido obtenido por artrocentesis.",
       "instructions": [
         "La toma de muestra es realizada por personal médico."
@@ -1214,7 +1214,7 @@
       "name": "Cultivo de Líquido Cefaloraquídeo",
       "sample": "Líquido Cefalorraquídeo",
       "category": "Microbiología",
-      "cost": 891.27,
+      "cost": 895.00,
       "description": "Esencial para meningitis bacteriana. Se cultiva el LCR obtenido por punción lumbar.",
       "instructions": [
         "La toma de muestra es realizada por personal médico."
@@ -1225,7 +1225,7 @@
       "name": "Cultivo de Líquidos Corporales",
       "sample": "Líquido Corporal",
       "category": "Microbiología",
-      "cost": 891.27,
+      "cost": 895.00,
       "description": "Cultivo de líquidos de cavidades estériles (peritoneal, pericárdico, etc.) para detectar infección.",
       "instructions": [
         "La toma de muestra es realizada por personal médico."
@@ -1236,7 +1236,7 @@
       "name": "Coproparasitoscópico 1 Muestra",
       "sample": "Heces",
       "category": "Parasitología",
-      "cost": 137.35,
+      "cost": 140.00,
       "description": "Búsqueda de parásitos intestinales en una muestra de heces. Tamizaje básico.",
       "instructions": [
         "Recolectar una muestra de evacuación reciente.",
@@ -1250,7 +1250,7 @@
       "name": "Coproparasitoscópico 2 Muestras",
       "sample": "Heces",
       "category": "Parasitología",
-      "cost": 197.07,
+      "cost": 200.00,
       "description": "Dos muestras en días distintos mejora la sensibilidad en detección de parásitos.",
       "instructions": [
         "Recolectar muestras de evacuaciones recientes en días diferentes.",
@@ -1264,7 +1264,7 @@
       "name": "Coproparasitoscópico 3 Muestras",
       "sample": "Heces",
       "category": "Parasitología",
-      "cost": 256.78,
+      "cost": 260.00,
       "description": "Tres muestras seriadas para máxima sensibilidad en el diagnóstico de parasitosis intestinal.",
       "instructions": [
         "Recolectar muestras de evacuaciones recientes en días diferentes.",
@@ -1278,7 +1278,7 @@
       "name": "Estudio Coprológico",
       "sample": "Heces",
       "category": "Parasitología",
-      "cost": 330.34,
+      "cost": 335.00,
       "description": "Análisis completo de heces: parásitos, leucocitos, grasas, digestibilidad, pH, etc. Útil en malabsorción y colitis.",
       "instructions": [
         "Recolectar una muestra de evacuación reciente.",
@@ -1292,7 +1292,7 @@
       "name": "Prueba de Azúcares Reductores",
       "sample": "Heces, Orina",
       "category": "Parasitología",
-      "cost": 237.13,
+      "cost": 240.00,
       "description": "Detecta azúcares no absorbidos en heces (intolerancia a lactosa, malabsorción de carbohidratos).",
       "instructions": [
         "Recolectar muestra de heces reciente o orina según indicación médica.",
@@ -1304,7 +1304,7 @@
       "name": "Sangre Oculta en Heces",
       "sample": "Heces",
       "category": "Parasitología",
-      "cost": 549.10,
+      "cost": 550.00,
       "description": "Detección de sangrado gastrointestinal oculto. Tamizaje para cáncer colorrectal, pólipos o úlceras.",
       "instructions": [
         "Evitar carnes rojas, antiinflamatorios y suplementos de hierro 72 horas antes.",
@@ -1316,7 +1316,7 @@
       "name": "Amiba en Fresco",
       "sample": "Heces",
       "category": "Parasitología",
-      "cost": 236.44,
+      "cost": 240.00,
       "description": "Observación directa de trofozoítos de Entamoeba histolytica en heces recientes. Para diagnóstico de amibiasis disentérica.",
       "instructions": [
         "Recolectar muestra de evacuación reciente (menos de 30 minutos).",
@@ -1329,7 +1329,7 @@
       "name": "Examen de Gota Gruesa",
       "sample": "Sangre Total",
       "category": "Parasitología",
-      "cost": 308.71,
+      "cost": 310.00,
       "description": "Detección de parásitos hemáticos como Plasmodium (paludismo) y microfilarias.",
       "instructions": [
         "No requiere ayuno.",
@@ -1352,7 +1352,7 @@
       "name": "Citoquímico de Líquido Pleural",
       "sample": "Líquido Pleural",
       "category": "Líquidos Corporales (Citoquímicos)",
-      "cost": 427.97,
+      "cost": 430.00,
       "description": "Clasifica un derrame pleural en trasudado o exudado, ayuda a etiología (insuficiencia cardíaca, infección, neoplasia).",
       "instructions": [
         "La toma de muestra es realizada por personal médico."
@@ -1363,7 +1363,7 @@
       "name": "Citoquímico de Líquido Sinovial",
       "sample": "Líquido Sinovial",
       "category": "Líquidos Corporales (Citoquímicos)",
-      "cost": 427.97,
+      "cost": 430.00,
       "description": "Evalúa inflamación articular (artritis, gota, infección) mediante recuento celular y medición de glucosa, proteínas.",
       "instructions": [
         "La toma de muestra es realizada por personal médico."
@@ -1374,7 +1374,7 @@
       "name": "Citoquímico de Líquido Bronquial",
       "sample": "Líquido Bronquial",
       "category": "Líquidos Corporales (Citoquímicos)",
-      "cost": 990.07,
+      "cost": 995.00,
       "description": "Análisis químico y celular del líquido de lavado bronquioalveolar. Útil en neumonías, fibrosis y neoplasias pulmonares.",
       "instructions": [
         "La toma de muestra es realizada por personal médico."
@@ -1385,7 +1385,7 @@
       "name": "Citoquímico de Líquido De Ascitis O Peritoneal",
       "sample": "Líquido de Ascitis",
       "category": "Líquidos Corporales (Citoquímicos)",
-      "cost": 1592.45,
+      "cost": 1595.00,
       "description": "Diferencia ascitis inflamatoria (peritonitis) de no inflamatoria (cirrosis, neoplasia).",
       "instructions": [
         "La toma de muestra es realizada por personal médico."
@@ -1396,7 +1396,7 @@
       "name": "Citoquímico de Líquido De Diálisis",
       "sample": "Líquido de Diálisis",
       "category": "Líquidos Corporales (Citoquímicos)",
-      "cost": 1592.45,
+      "cost": 1595.00,
       "description": "Control de calidad y detección de peritonitis en pacientes en diálisis peritoneal.",
       "instructions": [
         "La toma de muestra es realizada por personal de salud."
@@ -1407,7 +1407,7 @@
       "name": "Citoquímico de Líquido Orgánicos Varios",
       "sample": "Líquido Corporal",
       "category": "Líquidos Corporales (Citoquímicos)",
-      "cost": 990.07,
+      "cost": 995.00,
       "description": "Análisis de líquidos de cavidades pericárdica, seminal, quistes, etc., según indicación clínica.",
       "instructions": [
         "La toma de muestra es realizada por personal médico."
@@ -1537,7 +1537,7 @@
         "Urea",
         "Creatinina"
       ],
-      "cost": 332.19,
+      "cost": 335.00,
       "sample": "Suero",
       "instructions": [
         "Ayuno de 8 a 12 horas."
@@ -1555,7 +1555,7 @@
         "Colesterol Total",
         "Triglicéridos"
       ],
-      "cost": 518.21,
+      "cost": 520.00,
       "sample": "Suero",
       "instructions": [
         "Ayuno de 8 a 12 horas."
@@ -1683,7 +1683,7 @@
         "Potasio",
         "Cloro"
       ],
-      "cost": 557.08,
+      "cost": 560.00,
       "sample": "Suero",
       "instructions": [
         "Ayuno de 8 a 12 horas."
@@ -1701,7 +1701,7 @@
         "Magnesio",
         "Fósforo"
       ],
-      "cost": 655.89,
+      "cost": 660.00,
       "sample": "Suero",
       "instructions": [
         "Ayuno de 8 a 12 horas."
@@ -1745,7 +1745,7 @@
         "Proteínas Totales",
         "Relación Albúmina/Globulina"
       ],
-      "cost": 597.93,
+      "cost": 600.00,
       "sample": "Suero",
       "instructions": [
         "Ayuno de 8 a 12 horas.",
@@ -1763,7 +1763,7 @@
         "Capacidad Total De Fijación De Hierro TIBC",
         "Porcentaje De Saturación De Transferrina"
       ],
-      "cost": 928.59,
+      "cost": 930.00,
       "sample": "Suero",
       "instructions": [
         "Ayuno de 8 horas.",
@@ -1783,7 +1783,7 @@
         "Índice De Fijación De Tiroxina IFT",
         "Índice De Tiroxina Libre FT4I"
       ],
-      "cost": 1179.58,
+      "cost": 1180.00,
       "sample": "Suero",
       "instructions": [
         "No requiere ayuno en la mayoría de casos.",
@@ -1802,7 +1802,7 @@
         "Prolactina",
         "Testosterona Total"
       ],
-      "cost": 1679.47,
+      "cost": 1680.00,
       "sample": "Suero",
       "instructions": [
         "Ayuno de 8 horas para prolactina y progesterona.",
@@ -1888,7 +1888,7 @@
         "Glucosa 2 h",
         "Glucosa 3 h"
       ],
-      "cost": 1162.36,
+      "cost": 1165.00,
       "sample": "Suero",
       "instructions": [
         "Ayuno de 8 a 12 horas para la muestra basal.",
@@ -1918,7 +1918,7 @@
         "INR",
         "Tiempo De Tromboplastina Parcial Activada TPTa"
       ],
-      "cost": 278.00,
+      "cost": 280.00,
       "sample": "Plasma",
       "instructions": [
         "Ayuno de 4 horas.",
@@ -1969,7 +1969,7 @@
         "Cocaína",
         "Tetrahidrocanabinoides"
       ],
-      "cost": 982.07,
+      "cost": 985.00,
       "sample": "Orina",
       "instructions": [
         "No requiere ayuno.",
