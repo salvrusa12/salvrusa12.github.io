@@ -569,7 +569,7 @@ footer {
     font-size: 1.00rem;
 }
 
-/* Contenedor de la línea superior (responsable + teléfono) */
+/* ========== FOOTER: RESPONSABLE + TELÉFONOS EN COLUMNA ========== */
 .info-footer {
     display: flex;
     justify-content: space-between;
@@ -580,7 +580,7 @@ footer {
     box-sizing: border-box;
 }
 
-/* Responsable sanitario: bloque izquierdo centrado en 15% ancho (desktop) */
+/* Responsable sanitario: izquierda */
 .health-license {
     width: 15%;
     text-align: center;
@@ -591,7 +591,15 @@ footer {
     color: #d2fcf2;
 }
 
-/* Teléfono: a la derecha, tamaño grande en escritorio */
+/* Contenedor para los dos teléfonos en columna (vertical) */
+.phones-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;   /* alineados a la derecha en desktop */
+    gap: 0.25rem;
+}
+
+/* Estilos comunes para ambos teléfonos */
 .phone {
     margin: 0;
     padding: 0;
@@ -604,7 +612,12 @@ footer {
     gap: 6px;
     width: auto;
 }
-.phone i {
+
+.phone-2 {
+    font-size: 1.1rem;
+}
+.phone i,
+.phone-2 i {
     color: #a6f9bd;
 }
 
@@ -618,6 +631,18 @@ footer {
     line-height: 1;
     margin-left: 0;
     font-weight: 700;
+}
+
+/* Enlace de dirección en el footer */
+.footer-address a {
+    color: inherit;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+.footer-address a:hover {
+    text-decoration: underline;
+    opacity: 0.85;
+    cursor: pointer;
 }
 
 /* Enlaces legales */
@@ -1023,14 +1048,21 @@ footer {
     .info-note-box { margin-bottom: -50px; }
     .footer-address { font-size: 0.6rem; margin-top: 0.8rem; }
     
-    /* Ajustes específicos footer en tablet */
+    /* Ajustes footer en tablet */
     .phone {
         font-size: 1.1rem;
+        white-space: nowrap;
+    }
+    .phone-2 {
+        font-size: 0.8rem;
         white-space: nowrap;
     }
     .health-license {
         width: 20%;
         font-size: 0.7rem;
+    }
+    .phones-column {
+        align-items: flex-end;
     }
 }
 
@@ -1052,30 +1084,7 @@ footer {
     .back-to-top { visibility: visible; }
     .sample-type-icon { width: 45px; }
     .sample-type-fa { font-size: 1.6rem; }
-        .info-footer {
-        flex-direction: column;
-        justify-content: center;
-        gap: 0.5rem;
-        margin: 0.5rem 0;
-    }
-    .health-license {
-        width: auto;
-        font-size: 0.7rem;
-        margin: 0;
-    }
-    .phone {
-        font-size: 1rem;
-        white-space: normal;
-        width: auto;
-        margin: 0;
-    }
-}
-
-/* Móviles (menos de 768px) */
-@media (max-width: 768px) {
-    .back-to-top { width: 44px; height: 44px; font-size: 1.2rem; bottom: 1.2rem; right: 1rem; }
     
-    /* Footer en móvil: se apila verticalmente sin romperse */
     .info-footer {
         flex-direction: column;
         justify-content: center;
@@ -1087,11 +1096,52 @@ footer {
         font-size: 0.7rem;
         margin: 0;
     }
-    .phone {
+    .phones-column {
+        align-items: center;
+        width: 100%;
+    }
+    .phone,
+    .phone-2 {
         font-size: 1rem;
         white-space: normal;
         width: auto;
         margin: 0;
+    }
+    .phone-2 {
+        font-size: 0.8rem;
+    }
+}
+
+/* Móviles (menos de 768px) */
+@media (max-width: 768px) {
+    .back-to-top { width: 44px; height: 44px; font-size: 1.2rem; bottom: 1.2rem; right: 1rem; }
+    
+    .info-footer {
+        flex-direction: column;
+        justify-content: center;
+        gap: 0.5rem;
+        margin: 0.5rem 0;
+    }
+    .health-license {
+        width: auto;
+        font-size: 0.7rem;
+        margin: 0;
+        text-align: center;
+    }
+    .phones-column {
+        align-items: center;
+        width: 100%;
+    }
+    .phone,
+    .phone-2 {
+        font-size: 1rem;
+        white-space: normal;
+        width: auto;
+        margin: 0;
+        text-align: center;
+    }
+    .phone-2{
+        font-size: 0.8rem;
     }
     .footer-links {
         gap: 1rem;
@@ -1111,10 +1161,26 @@ footer {
     .popup-body { padding: 0.8rem; }
     .popup-footer { padding: 0.1rem; font-size: 0.65rem; }
     
-    .phone {
+    .phone,
+    .phone-2 {
         font-size: 0.9rem;
+    }
+    .phone-2 {
+        font-size: 0.8rem;
     }
     .health-license {
         font-size: 0.65rem;
     }
+}
+
+/* Estilos específicos para el enlace de WhatsApp */
+.phone-2 {
+    text-decoration: none;   /* quita subrayado por defecto */
+    color: #ffffff;          /* mantiene el color blanco */
+}
+
+.phone-2:hover {
+    text-decoration: underline;
+    opacity: 0.85;
+    cursor: pointer;
 }
